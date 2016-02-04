@@ -4,3 +4,4 @@ test again
 test 2
 test 3
 test delete
+test delete file task
