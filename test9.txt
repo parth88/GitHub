@@ -2,3 +2,4 @@ hello
 test script
 test again
 test 2
+test 3
