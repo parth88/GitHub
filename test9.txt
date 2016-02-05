@@ -1,9 +1,0 @@
-hello
-test script
-test again
-test 2
-test 3
-test delete
-test delete file task
-test again task
-test one more time
