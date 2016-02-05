@@ -20,6 +20,16 @@
     
 }'>
 </div>
+
+<div id="dendrogram1" class="splunk-view" data-require="app/treeview/components/treechart/treechart" data-options='{
+    "managerid": "tree_searcdddwdwdh",
+    "root_wdwdlabel": "cliedwdntip",
+    "rigwdwdht": 800,
+    "heiwdght": 1860,
+    "initial_open_level": 1
+    
+}'>
+</div>
         </html>
 	</row>
 </form>
