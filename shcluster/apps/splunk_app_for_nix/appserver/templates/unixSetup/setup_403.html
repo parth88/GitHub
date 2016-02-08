@@ -1,0 +1,17 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    import logging
+    logger = logging.getLogger('splunk.module.setup')
+%>
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/css/setup.css']}" />
+    <%lib:script_tags files="${['/static/app/splunk_app_for_nix/js/setup.js']}" />
+</%def>
+<div id="setup" class="SuccessMessage">
+  <h2>Authorization Failure!</h2>
+  <p>Your Splunk for Unix settings could not been saved because you do not have the appropriate permissions to configure the app.&nbsp;&nbsp;Click "OK" to go to the Splunk for Hadoop Ops home page.</p>
+  <a target="_parent" href="${make_url('/app/%s/home?ftr=%s' % (host_app, ftr))}" class="splButton-primary">OK</a>
+</div>
+

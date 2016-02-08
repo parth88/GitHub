@@ -1,0 +1,15 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleName = module['className']
+
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/js/contrib/jquery/unix_jquery/jquery-1.9.1.js",
+    "/static/app/splunk_app_for_nix/js/contrib/jquery/unix_jquery/lowpro.jquery.js" 
+  ]
+%>
+
+<%lib:script_tags files="${moduleJSFiles}" />
+
+

@@ -1,0 +1,82 @@
+.CFScrollerX.chart {
+    display: inline-block;
+}
+
+.CFScrollerX.chart .reset {
+    padding-left: 1em;
+    font-size: smaller;
+    color: #ccc;
+}
+
+.CFScrollerX.chart .column {
+    float: left;
+}
+
+.CFScrollerX scrollerbox {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
+.CFScrollerX scrollerbox .container {
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #CCC;
+    box-shadow: none;
+    padding: 10px;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.CFScrollerX.chart scrollerbox [data-expand] {
+    cursor: pointer;
+}
+
+.CFScrollerX.chart scrollerbox [data-expandbox] {
+}
+
+.CFScrollerX.chart ._preload {
+  background:  url(/modules/CFScrollerX/images/loader.gif) 50% 50% no-repeat;
+}
+
+.CFScrollerX.chart .arrow-next {
+  display: inline-block;
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  text-indent: -9000px;
+  background: url(/modules/CFScrollerX/images/arrow_right.png) 0 0 no-repeat;
+  right: 10px;
+  z-index: 9999;
+}
+
+.CFScrollerX.chart .arrow-prev {
+  display: inline-block;
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  text-indent: -9000px;
+  background: url(/modules/CFScrollerX/images/arrow_left.png) 0 0 no-repeat;
+  left: 10px;
+  z-index: 9999;
+}
+
+.CFScrollerX.chart .arrow-next:hover, .arrow-prev:hover {
+    background-position: -60px 0;
+}
+
+.CFScrollerX.chart #anchor {
+  position: relative;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -161px;
+  width: 321px;
+  height: 12px;
+  background: url(/modules/CFScrollerX/images/anchor.gif) 0 0 no-repeat;
+  display: block;
+}

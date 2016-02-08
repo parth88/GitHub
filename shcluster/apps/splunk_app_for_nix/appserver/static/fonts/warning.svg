@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20110222 at Wed Apr 24 01:41:10 2013
+ By root
+Copyright (C) 2012 by original authors @ fontello.com
+</metadata>
+<defs>
+<font id="warning" horiz-adv-x="364" >
+  <font-face 
+    font-family="warning"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1000"
+    panose-1="2 0 6 3 0 0 0 0 0 0"
+    ascent="850"
+    descent="-150"
+    bbox="0 -119 977 819"
+    underline-thickness="50"
+    underline-position="-100"
+    unicode-range="U+26A0-E800"
+  />
+<missing-glyph 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".notdef" 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="333" 
+ />
+    <glyph glyph-name="uni26A0" unicode="&#x26a0;" horiz-adv-x="938" 
+d="M0 350q0 100 38.5 186t98.5 146t146 98.5t186 38.5q99 0 185 -38.5t146 -98.5q61 -60 99.5 -146t38.5 -186q0 -99 -38.5 -185t-99.5 -147q-60 -60 -146 -98.5t-185 -38.5q-100 0 -186 38.5t-146 98.5t-98.5 146.5t-38.5 185.5zM414 302q4 -33 35.5 -47t60.5 8
+q18 14 21 39l27 245v16q-4 34 -31 57.5t-63 19.5q-34 -3 -57.5 -30t-19.5 -63zM399 135q0 -30 22 -51.5t52 -21.5t51.5 21.5t21.5 51.5t-21 51t-52 21t-52.5 -21t-21.5 -51z" />
+    <glyph glyph-name="uniE705" unicode="&#xe705;" horiz-adv-x="950" 
+d="M795 680q135 -131 140 -322q2 -192 -131 -327q-134 -137 -323 -141q-192 -2 -327 131q-138 134 -139 323q-4 190 130 327q134 138 324 139t326 -130zM497 524q36 0 60 21.5t24 54.5q0 58 -60 58q-43 0 -65 -24q-23 -25 -23 -50q-2 -29 15.5 -44.5t48.5 -15.5zM401 64
+q29 0 84 26q53 25 106 78l-18 24q-48 -36 -72 -36q-15 0 -4 38l42 160q25 96 -22 96q-29 0 -89 -29q-61 -30 -115 -75l16 -26q52 34 74 34q12 0 0 -34l-36 -152q-26 -104 34 -104z" />
+    <glyph glyph-name="uniE800" unicode="&#xe800;" horiz-adv-x="992" 
+d="M972 -24q10 -16 0 -34q-10 -16 -30 -16h-892q-17 0 -28.5 17t-1.5 33l446 782q8 18 30 18t30 -18zM552 126h-110v-100h110v100zM552 200v300h-110v-300h110z" />
+  </font>
+</defs></svg>

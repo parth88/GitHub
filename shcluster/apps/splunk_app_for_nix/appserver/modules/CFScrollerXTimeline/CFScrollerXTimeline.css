@@ -1,0 +1,39 @@
+.CFScrollerXTimeline {
+    font-size: 11px;
+}
+
+.CFScrollerXTimeline.chart {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.CFScrollerXTimeline.background.bar  {
+    fill: #bbb;
+}
+
+.CFScrollerXTimeline.bar {
+    fill: steelblue;
+}
+
+.CFScrollerXTimeline.wall {
+    fill: transparent;
+}
+
+.CFScrollerXTimeline .brush rect.extent {
+    fill: steelblue;
+    fill-opacity: .125;
+}
+
+.CFScrollerXTimeline .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.CFScrollerXTimeline .test {
+    float: left;
+    width: 11px;
+    background: #ccc;
+    height: 30px;
+    border-right:1px solid #f5f5f5
+}

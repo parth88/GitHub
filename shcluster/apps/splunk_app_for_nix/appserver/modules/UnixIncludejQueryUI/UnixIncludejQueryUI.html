@@ -1,0 +1,14 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/UnixIncludejQueryUI/css/jquery.ui.all.css"
+  ]
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/UnixIncludejQueryUI/js/jquery-ui-1.10.2.custom.js"
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />

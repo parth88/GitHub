@@ -1,0 +1,131 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    import logging
+    import splunk.appserver.mrsparkle.lib.startup as startup
+
+    logger = logging.getLogger('splunk')
+%>
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/%s/css/alerts_config.css' % host_app,
+                                    '/static/app/%s/css/jquery-ui/jquery-ui.css' % host_app,
+				    '/static/app/%s/css/help_tooltip.css' % host_app ]}" />
+    <%lib:script_tags files="${[
+                                '/static/app/%s/js/help_tooltip.js' % host_app,
+                                '/static/app/%s/js/contrib/jquery/unix_jquery/jquery-1.9.1.js' % host_app,
+                                '/static/app/%s/js/contrib/jquery-ui/unix_jquery-ui/jquery-ui.custom.js' % host_app,
+                                '/static/app/%s/js/contrib/jquery-ui/jquery.sliders.js' % host_app,
+                                '/static/app/%s/js/contrib/jquery-ui/jquery.button.js' % host_app,
+                                '/static/app/%s/js/alerts_config.js' % host_app ]}" />
+</%def>
+
+<%def name="gen_form(method='POST', action=None)">
+    <form method="${method}" action="${action if action else ''}">
+</%def>
+<%
+  threshold_prefix = '_unix_alert_threshold_'
+%>
+<div id="setup">
+  <table>
+    <tr class="splUnixConfHeader">
+      <td class="alert">Alert</th>
+      <td class="threshold">Threshold</th>
+      <td class="noheader">&nbsp;</th>
+      <td class="status">Status</th>
+    </tr>
+  </table>
+% for alert in alerts:
+  ${gen_form(method="POST", action=make_url(['custom', host_app , 'unixalertsconfig', client_app, 'save']))}
+  <table>
+    <tr class="splUnixConfItem">
+    ${csrf_hidden_input()}
+    <%
+      over = overlay.search('name="%s"' % alert.name)
+      macro = macros.search('name="%s%s"' % (threshold_prefix, alert.name))
+      if len(over) > 0:
+          over = over[0]
+      else:
+          over = None
+      if len(macro) > 0:
+          macro = macro[0]
+      else:
+          macro = None
+    %>
+      <td class="alert">
+        <p>${alert.name}</p>
+        <input type="hidden" name="name" value="${alert.name}" />
+        <textarea name="description" placeholder="Enter a description...">${over.description if (over is not None and over.description is not None) else ''}</textarea>
+      </td>
+      <td class="threshold">
+    % if over is not None and over.threshold_type is not None:
+        % if over.threshold_type == 'less_than':
+        <div class="slider less_than" 
+             id="slider_${alert.name}" 
+             sliderval="${macro.definition if macro is not None else '50'}"
+             slidermin="${over.threshold_min if over.threshold_min is not None else '100'}"
+             slidermax="${over.threshold_max if over.threshold_max is not None else '1000'}">
+        </div>
+        <label class="definition less_than" for="definition">less than</label>
+        % elif over.threshold_type == 'greater_than':
+        <div class="slider greater_than" 
+             id="slider_${alert.name}"
+             sliderval="${macro.definition if macro is not None else '50'}"
+             slidermin="${over.threshold_min if over.threshold_min is not None else '100'}"
+             slidermax="${over.threshold_max if over.threshold_max is not None else '1000'}">
+        </div>
+        <label class="definition greater_than" for="definition">more than</label>
+        % else:
+        <div class="slider count" 
+             id="slider_${alert.name}"
+             sliderval="${macro.definition if macro is not None else '50'}"
+             slidermin="${over.threshold_min if over.threshold_min is not None else '100'}"
+             slidermax="${over.threshold_max if over.threshold_max is not None else '1000'}">
+        </div>
+        <label class="definition count" for="definition">exceeds</label>
+        % endif
+    % endif
+        <input type="text" class="threshold-input" size="3" name="definition" value="${macro.definition if macro is not None else '0'}" />
+        <label class="unit">${over.threshold_unit if (over is not None and over.threshold_unit is not None) else 'nothings'}</label>
+      </td>
+      <td class="noheader">
+        <p>Business Impact: 
+          <input name="business_impact" size=28 type="text" 
+           value="${over.business_impact if (over is not None and over.business_impact is not None) else ''}" />
+        </p>
+        <p>Remediation:
+          <input name="remediation" size=28 type="text" 
+           value="${over.remediation if (over is not None and over.remediation is not None) else ''}" />
+        </p>
+        <p>Escalation:
+          <input name="escalation" size=28 type="text"
+           value="${over.escalation if (over is not None and over.escalation is not None) else ''}" />
+        </p>
+      </td>
+      <td>
+        <div id="buttonset_${alert.name}" class="disabled-radio">
+          <input type="radio" id="${alert.name}_radio1" name="disabled" value="false" ${'checked' if alert.is_disabled is False else ''}/>
+          <label for="${alert.name}_radio1">Enabled</label>
+          <input type="radio" id="${alert.name}_radio2" name="disabled" value="true" ${'checked' if alert.is_disabled is True else ''}/>
+          <label for="${alert.name}_radio2">Disabled</label>
+        </div>
+        <div class="slider_severity_markers">
+          <label for="slider_severity_${alert.name}" value="1">Info</label>
+          <label for="slider_severity_${alert.name}" value="3">Medium</label>
+          <label for="slider_severity_${alert.name}" value="5">High</label>
+        </div>
+        <div class="slider count" 
+             id="slider_severity_${alert.name}"
+             sliderval="${alert.alert.severity}"
+             slidermin="1"
+             slidermax="5"
+             sliderstep="2">
+        </div>
+        <input class="threshold-input threshold-hidden-input" type="hidden" name="alert.severity" value="${alert.alert.severity}" />
+        <input class="splButton-primary saved" type="submit" value="Saved" disabled></input>
+      </td>
+    </tr>
+  </table>
+  </form>
+% endfor
+</div>

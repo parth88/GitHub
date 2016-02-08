@@ -1,0 +1,15 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%
+  width = module.get('outer_width')
+
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/css/jquery.multiselect.css",
+  ]
+%>
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+
+<div class="MetricSelectContainer">
+  <select name="${module.get('token')}" class="metric_select_module" style="width: ${'auto' if not width or width.lower().startswith('auto') else width + 'px'};" id="${module.get('id')}_metric_select" >
+  </select>
+</div>

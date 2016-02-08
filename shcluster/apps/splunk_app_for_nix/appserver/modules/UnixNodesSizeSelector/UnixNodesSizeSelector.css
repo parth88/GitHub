@@ -1,0 +1,15 @@
+.UnixNodesSizeSelector {
+    float: right;
+    height: 40px;
+    width: 100px;
+    position: relative;
+}
+.SelectorContainer {
+    height: 30px;
+    position: relative;
+}
+
+rect,
+text {
+    cursor: pointer;
+}

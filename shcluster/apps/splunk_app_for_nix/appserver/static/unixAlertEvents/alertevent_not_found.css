@@ -1,0 +1,30 @@
+div.SuccessMessage {
+    width: 500px;
+    word-wrap: break-word;
+}
+
+.SuccessMessage h2 {
+    font-family: "Helvetica nenu",Helvetica,Arial,sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    padding-left: 15px;
+}
+
+.SuccessMessage hr {
+    margin-bottom: 20px;
+    margin-top: 35px;
+    margin-right: 0;
+    margin-left: 16px;
+    color: #dddddd;
+    background-color: #dddddd;
+    height:1px;
+    border-width:0;
+    width: 88%;
+}
+
+.SuccessMessage p {
+    font-size: 16px;
+    text-align: center;
+    width: 88%;
+    padding-left: 15px;
+}

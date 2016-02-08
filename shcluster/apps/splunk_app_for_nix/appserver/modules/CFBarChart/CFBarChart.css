@@ -1,0 +1,52 @@
+.SplunkModule.CFBarChart {
+    float: left;
+    position: relative;
+    right: 10px;
+    /*margin-left: 10px;*/
+}
+.CFBarChart.chart {
+    display: inline-block;
+    float: left;
+    font-size: 9px;
+}
+
+.CFBarChart.chart .reset {
+    padding-left: 1em;
+    font-size: smaller;
+    color: #ccc;
+}
+
+.CFBarChart.chart .background.bar  {
+    fill: #ccc;
+}
+
+.CFBarChart.chart .foreground.bar {
+    fill: #CCC;
+}
+
+.CFBarChart.chart .brush rect.extent {
+    fill: steelblue;
+    fill-opacity: .125;
+}
+
+.CFBarChart.chart .brush .resize path {
+    fill: #eee;
+    stroke: #666;
+}
+
+.CFBarChart.chart .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.CFBarChart.chart .tick text {
+    fill: #3F3F3F;
+    font-size:10px;
+}
+
+.CFBarChart.chart .axis path, .axis line {
+    /*fill: #3F3F3F;*/
+    stroke: #B6B6B6;
+    /*stroke-width: 0.5px;*/
+}

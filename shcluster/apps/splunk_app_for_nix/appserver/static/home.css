@@ -1,0 +1,107 @@
+.HomeContainer {
+    /*background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;*/
+    border-radius: 4px;
+    height: auto;
+    min-height: 650px;
+    margin: 0px auto;
+    width: 1390px;
+}
+.HomeContainer h1 {
+    color: #3F3F3F;
+    font-size: 25px;
+    font-weight: 200;
+    line-height: 39px;
+    font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+    margin: 10px 10px 10px 10px;
+}
+.HomeContainer h2 {
+    float: left;
+    margin: 25px 20px 10px;
+}
+.HomeContainer .HomeRight h1 {
+    /*color: white;*/
+    font-family: "Helvetica Neue",sans-serif;
+    /*margin-left: 175px;*/
+    margin-top: 2px;
+    position: absolute;
+}
+.HomeContainer .HomeRightHeader {
+    margin-bottom: 60px;
+}
+.HomeLeft,
+.HomeCenter,
+.HomeRight {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    float: left;
+    height: auto;
+    min-height: 639px;
+    margin-left: 2px;
+    margin-right: 13px;
+    margin-top: 13px;
+    width: 370px;
+    min-width: 350px;
+    padding:27px;
+}
+
+.HomeLeft {
+    border-right: 0px;
+    margin-right: 0px;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.HomeCenter {
+    border-left: 0px;
+    margin-left: 0px;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.HomeRight {
+    /*background-color: #626262;
+    background: radial-gradient(circle farthest-side at center center , #787977 0%, #626262 100%) repeat scroll 0 0 #626262;
+    background: -ms-radial-gradient(circle farthest-side at center center , #787977 0%, #626262 100%) repeat scroll 0 0 #626262;
+    background: -moz-radial-gradient(circle farthest-side at center center , #787977 0%, #626262 100%) repeat scroll 0 0 #626262;
+    background: -webkit-radial-gradient(circle farthest-side at center center , #787977 0%, #626262 100%) repeat scroll 0 0 #626262;
+    */
+    height: 615px;
+    margin-top: 11px;
+    width: 430px; 
+}
+.HomeRight i {
+    cursor: pointer;
+}
+.scHeadlinesInner p.message {
+    color: white;
+}
+#UnixSpiderGraph_0_1_0 {
+    margin-left: 18px;
+}
+
+.HomeLeftControls > div, .HomeCenterControls > div {
+    float: left;
+}
+
+.HomeLeftControls, .HomeCenterControls {
+    display: inline-block;
+    width: 100%; 
+}
+
+.HomeLeftTop, .HomeCenterTop {
+    float: right;
+}
+
+.HomeLeftTitle, .HomeCenterTitle {
+    float: left;
+}
+
+.SplunkModule.UnixDropdown, .SplunkModule.UnixSearchSelector, .SplunkModule.UnixMultiSelect {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 5px;
+}
+
+.UnixPrefsReset {
+    float: right;
+}

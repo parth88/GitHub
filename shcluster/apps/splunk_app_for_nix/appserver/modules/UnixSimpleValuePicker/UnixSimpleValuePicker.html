@@ -1,0 +1,45 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/css/bootstrap.css",
+    "/static/app/splunk_app_for_nix/css/bootstrap-overrides.css"
+  ]
+  
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/js/contrib/bootstrap/bootstrap-unixjquery.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSearchSelector/flyout.js"
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+<%
+label = module['params'].get('label', None)
+valuelist = module['params'].get('valueList', [])
+#keys = sorted(rangemap.items(), key = lambda tup: (int(tup[1]["order"])))
+%>
+
+<div class="UnixSimpleValuePickerContainer" id="${module.get('id')}_simpleValuePicker">
+    <div class="header">
+    </div>
+
+    <div class="searchFlyout unixSelector">
+        <div class="btn-group" style="visibility: hidden;">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <div class='title'>${valuelist[0].get('name')}</div>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+	          % for val in valuelist:
+	            <li id="${val.get('value')}" class="item">
+	            	${val.get('name')}
+	            </li>
+	          % endfor
+          </ul>
+        </div>
+    </div>
+
+</div>

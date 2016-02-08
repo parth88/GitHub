@@ -1,0 +1,53 @@
+body {
+    background: #F7F7F7;
+}
+
+.large, .small {
+    float: left;
+}
+
+.large .scSpiderGraph {
+    float: left !important;
+}
+
+/*
+overrides
+*/
+
+.dashboardCell {
+    border-style: none;
+}
+
+.testControls {
+    display:none;
+}
+
+.SplunkModule {
+    margin: 6px !important;
+    padding: 0px;
+}
+
+.scSpiderGraph {
+    border-radius: 5px;
+    box-shadow:  1px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    border:1px solid #575757;
+    /*box-shadow:  #ccc 0 0 5px;*/
+}
+
+.small .scSpiderGraph .scSpiderGraphSvg {
+    margin-top: 60px;
+}
+
+/**********
+Title
+***********/
+
+.header {
+    position: absolute;
+    font-family: "Helvetica Neue", sans-serif;
+    color:white;
+    font-weight: 100;
+    font-size:36px;
+    padding-top:35px;
+    padding-left:35px;
+}

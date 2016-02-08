@@ -1,0 +1,53 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+import cherrypy
+import splunk.entity
+%>
+<%
+app_name = cherrypy.request.path_info.split('/')[-2] 
+docs_name = 'UnixApp'
+app_version = splunk.entity.getEntity('apps/local', app_name).get('version')
+spl = app_version.split('.')
+if len(spl) == 3:
+    if spl[2] == '0':
+        app_version = '%s.%s' % (spl[0], spl[1])
+page = 'ftr'
+%>
+<div class="FtrPopup">
+    <h1>Welcome to the Splunk app for Unix</h1>
+    <ul class="ImageGrid">
+        <li>
+            <p>Real Time Monitoring <span>&#45; Home</span></p>
+            <a href="#">
+                <img width="200" height="150" src="${make_url('/static/app/%s/images/Home-200.png' % APP['id'])}"></img>
+            </a>
+        </li>
+        <li>
+            <p>System Topology <span>&#45; Hosts</span></p>
+            <a href="#">
+                <img width="200" height="150" src="${make_url('/static/app/%s/images/Hosts-200.png' % APP['id'])}"></img>
+            </a>
+        </li>
+        <li>
+            <p>Historical Analysis <span>&#45; Metrics</span></p>
+            <a href="#">
+                <img width="200" height="150" src="${make_url('/static/app/%s/images/Metrics-200.png' % APP['id'])}"></img>
+            </a>
+        </li>
+        <li>
+            <p>Alert Analysis <span>&#45; Alerts</span></p>
+            <a href="#">
+                <img width="200" height="150" src="${make_url('/static/app/%s/images/Alerts-200.png' % APP['id'])}"></img>
+            </a>
+        </li>
+    </ul>
+    <div class="ButtonRow">
+        <a class="splButton-secondary cancel" href="#"><span>Cancel</span></a>
+        <a class="splButton-secondary help" target="_blank" href="${generateSelfHelpLink('[%s:%s]app.%s.%s' % (docs_name, app_version, app_name, page))}"><span>Help</span></a>
+        <a class="splButton-primary configure floatRight" href="${make_url(module['configLink'])}"><span>Configure</span></a>
+        <p class="callToAction floatRight"></p>
+        <img class="callToAction floatRight" width="18" height="17" src="${make_url('/static/app/%s/images/orange_warning_triangle.png' % APP['id'])}"/>
+    </div>
+</div>
+

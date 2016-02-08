@@ -1,0 +1,390 @@
+<%page expression_filter="h" />
+<%inherit file="unix_base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+import logging
+import math
+import os
+import string
+import time
+import cherrypy
+
+import splunk.appserver.mrsparkle.lib.startup as startup
+import splunk.appserver.mrsparkle.lib.i18n as i18n
+from splunk.util import safeURLQuote
+from splunk.appserver.mrsparkle.lib import config
+
+logger = logging.getLogger('splunk')
+
+headerPanels = ["appHeader", "navigationHeader"]
+upperPanels = ["viewHeader", "splSearchControls-inline", "mainSearchControls"]
+
+panels = {}
+successfullyRenderedPanels = {}
+
+%>
+
+<%def name="set_panels()" >
+    <%
+    panels = {
+        "headerPanels": ["appHeader", "navigationHeader"],
+        "upperPanels": ["viewHeader", "splSearchControls-inline", "mainSearchControls"]
+    }
+    %>
+</%def>
+
+<%def name="body_element_open()">
+    <%
+    bodyCSSClasses = [
+        'splTemplate-' + os.path.split(self.filename)[-1].split('.')[0],
+        'splView-' + VIEW['id']
+    ]
+    if VIEW['objectMode'] == 'SimpleForm':
+        bodyCSSClasses.append('splFormSearch')
+    bodyCSSClasses.append('splApp-%s' % APP['id'])
+    for release in splunkReleaseVersionParts:
+        bodyCSSClasses.append('splVersion-%s' % release)
+    bodyCSSClasses = ' '.join(bodyCSSClasses)
+    %>
+    <body class="${bodyCSSClasses}" s:app="${APP['id']}" s:view="${VIEW['id']}" s:displayview="${VIEW['displayView']}" s:onunloadcanceljobs="${VIEW['onunloadCancelJobs']}" s:autocancelinterval="${VIEW['autoCancelInterval']}">
+</%def>
+
+<%def name="css()">
+    <%coreCSSFiles = [
+        '/static/css/view.css', 
+        '/static/css/dashboard.css',
+        '/static/css/skins/default/default.css', 
+        '/static/css/print.css', 
+        '/static/css/tipTip.css',
+        '/static/css/jquery.iphone-style-checkboxes.css',
+        '/static/css/dashboard.css'
+    ] %>
+    <%lib:stylesheet_tags files="${coreCSSFiles}" />
+    <%lib:stylesheet_tags files="${cssFiles}" />
+</%def>
+
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${customCssFiles}" />
+    <%lib:stylesheet_tags files="${printCssFiles}" media="print"/>
+</%def>
+
+<%def name="addPanelToSuccessfullyRenderedPanels(panelName)">
+    <%
+    successfullyRenderedPanels[panelName] = 1
+    %>
+</%def>
+
+<%!
+    datepicker_cache = {}
+%>
+<%def name="datepicker_js()">
+    ## Locate the correct i18n data for the datepicker plugin
+    <%
+        staticdir = cherrypy.config.get('staticdir')
+        lang = i18n.current_lang_url_component()
+        path = datepicker_cache.get(lang)
+        if path is None:
+            path = False
+            path1 = 'js/contrib/jquery.ui.datepicker/jquery.ui.datepicker-%s.js' % lang
+            path2 = 'js/contrib/jquery.ui.datepicker/jquery.ui.datepicker-%s.js' % lang[:2]
+            for testpath in (path1, path2):
+                if os.path.exists(os.path.join(staticdir, testpath)):
+                    path = '/static/' + testpath
+                    break
+            datepicker_cache[lang] = path
+        if path:
+            script_tags(files=[path])
+    %>
+</%def>
+
+<%def name="js()">
+    <%
+    coreJsFiles = startup.generateJSManifest()
+    #logger.error('TEMPLATE: coreJSFiles: \n\n %s'% coreJsFiles)
+    %>
+
+    ## start: core js
+    <%lib:script_tags files="${coreJsFiles}" />
+    ## dynamic view dependency js
+    <%lib:script_tags files="${jsFiles}" />
+
+    ## i18n files for the jquery datepicker
+    <% datepicker_js() %>
+
+        <%
+    params = {}
+    paramConfig = {
+        'sticky': {},
+                'persistable': {}
+    }
+
+    # process every module
+    for panelName in modules:
+        for module in modules[panelName]:
+            
+            # generate module configuration dict
+            params[module.get('id')] = module.get('params', dict())
+
+            # output persistence data, if available
+            if module['stickyParams']:
+                paramConfig['sticky'][module['id']] = module['stickyParams']
+            if module['persistableParams']:
+                paramConfig['persistable'][module['id']] = module['persistableParams']
+    %>
+    ## required params js
+    <script type="text/javascript">
+    //<![CDATA[
+    Splunk.Module.loadParams  = ${jsonify(params) | n};
+    Splunk.Module.paramConfig = ${jsonify(paramConfig) | n};
+##    // dropping current view config into a dict; probably could be further
+##    // optimized to place data directly with its consumer
+##    // NOTE - there used to be a savedSearch property here but it was removed.
+##    //       a) more complete information is already provided by context resurrection.
+##    //       b) the saved search isnt a part of the view config.
+    Splunk.ViewConfig = {
+        'view': ${jsonify(VIEW) | n},
+        'app':  ${jsonify(APP) | n}
+    }
+    % if toBeResurrected:
+        Splunk.toBeResurrected = ${json_decode(toBeResurrected) | n};
+    % else:
+        Splunk.toBeResurrected = null;
+    % endif
+    //]]>
+    </script>
+
+    ## buffered inline js
+    <%lib:get_script_blocks />
+    <%lib:script_tags files="${['/static/app/splunk_app_for_nix/js/module_loader.43compat.js']}" />
+</%def>
+
+<%def name="js_initialization()">
+    <%lib:script_tags files="${['/static/js/init.js']}" />
+    <%lib:script_tags files="${customJsFiles}" />
+</%def>
+
+<%def name="buildModule(module)"><%
+    attributesToEmit = {"id":1,"parentmodule":1}
+    %>
+    <div class="SplunkModule ${module['className']}"
+        % if module.get('isHidden'):
+            style="display:none"
+        % endif
+        % for configKey in module :
+            % if configKey =="id" : 
+                ${configKey}="${module[configKey]}"
+            % elif configKey in attributesToEmit : 
+                s:${configKey}="${module[configKey]}"
+            % endif
+        % endfor
+        >
+        % if "templatePath" in module :
+            <% logger.debug('rendering module %s' % module['templatePath']) %>
+            <%include file="${module['templatePath']}" args="module=module"/>
+        % endif
+    </div>
+</%def>
+
+## generates the markup for all modules within the given panel. Currently used by all view templates.
+<%def name="buildPanelContents(modules, panelName)"><% 
+    successfullyRenderedPanels[panelName] = 1
+    
+    # TODO - Remove this once the params stanza is implemented everywhere
+    if panelName in modules:
+        for module in modules[panelName]:
+            if module.has_key('params'):
+                for param in module['params']:
+                    if not module.has_key(param):
+                        module[param] = module['params'][param]
+    %>\
+    % if (panelName=="splSearchControls-inline") :
+        <table class="mainSearchControlsTable" cellspacing="0"><tr>
+        % if (panelName in modules):
+            % for i in range(len(modules[panelName])) :
+                <td 
+                % if i==0:
+                    width="100%"
+                % endif
+                ><%call expr="buildModule(modules[panelName][i])"></%call></td>
+            % endfor
+        % endif
+        </tr></table>
+        % elif (panelName=="pageControls") :
+                <%countModule = False %>
+                % for module in modules[panelName] :
+                        ## This is hacky way to render the count module AFTER the pager module.
+                        ##<% if module.get('className') == 'Count' and VIEW['id'] == 'flashtimeline':
+                        ##      countModule = module
+                        ##      continue
+                        ##%>
+            <%call expr="buildModule(module)"></%call>
+        % endfor
+                ##% if countModule != False:
+                ##      <%call expr="buildModule(countModule)"></%call>
+                ##% endif
+
+    % else :
+        % if (panelName in modules):
+            % for module in modules[panelName] :
+                <%call expr="buildModule(module)"></%call>
+            % endfor
+        % endif
+    % endif
+</%def>
+
+## much simpler rendering used by the top masthead modules. Currently used by all view templates.
+<%def name="buildSimplePanelContainer(modules, panelName)">
+    % if (panelName in modules) :
+        <div class="layoutRow oneColRow splClearfix ${panelName}">
+            <%call expr="buildPanelContents(modules, panelName)"></%call>
+        </div>
+    % endif
+</%def>
+
+<%def name="getTitleForPanel(modules, panelName)">
+    % for module in modules[panelName]:
+        % if module.has_key('params'):
+            % if module["params"].has_key("group") :
+                <div class="splHeader splHeader-dashboard">
+                    <h2 title="${module["params"]["groupLabel"]}" s:group="${module["params"]["group"]}">${module["params"]["groupLabel"]}</h2>
+                </div>
+                <%
+                break
+                %>
+            % endif
+        % endif
+    % endfor
+</%def>
+
+<%def name="getDashboardPanel(modules, panelGroup)">
+    % if VIEW.get('nativeObjectMode','')=='SimpleDashboard' and VIEW['canWrite'] is True and VIEW['hasRowGrouping'] is False:
+        <div class="layoutCellInner dashboardCell dashboardCellEditable">
+           <div class="meta">
+               % if len(panelGroup) > 0:
+                    % for module in modules[panelGroup[0]]:
+                        % if module.get('intersect'):
+                            <a href="#" 
+                            class="paneledit splButton-tertiary" 
+                            data-sequence="${module.get('sequence', '')}" 
+                            data-intersect-x="${module['intersect'][0]}" 
+                            data-intersect-y="${module['intersect'][1]}" 
+                            data-dashboard-id="${VIEW.get('editUrlPath')}" 
+                            data-app="${APP['id']}"
+                            data-paneltype="${module.get('panelType', '')}"
+                            style=""
+                            >
+                            	<span class="splButtonIcon"></span>
+                            	<span>${_('Edit')}</span>
+                            	<span class="splMenuIcon"></span>
+                            </a>
+                        % endif
+                    % endfor
+                % endif
+            </div>
+    % else:
+        <div class="layoutCellInner dashboardCell">
+        <div class="meta"></div>
+    % endif
+      % if (len(panelGroup) > 0 ) :
+                <%call expr="getTitleForPanel(modules, panelGroup[0])"></%call>
+        % else :
+            <%
+            renderingErrors.append("unable to find a group");
+            %>
+            Error - this should not occur
+        % endif
+
+        <div class="dashboardContent">
+            % for groupName in panelGroup :
+                % if (groupName.find("_grp") == -1) :
+                    <%call expr="buildPanelContents(modules, groupName)"></%call>
+                % endif
+            % endfor
+            
+<%
+            numberOfGroups = 0; 
+            groupWidth=100
+            for groupName in panelGroup :
+                if (groupName.find("_grp") != -1) :
+                    numberOfGroups = numberOfGroups+1;
+            if (numberOfGroups):groupWidth = math.floor(100 / numberOfGroups)
+%>
+            % for groupName in panelGroup :
+                % if (groupName.find("_grp") != -1) :
+                    <div style="float:left;_width:150px; width:${groupWidth}%; overflow:hidden;">
+                        <%call expr="buildPanelContents(modules, groupName)"></%call>
+                    </div>
+                % endif 
+            % endfor
+            <!-- modules "groups" are floated left so this is necessary to give the panelContainer proper height.  -->
+            <div style="clear:both"></div>
+        </div>
+    </div>
+</%def>
+<%self:set_panels/>
+
+% if "messaging" in modules :
+    <%call expr="buildSimplePanelContainer(modules, 'messaging')"></%call>
+% endif
+<div id="loading">${_('Loading...')}</div>
+<div class="layout">
+  <div class="appHeaderWrapper">
+    % for panelName in headerPanels : 
+        <%call expr="buildSimplePanelContainer(modules, panelName)"></%call>
+    % endfor    
+  </div>
+
+% for panelName in upperPanels : 
+    <%call expr="buildSimplePanelContainer(modules, panelName)"></%call>
+% endfor
+
+
+<div class="HomeContainer">
+
+  <div class="HomeLeft splClearfix">
+    <div class="HomeLeftTop">
+        <%call expr="buildPanelContents(modules, 'HomeLeftTop')"></%call>
+    </div>
+    <div class="HomeLeftTitle">
+        <%call expr="buildPanelContents(modules, 'HomeLeftTitle')"></%call>
+    </div>
+    <div class="HomeLeftControls">
+        <%call expr="buildPanelContents(modules, 'HomeLeftControls')"></%call>
+    </div>
+    <%call expr="buildPanelContents(modules, 'HomeLeft')"></%call>
+  </div>
+
+  <div class="HomeCenter splClearfix">
+    <div class="HomeCenterTop">
+        <%call expr="buildPanelContents(modules, 'HomeCenterTop')"></%call>
+    </div>
+    <div class="HomeCenterTitle">
+        <%call expr="buildPanelContents(modules, 'HomeCenterTitle')"></%call>
+    </div>
+    <div class="HomeCenterControls">
+        <%call expr="buildPanelContents(modules, 'HomeCenterControls')"></%call>
+    </div>
+    <%call expr="buildPanelContents(modules, 'HomeCenter')"></%call>
+  </div>
+
+  <div class="HomeRight splClearfix">
+    <div class="HomeRightHeader">
+      <h1>Recent Unix Headlines</h1>
+    </div>
+    <%call expr="buildPanelContents(modules, 'HomeRight')"></%call>
+  </div>
+
+</div>
+## we check that all the layoutPanels we had ended up with a home. If not we tell the user.
+% for panelName in modules :
+    % if (panelName not in successfullyRenderedPanels) :
+         <%call expr="lib.add_script_block()">
+            this.messenger = Splunk.Messenger.System.getInstance();
+            this.messenger.send("error", "splunk", sprintf(_("found an invalid value for layoutPanel - '%s'."), "${panelName}"));
+            // a misconfigured hierarchy can often derail the module loading, so the 'Loading' string can get stuck there.
+            $("#loading").hide();
+        </%call>
+    % endif
+% endfor
+</div>
+<div class="splClearfix"></div>

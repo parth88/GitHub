@@ -1,0 +1,12 @@
+<%page expression_filter="h" args="module"/>
+<%
+import logging
+
+logger = logging.getLogger('splunk.appserver.lib.i18n')
+
+controller = module.get('controller_name', 'unixsetup')
+
+src = make_url(['custom', APP['id'], controller, 'SA-nix', 'show']) 
+%>
+<iframe style="width: 100%;" src="${src | n}" scrolling="no" frameborder="0" s:src="${src | n }"></iframe>
+

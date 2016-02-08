@@ -1,0 +1,364 @@
+.UnixSubmitButton {
+    display: none;
+}
+.NodeWrapper {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    height: auto;
+    min-height: 800px;
+    min-width: 1040px;
+    margin: 1% 20px;
+    padding: 5px;
+    width: auto;
+    position: relative;
+}
+.NodeWrapper h1 {
+    color: #3F3F3F;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 39px;
+    font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+    margin: 10px 10px 10px 20px;
+}
+.NodeWrapper h2 {
+    float: left;
+    margin: 25px 20px 10px;
+}
+.NodeControl .UnixMultiSelect {
+    float: left;
+    margin-top: 16px;
+}
+.NodeWrapper .UnixPrefsReset {
+    position: absolute;
+    top: 18px;
+    right: 0px;
+}
+.NodeControl .UnixHeatmapLegend {
+    margin-top: 9px;
+}
+.NodeControl .UnixNodesSizeSelector {
+    margin-top: 12px;
+}
+.NodeControl .UnixNodesMetricsSelect {
+    float: left;
+    margin-top: 16px;
+    padding-left: 0;
+}
+.NodeControl .UnixButtonSwitcher {
+    float: left;
+    margin-top: 9px;
+    padding-left: 0;
+}
+.NodeControl .UnixButtonSwitcher ul li {
+    font-size: 24px;
+    width: 34px;
+    height: 100%;
+}
+.NodeControl .UnixButtonSwitcher ul li a{
+    color: #3f3f3f;
+    text-decoration: none;
+}
+.NodeControl .UnixButtonSwitcher ul li.selected,
+.NodeControl .UnixButtonSwitcher ul li a:hover{
+    background-color: #dedede;
+    -moz-box-shadow:inset 1px 1px 3px 1px rgba(200, 200, 200, 0.82);
+    -webkit-box-shadow:inset 1px 1px 3px 1px rgba(200, 200, 200, 0.82);
+    box-shadow:inset 1px 1px 3px 1px rgba(200, 200, 200, 0.82);
+    border-color: #fff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.NodeControl .StaticContentSample {
+    float: left;
+    font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 16px;
+    padding: 7px 10px 5px 23px;
+}
+.NodeDetail .UnixContextViewer {
+    float: left;
+    padding: 4px 10px 0 10px;
+}
+.NodeDetail .UnixContextViewer .UnixContextViewerValue {
+    margin: 5px 0 0 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FF9900;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 250px;
+    height: 36px;
+}
+.NodeDetail a.NodeDetailPin {
+    float: right;
+    margin: 5px;
+    padding: 2px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #3f3f3f;
+    display: none;
+}
+.NodeDetail a.NodeDetailPin.pinned {
+    background-color: #dedede;
+}
+.NodeDetail a.NodeDetailPin.pinned:hover {
+    background-color: transparent;
+}
+.NodeDetail a.NodeDetailPin.pinned,
+.NodeDetail a.NodeDetailPin:hover {
+    -moz-box-shadow:inset 1px 1px 3px 1px rgba(200, 200, 200, 0.82);
+    -webkit-box-shadow:inset 1px 1px 3px 1px rgba(200, 200, 200, 0.82);
+    box-shadow:inset 1px 1px 3px 1px rgba(200, 200, 200, 0.82);
+    border-color: #fff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.NodeDetail .StaticContentSample {
+    font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 100;
+    margin: 5px 0 5px 8px;
+}
+.NodeDetail .NodeDetailProcesses .StaticContentSample {
+    margin-bottom: 0;
+}
+.NodeDetail .UnixResultsTable .UnixResultsTableWrapper {
+    width: 100%;
+    margin: 0;
+}
+.NodeDetail .UnixResultsTable table {
+    margin-bottom: 0;
+}
+.NodeDetail .UnixResultsTable table tr {
+    border: none !important;    
+}
+.NodeDetail .UnixResultsTable table tr td {
+    border: none !important;
+    cursor: auto !important;
+    background-color: transparent !important;
+    padding: 0px 8px;
+    color: #333;
+    font-weight: bold;
+}
+.NodeDetail .NodeDetailSpecs .UnixResultsTable table th,
+.NodeDetail .NodeDetailStatus .UnixResultsTable table th {
+    display: none;
+}
+.NodeDetail .NodeDetailSpecs .UnixResultsTable table tr td:first-child {
+    width: 150px;
+}
+.NodeDetail .NodeDetailSpecs .UnixResultsTable table td.val div.loading {
+    float: right;
+}
+.NodeDetail .NodeDetailSpecs .UnixResultsTable {
+    padding: 5px 5px 5px 10px;
+}
+.NodeDetail .NodeDetailStatus .UnixResultsTable {
+    float: right;
+    padding: 18px 5px 4px 0;
+}
+.NodeDetail .NodeDetailProcesses .UnixResultsTable {
+    padding: 0 3px 0 10px;
+}
+.NodeDetail .NodeDetailProcesses .UnixResultsTable table {
+    table-layout: fixed;
+    margin-bottom: 3px;
+}
+.NodeDetail .NodeDetailStatus .UnixMeterBar {
+    float: left;
+    margin: 0 8px;
+}
+.NodeContainer {
+    height: 80%;
+    margin-left: 1%;
+    width: 98%;
+    margin-top: 17px;
+    position: relative;
+}
+.NodeContainer .NodeControl {
+    background-color: #F9F9F9;
+    background: -webkit-gradient(linear, 0% 0%, 50% 100%, from(#F9F9F9), to(#F9F9F9), color-stop(.5,#FFFFFF));
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #F9F9F9 0%, #FFFFFF 50%, #F9F9F9 100%);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #F9F9F9 0%, #FFFFFF 50%, #F9F9F9 100%);
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    height: 62px;
+    width: 100%;
+}
+.NodeContainer > .NodeMain {
+    height: 100%;
+    width: auto;
+    margin-right: 320px;
+}
+.NodeContainer > .NodeMain > .UnixResultsTable {
+    /*margin-top: 55px;*/
+}
+.NodeContainer > .NodeMain > .UnixResultsTable .UnixResultsTableWrapper {
+    width: 100%;
+    margin-left: 0;
+}
+.NodeContainer > .NodeMain > .UnixNodesPaginator {
+    padding-left: 5px;
+    margin-top: 5px;
+}
+.NodeContainer > .NodeDetailSection {
+    float: right;
+    width: 320px;
+    visibility: hidden;
+}
+.NodeContainer > .NodeDetailSection > .NodeDetailControl {
+    margin: 20px 0;
+    height: 20px;
+}
+.NodeContainer > .NodeDetailSection > .NodeDetailControl button {
+    float: right;
+}
+.NodeDetail {
+    background-color: #F9F9F9;
+    background: -webkit-gradient(linear, 0% 0%, 50% 100%, from(#F9F9F9), to(#F9F9F9), color-stop(.5,#FFFFFF));
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #F9F9F9 0%, #FFFFFF 50%, #F9F9F9 100%);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #F9F9F9 0%, #FFFFFF 50%, #F9F9F9 100%);
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    position: relative; /* anything but static to get z-index value on webkit */
+    height: auto;
+    min-height: 500px;
+    width: 320px;
+    padding-bottom: 3px;
+    z-index: 999;
+    display: none;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+.UnixNodes {
+    padding: 0;
+}
+.splButton-disabled {
+    opacity: 0.65;
+    cursor: default;
+    color: #333 !important;
+}
+.overlay
+{
+   background-color: #000;
+   opacity: .7;
+   filter: alpha(opacity=70);
+   width: 100%; height: 100%;
+   z-index: 10;
+   position: fixed;
+   top: 0; left: 0;
+   display: none;
+}
+#jqstooltip {
+    z-index: 1000;
+}
+
+/* Animations for node detail panel expand in & shrink out */
+
+.NodeDetail.expand-item {
+  max-height: 0;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-animation: growHeight 0.2s ease forwards;
+  -o-animation: growHeight 0.2s ease forwards;
+  animation: growHeight 0.2s ease forwards;
+}
+
+.NodeDetail.shrink-item {
+  -webkit-animation: shrinkHeight 0.2s ease forwards;
+  -o-animation: shrinkHeight 0.2s ease forwards;
+  animation: shrinkHeight 0.2s ease forwards;
+}
+
+@-webkit-keyframes growHeight {
+  to {
+    max-height: 500px;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-o-keyframes growHeight {
+  to {
+    max-height: 500px;
+    opacity: 1;
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes growHeight {
+  to {
+    max-height: 500px;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes shrinkHeight {
+  to {
+    max-height: 0;
+    opacity: 1;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  from {
+    max-height: 500px;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-o-keyframes shrinkHeight {
+  to {
+    max-height: 0;
+    opacity: 1;
+    -o-transform: scale(0);
+    transform: scale(0);
+  }
+
+  from {
+    max-height: 500px;
+    opacity: 1;
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes shrinkHeight {
+  to {
+    max-height: 0;
+    opacity: 1;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+  }
+
+  from {
+    max-height: 500px;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}

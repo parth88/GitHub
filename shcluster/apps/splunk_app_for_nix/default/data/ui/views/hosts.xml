@@ -1,0 +1,420 @@
+<view template="splunk_app_for_nix:/templates/layout/unix_nodes.html">
+  <label>Hosts</label>
+  <module name="UnixIncludeD3" layoutPanel="viewHeader"/>
+  <module name="UnixIncludeUnderscore" layoutPanel="viewHeader"/>
+  <module name="UnixIncludejQuery" layoutPanel="viewHeader"/>
+  <module name="UnixIncludejQueryUI" layoutPanel="viewHeader"/>
+  <module name="UnixIncludeBackbone" layoutPanel="viewHeader"/>
+  <module name="UnixAccountBar" layoutPanel="appHeader"/>
+  <module name="UnixAppBar" layoutPanel="navigationHeader"/>
+  <module name="UnixPrefsReset" layoutPanel="NodeWrapper"/>
+  <module name="StaticContentSample" layoutPanel="NodeSwitcher">
+    <param name="text">View</param>
+  </module>
+  <module name="UnixMultiSelect" layoutPanel="NodeControl">
+    <param name="outer_width">104</param>
+    <param name="apply_from_context">False</param>
+    <param name="fill_on_empty">False</param>
+    <param name="label">Category</param>
+    <param name="inner_width">124</param>
+    <param name="search">|inputlookup dropdowns.csv | stats count by unix_category</param>
+    <param name="multi">False</param>
+    <param name="field">unix_category</param>
+    <param name="drilldownToken">unix_category</param>
+    <module name="HiddenSearch" autoRun="True">
+      <param name="search">|inputlookup dropdowns.csv | search $unix_category$ | stats count by unix_group</param>
+      <module name="UnixMultiSelect">
+        <param name="outer_width">104</param>
+        <param name="apply_from_context">True</param>
+        <param name="fill_on_empty">False</param>
+        <param name="label">Group</param>
+        <param name="inner_width">124</param>
+        <param name="multi">True</param>
+        <param name="field">unix_group</param>
+        <param name="drilldownToken">unix_group</param>
+        <module name="UnixTokenReplacer">
+          <module name="UnixContextPopulator">
+          <module name="UnixButtonSwitcher" layoutPanel="NodeSwitcher">
+            <param name="selected">splIcon-node-view</param>
+            <param name="mode">independent</param>
+            <param name="hideChildrenOnLoad">True</param>
+            <module name="HiddenSearch" layoutPanel="NodeMain" group="icon-th" autoRun="False">
+              <param name="earliest">-10m</param>
+              <param name="latest">now</param>
+              <param name="search">`unix_hosts_status($unix_category$, $unix_group$)`</param>
+              <param name="groupLabel">icon-th</param>
+              <module name="StaticContentSample" layoutPanel="NodeControl">
+                <param name="text">Heatmap</param>
+              </module>
+              <module name="UnixNodesMetricsSelect" layoutPanel="NodeControl">
+                <param name="outer_width">104</param>
+                <param name="token">selected_metric</param>
+                <param name="drilldownToken">hosts_heatmap</param>
+                <param name="options">   
+                  <list>
+                   <param name="none">
+                   </param>
+                  </list>
+                  <list>
+                    <param name="CPU">
+                      <param name="search">`unix_nodes_heatmap_cpu`</param>
+                      <param name="rangemap">
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#ecf3fa</param>
+                          <param name="high">25</param>
+                          <param name="low">0</param>
+                          <param name="text_offset">8</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#c6e0ee</param>
+                          <param name="high">50</param>
+                          <param name="low">26</param>
+                          <param name="text_offset">7</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#6696c4</param>
+                          <param name="high">75</param>
+                          <param name="low">51</param>
+                          <param name="text_offset">6</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#1463ab</param>
+                          <param name="high">100</param>
+                          <param name="low">76</param>
+                          <param name="text_offset">3</param>
+                        </list>
+                      </param>
+                    </param>
+                  </list>
+                  <list>
+                    <param name="Memory">
+                      <param name="search">`unix_nodes_heatmap_mem`</param>
+                      <param name="rangemap">
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#ecf3fa</param>
+                          <param name="high">25</param>
+                          <param name="low">0</param>
+                          <param name="text_offset">8</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#c6e0ee</param>
+                          <param name="high">50</param>
+                          <param name="low">26</param>
+                          <param name="text_offset">7</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#6696c4</param>
+                          <param name="high">75</param>
+                          <param name="low">51</param>
+                          <param name="text_offset">6</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#1463ab</param>
+                          <param name="high">100</param>
+                          <param name="low">76</param>
+                          <param name="text_offset">3</param>
+                        </list>
+                      </param>
+                    </param>
+                  </list>
+                  <list>
+                    <param name="I/O">
+                      <param name="search">`unix_nodes_heatmap_io`</param>
+                      <param name="rangemap">
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#ecf3fa</param>
+                          <param name="high">10</param>
+                          <param name="low">0</param>
+                          <param name="text_offset">9</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#c6e0ee</param>
+                          <param name="high">100</param>
+                          <param name="low">11</param>
+                          <param name="text_offset">3</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#6696c4</param>
+                          <param name="high">500</param>
+                          <param name="low">101</param>
+                          <param name="text_offset">0</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#1463ab</param>
+                          <param name="text_offset">8</param>
+                          <param name="low">501</param>
+                        </list>
+                      </param>
+                    </param>
+                  </list>
+                  <list>
+                    <param name="Disk">
+                      <param name="search">`unix_nodes_heatmap_disk`</param>
+                      <param name="rangemap">
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#ecf3fa</param>
+                          <param name="high">25</param>
+                          <param name="low">0</param>
+                          <param name="text_offset">8</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#111111</param>
+                          <param name="node_fill">#c6e0ee</param>
+                          <param name="high">50</param>
+                          <param name="low">26</param>
+                          <param name="text_offset">7</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#6696c4</param>
+                          <param name="high">75</param>
+                          <param name="low">51</param>
+                          <param name="text_offset">6</param>
+                        </list>
+                        <list>
+                          <param name="text_fill">#FFFFFF</param>
+                          <param name="node_fill">#1463ab</param>
+                          <param name="high">100</param>
+                          <param name="low">76</param>
+                          <param name="text_offset">3</param>
+                        </list>
+                      </param>
+                    </param>
+                  </list>
+                </param>
+                <module name="UnixTokenReplacer">
+                  <module name="UnixNodesSizeSelector" layoutPanel="NodeControl">
+                    <param name="token">node_size</param>
+                    <module name="UnixNodesPaginator" layoutPanel="NodeMain">
+                      <param name="entityName">results</param>
+                      <param name="increment">20</param>
+                      <module name="UnixSubmitButton">
+                        <param name="updatePermalink">False</param>
+                        <param name="visible">False</param>
+                        <param name="allowSoftSubmit">True</param>
+                        <module name="UnixNodes" layoutPanel="NodeMain">
+                          <param name="display_services">False</param>
+                          <param name="drilldown_section_selector">.NodeDetailSection</param>
+                          <param name="radius_factor">15</param>
+                          <module name="UnixModuleCloner">
+                            <param name="panelPinSelector">.NodeDetailPin</param>
+                            <param name="positionLeftDelta">-7</param>
+                            <param name="positionTopDelta">34</param>
+                            <param name="drilldownToken">host</param>
+                            <param name="panelSelector">.NodeDetail</param>
+                            <module name="UnixContextViewer" layoutPanel="NodeDetailLabel">
+                              <param name="token">host</param>
+                              <module name="StaticContentSample" layoutPanel="NodeDetailSpecs">
+                                <param name="text">Specification</param>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-15m</param>
+                                  <param name="search">`unix_nodes_detail_specs_cpu_by_host($host$)`</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixResultsTable">
+                                      <param name="displayRowNumbers">False</param>
+                                      <param name="initValueList">CPU:,##_LOADING_##</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-15m</param>
+                                  <param name="search">`unix_nodes_detail_specs_mem_by_host($host$)`</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixResultsTable">
+                                      <param name="displayRowNumbers">False</param>
+                                      <param name="initValueList">RAM:,##_LOADING_##</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-15m</param>
+                                  <param name="search">`unix_nodes_detail_specs_disk_drives_by_host($host$)`</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixResultsTable">
+                                      <param name="displayRowNumbers">False</param>
+                                      <param name="initValueList">Disk:,##_LOADING_##</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-15m</param>
+                                  <param name="search">`unix_nodes_detail_specs_disk_cap_by_host($host$)`</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixResultsTable">
+                                      <param name="displayRowNumbers">False</param>
+                                      <param name="initValueList">Capacity:,##_LOADING_##</param>
+                                    </module>
+                                  </module>
+                                </module>
+                              </module>
+                              <module name="StaticContentSample" layoutPanel="NodeDetailStatus">
+                                <param name="text">System Status</param>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-5m</param>
+                                  <param name="search">`unix_nodes_detail_status_cpu_by_host($host$)` | fields cpu</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixMeterBar">
+                                      <param name="height">10px</param>
+                                      <param name="rangeValues">[0,25,50,75,100]</param>
+                                      <param name="width">150px</param>
+                                      <param name="label">CPU:</param>
+                                      <param name="gaugeColors">[0xecf3fa,0xc6e0ee,0x6696c4,0x1463ab]</param>
+                                      <param name="usePercentageValue">True</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-1h</param>
+                                  <param name="search">`unix_nodes_detail_cpu_sparkline_by_host_1h($host$)` | fields sl</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixResultsTable">
+                                      <param name="fieldFormats">
+                                        <param name="sl">
+                                          <list>
+                                            <param name="type">sparkline</param>
+                                            <param name="options">
+                                              <param name="type">line</param>
+                                              <param name="lineColor">#6696c4</param>
+                                            </param>
+                                          </list>
+                                        </param>
+                                      </param>
+                                      <param name="displayRowNumbers">False</param>
+                                      <param name="initValueList">##_LOADING_##</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-5m</param>
+                                  <param name="search">`unix_nodes_detail_status_mem_by_host($host$)` | fields mem</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixMeterBar">
+                                      <param name="height">10px</param>
+                                      <param name="rangeValues">[0,25,50,75,100]</param>
+                                      <param name="width">150px</param>
+                                      <param name="label">Memory:</param>
+                                      <param name="gaugeColors">[0xecf3fa,0xc6e0ee,0x6696c4,0x1463ab]</param>
+                                      <param name="usePercentageValue">True</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-1h</param>
+                                  <param name="search">`unix_nodes_detail_mem_sparkline_by_host_1h($host$)` | fields sl</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixResultsTable">
+                                      <param name="fieldFormats">
+                                        <param name="sl">
+                                          <list>
+                                            <param name="type">sparkline</param>
+                                            <param name="options">
+                                              <param name="type">line</param>
+                                              <param name="lineColor">#6696c4</param>
+                                            </param>
+                                          </list>
+                                        </param>
+                                      </param>
+                                      <param name="displayRowNumbers">False</param>
+                                      <param name="initValueList">##_LOADING_##</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-5m</param>
+                                  <param name="search">`unix_nodes_detail_status_disk_by_host($host$)` | fields disk</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixMeterBar">
+                                      <param name="height">10px</param>
+                                      <param name="rangeValues">[0,25,50,75,100]</param>
+                                      <param name="width">150px</param>
+                                      <param name="label">Disk:</param>
+                                      <param name="gaugeColors">[0xecf3fa,0xc6e0ee,0x6696c4,0x1463ab]</param>
+                                      <param name="usePercentageValue">True</param>
+                                    </module>
+                                  </module>
+                                </module>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-2h</param>
+                                  <param name="search">`unix_nodes_detail_disk_sparkline_by_host_1h($host$)` | fields sl</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixResultsTable">
+                                      <param name="fieldFormats">
+                                        <param name="sl">
+                                          <list>
+                                            <param name="type">sparkline</param>
+                                            <param name="options">
+                                              <param name="type">line</param>
+                                              <param name="lineColor">#6696c4</param>
+                                            </param>
+                                          </list>
+                                        </param>
+                                      </param>
+                                      <param name="displayRowNumbers">False</param>
+                                      <param name="initValueList">##_LOADING_##</param>
+                                    </module>
+                                  </module>
+                                </module>
+                              </module>
+                              <module name="StaticContentSample" layoutPanel="NodeDetailProcesses">
+                                <param name="text">Process Status</param>
+                                <module name="HiddenSearch">
+                                  <param name="earliest">-5m</param>
+                                  <param name="search">`unix_nodes_detail_top_processes_by_host($host$)`</param>
+                                  <module name="UnixTokenReplacer">
+                                    <module name="UnixTokenReplacer">
+                                      <module name="UnixResultsTable">
+                                        <param name="postprocess">| sort -pctCPU, -pctMEM</param>
+                                        <param name="displayRowNumbers">False</param>
+                                        <param name="displayTopScrollbar">False</param>
+                                        <param name="count">5</param>
+                                      </module>
+                                    </module>
+                                  </module>
+                                </module>
+                              </module>
+                            </module>
+                          </module>
+                        </module>
+                      </module>
+                    </module>
+                  </module>
+                  <module name="UnixHeatmapLegend" layoutPanel="NodeControl"/>
+                </module>
+              </module>
+            </module>
+            <module name="HiddenSearch" layoutPanel="NodeMain" group="icon-table" autoRun="False">
+              <param name="earliest">rt-10m</param>
+              <param name="search">`unix_hosts_details($unix_category$, $unix_group$)`</param>
+              <param name="latest">rt</param>
+              <param name="groupLabel">icon-table</param>
+              <module name="UnixTokenReplacer">
+                <module name="Paginator" layoutPanel="NodeMain">
+                  <param name="entityName">results</param>
+                  <param name="count">15</param>
+                  <module name="UnixResultsTable" layoutPanel="NodeMain">
+                    <param name="drilldown">all</param>
+                  </module>
+                </module>
+              </module>
+            </module>
+            </module>
+          </module>
+        </module>
+      </module>
+    </module>
+  </module>
+</view>
+

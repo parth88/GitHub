@@ -1,0 +1,52 @@
+.UnixSimpleTimeRangePicker {
+    font-family: Helvetica;
+    margin-bottom: 20px;
+    margin-left:20px;
+}
+
+.UnixSimpleTimeRangePickerContainer {
+    padding: 20px 0 0 20px;
+    width: 100%;
+}
+.UnixSimpleTimeRangePickerContainer span {
+    color: #3F3F3F;
+    font-size: 14px;
+    position: relative;
+}
+.UnixSimpleTimeRangePickerContainer input {
+    background-color: #FFFFFF;
+    border-color: #CCCCCC;
+    border-radius: 5px;
+    border-width: 0.1em;
+    color: #CCCCCC;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100px;
+}
+.UnixSimpleTimeRangePickerContainer input.selected {
+    background-color: #B4B4B4;
+    color: #FFFFFF;
+}
+
+.UnixSimpleTimeRangePickerContainer .option {
+    cursor: pointer;
+    font-size:14px;
+    margin:5px 0px;
+}
+
+.UnixSimpleTimeRangePickerContainer .dropdown-menu {
+    padding: 5px !important;
+}
+
+.UnixSimpleTimeRangePickerContainer .dropdown-menu li {
+    cursor: pointer;
+}
+
+.UnixSimpleTimeRangePickerContainer .btn-group .title, .UnixSimpleTimeRangePickerContainer .btn-group .caret {
+    float:left;
+}
+
+.UnixSimpleTimeRangePickerContainer .btn-group .caret {
+    margin-left:10px !important;
+}

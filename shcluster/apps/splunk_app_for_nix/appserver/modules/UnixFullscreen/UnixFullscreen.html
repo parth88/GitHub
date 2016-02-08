@@ -1,0 +1,27 @@
+<%page expression_filter="h" args="module"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<%
+import logging
+
+# logger = logging.getLogger('splunk.appserver.lib.i18n')
+
+moduleCSSFiles = [
+  "/static/app/splunk_app_for_nix/css/bootstrap.css"
+]
+
+moduleJSFiles = [
+  "/static/app/splunk_app_for_nix/js/contrib/bootstrap/bootstrap-unixjquery.js",
+  "/static/app/splunk_app_for_nix/js/contrib/screenfull.js"
+]
+
+src = make_url(['app', APP['id'], module.get('viewName')])
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+<iframe style="display: none;" class="demo-frame" id="${module.get('id')}-frame"  iframeTarget="${src}">
+</iframe>
+
+<i class="icon-resize-full goFull"></i>

@@ -1,0 +1,22 @@
+.option {
+    cursor: pointer;
+    font-size:14px;
+    margin:5px 0px;
+}
+
+.dropdown-menu {
+    /*padding: 5px !important;*/
+}
+
+.dropdown-menu li {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.btn-group .title, .btn-group .caret {
+    float:left;
+}
+
+.btn-group .caret {
+    margin-left:10px !important;
+}

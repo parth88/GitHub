@@ -1,0 +1,111 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    from splunk.appserver.mrsparkle.lib import util
+    import splunk.util
+    from datetime import datetime
+    import splunk.appserver.mrsparkle.lib.startup as startup
+
+    import logging
+    logger = logging.getLogger('splunk')
+%>
+
+<%def name="css()">
+    <%coreCSSFiles = [
+        "/static/css/view.css", 
+        "/static/css/skins/default/default.css"
+    ] %>
+    <%lib:stylesheet_tags files="${coreCSSFiles}" />
+</%def>
+
+<%def name="js()">
+    <%
+    coreJsFiles = startup.generateJSManifest()
+    #logger.error('TEMPLATE: coreJSFiles: \n\n %s'% coreJsFiles)
+    %>
+
+    ## start: core js
+    <%lib:script_tags files="${coreJsFiles}" />
+</%def>
+
+<%def name="js_initialization()">
+    <%lib:script_tags files="${['/static/js/init.js']}" />
+</%def>
+
+<%def name="custom_css()">
+  <%lib:stylesheet_tags files="${['/static/app/%s/css/splunk-bootstrap.css' % app,
+                                '/static/app/%s/css/splunk-bootstrap-override.css' % app,
+                                '/static/app/%s/unixAlertEvents/charts.css' % app,
+                                '/static/app/%s/unixAlertEvents/alertevents_detail.css' % app]}" />
+  <%lib:script_tags files="${['/static/app/%s/d3.v2.min.js' % app,
+                            '/static/app/%s/unixAlertEvents/charts.js' % app,
+                            '/static/app/%s/unixAlertEvents/alertevents_detail.js' % app]}" />
+</%def>
+<%
+  severities = {1: _('Info'), 2: _('Low'), 3: _('Medium'), 4: _('High'), 5: _('Critical')}
+  severity = severities[alertevent['severity']]
+  time = alertevent['time'].strftime("%m/%d/%y %I:%M:%S %p")
+  trigger_ctime = alertevent['time'].ctime()
+  logger.debug(alertevent)
+%>
+<div class="AlertEventContainer" data-sid="${alertevent['sid']}" data-trigger="${trigger_ctime}">
+  <div class="AlertEventTop">
+    <h2>${alertevent['alert_name']}</h2>
+    <div>
+      <div class="span4"><span class="emphasis">Time:</span> ${time}</div>
+      <div class="span3">
+        <span class="emphasis">Severity:</span>
+        <span><i class="severity_${severity}"></i>${severity}</span>
+      </div>
+      <div class="span3">
+        <span class="emphasis">Host:</span>
+        <splan class="unixSelector">
+          <span id="host-select" class="btn-group">
+            <span class="btn dropdown-toggle">${alertevent['hosts'][0]}<span class="caret"></span></span>
+            <ul class="dropdown-menu" style="display: none">
+              % for i in xrange(len(alertevent['hosts'])):
+              <li class="dropdown-toggle">${alertevent['hosts'][i]}</li>
+              % endfor
+            </ul>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div><span class="emphasis">Description:</span> ${alertevent['description']}</div>
+  </div>
+  <hr>
+  <div class="AlertEventBottom">
+    <div class="AlertEventLeft">
+      <h2>Historical Metrics</h2>
+      <div data-chart-id="CPU_Usage"></div>
+      <div data-chart-id="Mem_Used_Pct"></div>
+      <div data-chart-id="Process_Count"></div>
+      <div data-chart-id="Thread_Count"></div>
+    </div>
+    <div class="AlertEventRight">
+      <h2>System Status</h2>
+      <div>
+        <span class="unixSelector">
+          <span id="switcher" class="btn-group">
+            <span class="btn dropdown-toggle" href="#"></span>
+            <ul class="dropdown-menu" style="display:none">
+            </ul>
+          </span>
+          <span style="margin-left:20px;">sort by:</span>
+          <span id="sortby" class="btn-group">
+            <span class="btn dropdown-toggle" href="#"></span>
+            <ul class="dropdown-menu" style="display:none">
+            </ul>
+          </span>
+        </span>
+        <div class="scrollView">
+          <div data-chart-id="PS"></div>
+          <div data-chart-id="Netstat"></div>
+          <div data-chart-id="lsof"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="app_info" style="display:none" s:app="${app}" s:view="unix_flashtimeline" s:displayview="unix_flashtimeline"/>

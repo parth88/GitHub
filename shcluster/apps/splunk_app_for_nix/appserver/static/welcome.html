@@ -1,0 +1,83 @@
+<style>
+.welcomediv {
+float: left; 
+padding-right: 15px;
+padding-left: 15px; 
+border-right-style: dotted;
+border-right-width: 1px;
+width: 30%;
+}
+
+.intro {
+    font-size: 12px;
+}
+
+</style>
+
+<div>
+
+
+<p class="intro">
+${_('The Splunk for *nix app comes built with some useful out of the box inputs, dashboards, custom views, and saved searches. <br/>This app can be used on a Splunk indexer or in a Splunk forwarding configuration where the app will capture metrics, logs, and configuration changes across your infrastructure.')}
+</p>
+<p>
+<strong>${_('Important - all data in the unix app is by default in its own index named "os".')}</strong>
+
+${_('To search for *nix data be sure to include "index=os" in your search. ')}<a href="/app/unix/flashtimeline?q=search%20index%3Dos%20%7C%20head%2010"><%doc>TRANS: Link to an example</%doc>${_('example...')}</a>
+</p>
+<p>
+<a href="setup">&raquo; ${_('Configure Splunk 4 Unix')}</a>
+</div>
+
+
+<div style="float:left; padding-right: 15px; margin-right: 15px; border-right-style: dotted; border-right-width: 1px; width: 30%;">
+<h3>${_('This *nix app indexes several types of files:')}</h3>
+    <ul>
+    <li>${_('<a href="%s">Common Log files</a> (ex: /var/log)') % make_url('/app/unix/about_logs')}</li>
+    <li>${_('<a href="%s">Common Configuration Files</a> (ex: /etc)') % make_url('/app/unix/about_configs')}</li>
+    <li>${_('<a href="%s">File Change Detection</a> (by default /etc)') % make_url('/app/unix/about_fschange')}</li>
+    <li>${_('You can add more sources <a href="%s">>> Here</a>') % make_url('/manager/search/data/inputs/monitor')}</li>
+    </ul>
+</div>
+
+
+<div style="float: left;">
+
+<h3>${_('*nix app also indexes output from common system tools:')}</h3>
+
+    <div style="float:left;">
+    <ul style="padding: 0 20px 0 0;">
+        <li>${_('<a href="%s">top</a>: top processes on host') % make_url('/app/unix/flashtimeline?s=top')}</li>
+        <li>${_('<a href="%s">vmstat</a>: memory usage info') % make_url('/app/unix/flashtimeline?s=vmstat')}</li>
+        <li>${_('<a href="%s">iostat</a>: io throughput') % make_url('/app/unix/flashtimeline?s=iostat')}</li>
+        <li>${_('<a href="%s">ps</a>: all process info') % make_url('/app/unix/flashtimeline?s=ps')}</li>
+        <li>${_('<a href="%s">netstat</a>: network status and throughput') % make_url('/app/unix/flashtimeline?s=netstat')}</li>
+        <li>${_('<a href="%s">protocol</a>: detailed network throughput') % make_url('/app/unix/flashtimeline?s=protocol')}</li>
+        <li>${_('<a href="%s">interfaces</a>: stats per link-level Ethernet interface') % make_url('/app/unix/flashtimeline?s=interfaces')}</li>
+        <li>${_('<a href="%s">open ports</a>: snapshot of open ports') % make_url('/app/unix/flashtimeline?s=openPorts')}</li>
+        <li>${_('<a href="%s">time</a>: clock details') % make_url('/app/unix/flashtimeline?s=time')}</li>
+        <li>${_('<a href="%s">lsof</a>: open files per user, process') % make_url('/app/unix/flashtimeline?s=lsof')}</li>
+    </ul>
+    </div>
+    
+    
+    <div style="float:left;">
+    &nbsp;&nbsp;
+	<ul>
+        <li>${_('<a href="%s">df</a>: disk and volume usage') % make_url('/app/unix/flashtimeline?s=df')}</li>
+        <li>${_('<a href="%s">who</a>: current active user sessions') % make_url('/app/unix/flashtimeline?s=who')}</li>
+        <li>${_('<a href="%s">users with privileges</a>: users with login accounts') % make_url('/app/unix/flashtimeline?s=usersWithLoginPrivs')}</li>
+        <li>${_('<a href="%s">lastlog</a>: last login time for users who have ever logged in') % make_url('/app/unix/flashtimeline?s=lastlog')}</li>
+        <li>${_('<a href="%s">cpu</a>: shows stats per CPU') % make_url('/app/unix/flashtimeline?s=cpu')}</li>
+        <li>${_('<a href="%s">rlog</a>: auditd logs translated with ausearch') % make_url('/app/unix/flashtimeline?s=rlog')}</li>
+        <li>${_('<a href="%s">packages</a>: current installed packages') % make_url('/app/unix/flashtimeline?s=packages')}</li>
+        <li>${_('<a href="%s">hardware</a>: details of host hardware') % make_url('/app/unix/flashtimeline?s=hardware')}</li>
+    </ul>
+    
+    </div>
+
+
+</div>
+
+
+

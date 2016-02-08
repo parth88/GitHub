@@ -1,0 +1,97 @@
+<%!
+import cgi
+import splunk.entity as en
+from splunk.appserver.mrsparkle.lib import util, cached, decorators
+%>
+<%
+appListing = [ {'label': appList[x]['label'], 'uri':make_url(['/app', x]), 'id': x} for x in appList if x!='launcher']
+# Sort app list by label, ignoring case
+appListing.sort(lambda a, b: cmp(a['label'].lower(), b['label'].lower()))
+
+endpoints = set(cached.getEntities('data/ui/manager', count=-1, namespace='search'))
+canInstallApps = 'data_inputs_monitor' in endpoints
+
+
+# launcher/Home is displayed at the end of the menu if it's available
+if 'launcher' in appList:
+    launcher = {'label': appList['launcher']['label'], 'uri':make_url(['/app', 'launcher']), 'id': 'launcher'}
+else:
+    launcher = None
+
+userLabel = cherrypy.session['user']['name']
+userFullName = cherrypy.session['user'].get('fullName', userLabel)
+%>
+<%page args="module"/>
+
+% if (module.get("mode") != "popup") :
+    <%namespace name="lib" file="//lib.html" import="*"/>
+
+    <%call expr="lib.add_script_block()">
+        Splunk.Module.loadParams.${module['id']}.appList = ${jsonify(appListing)};
+        Splunk.Module.loadParams.${module['id']}.launcherApp = ${jsonify(launcher)};
+        Splunk.Module.loadParams.${module['id']}.canInstallApps = ${jsonify(canInstallApps)};
+    </%call>
+
+    % if (module.get('mode', '').startswith("lite")):
+        % if 'noback' not in module['mode'] and APP['is_visible']:
+            <a href="${make_url(['app', APP['id']])}" class="returnLink">&laquo; ${_("Back to %s") % _(APP['label'])|h}</a>
+        % else:
+            <a href="${make_url(['app', 'launcher'])}" class="returnLink">&laquo; ${_("Back to %s") % _('Home')}</a>
+        % endif
+        
+        <ul class="accountBarItems lite">     
+    % else :
+        <ul class="accountBarItems">     
+    % endif
+    <li>
+        <a href="${make_url(['manager', APP['id'], 'authentication', 'changepassword', userLabel], _qs=dict(action='edit'))}" class="user_options_opener userFullName">${userFullName | h}</a>
+    </li>
+    <li class="accountDivider">|</li>
+    <li>
+        <a href="#" id="applicationsMenuActivator">${_("App")}<span class="splIcon splIcon-triangle-3-s"></span></a>
+    </li>
+    <li class="accountDivider">|</li>
+    % if cherrypy.request.path_info != make_url(['manager', APP['id']]):
+        <li>
+            <a href="${make_url(['manager', APP['id']])}">${_("Manager")}</a>
+        </li>
+    % else:
+        <li class="accountDivider">${_('Manager')}</li>
+    % endif
+    % if APP['can_alert']:    
+        <li class="accountDivider">|</li>
+        <li>
+            <a href="${make_url(['alerts', APP['id']])}" class="alerts_opener">${_("Alerts")}</a>
+        </li>
+    % endif
+        <li class="accountDivider">|</li>    
+        <li>
+            <a href="${make_url(['app', APP['id'], 'job_management'])}" class="job_manager_opener">${_("Jobs")}</a>
+        </li>
+##        <li class="accountDivider">|</li>    
+##        <li>
+##            <a href="${make_url(['wall', APP['id'], 'new'])}" class="wall_opener">${_("Wall")}</a>
+##        </li>
+    % if not cherrypy.config.get('is_free_license') and cherrypy.session.get(decorators.REMOTE_USER_SESSION_KEY)==None:
+        <li class="accountDivider">|</li>
+        <li>
+            <a href="${make_url('/account/logout')}">${_("Logout")}</a>
+        </li>
+    % endif
+    </ul>
+% endif
+% if (module["mode"].startswith("lite")) :
+    
+% elif (module["mode"] == "popup") :
+    <a href="#" class="splIcon splIcon-close"></a>
+    <div class="appLogoContainer popupAppLogoContainer"><a href="javascript:void()" class="appLogo notLinked"></a>
+        <a href="http://www.splunk.com" target="_blank" class="splunkPoweredLogo"></a>
+        % if module["popupTitle"]:
+            <h1>${module["popupTitle"] | h}</h1>
+        % endif
+    </div>
+% else :
+    <div class="appLogoContainer"><a href="${make_url(['app', APP['id']])}" class="appLogo"></a><h1>${_(APP['label']) | h}</h1>
+        <a href="http://www.splunk.com" target="_blank" class="splunkPoweredLogo"></a>
+    </div>
+% endif

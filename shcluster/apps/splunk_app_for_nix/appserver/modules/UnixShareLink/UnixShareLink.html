@@ -1,0 +1,31 @@
+<%page expression_filter="h" args="module"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<%
+import logging
+
+# logger = logging.getLogger('splunk.appserver.lib.i18n')
+
+moduleCSSFiles = [
+  "/static/app/splunk_app_for_nix/css/bootstrap.css"
+]
+
+moduleJSFiles = [
+  "/static/app/splunk_app_for_nix/js/contrib/bootstrap/bootstrap-unixjquery.js"
+]
+
+src = make_url(['app', APP['id'], module.get('viewName')])
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+<div class="UnixShareLinkWrapper-${module.get('colors')}">
+    <i class="icon-share"></i>
+    <div class='UnixShareLinkWrapper'>
+        <div class="UnixShareLinkText">
+        Share Link
+        </div>
+        <input class='UnixShareLinkContent'/>
+    </div>
+</div>

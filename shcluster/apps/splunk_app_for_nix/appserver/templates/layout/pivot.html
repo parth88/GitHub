@@ -1,0 +1,69 @@
+<%inherit file="//layout/view.html" />
+<%namespace file="//view/_helpers.html" import="*"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<%!
+headerPanels = ["appHeader", "navigationHeader"]
+upperPanels = ["viewHeader", "splSearchControls-inline", "mainSearchControls"]
+%>
+
+<%def name="css()">
+    <% parent.css() %>
+    <%lib:stylesheet_tags files="${['/static/css/dashboard.css']}" />
+</%def>
+
+<%def name="js()">
+    <% parent.js() %>
+</%def>
+
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/pivot.css',
+                                    '/static/app/splunk_app_for_nix/application.css']}" />
+</%def>
+
+% if "messaging" in modules :
+    <%call expr="parent.buildSimplePanelContainer(modules, 'messaging')"></%call>
+% endif
+
+<div class="appHeaderWrapper">
+    % for panelName in headerPanels : 
+        <%call expr="parent.buildSimplePanelContainer(modules, panelName)"></%call>
+    % endfor    
+</div>
+
+% for panelName in upperPanels : 
+    <%call expr="parent.buildSimplePanelContainer(modules, panelName)"></%call>
+% endfor
+
+<div class="HomeContainer">
+
+  <h1>Pivot</h1>
+
+  <div class="HomeHeader splClearfix">
+    <%call expr="parent.buildPanelContents(modules, 'HomeHeader')"></%call>
+  </div>
+
+  <div class="HomeLeft splClearfix">
+    
+    <%call expr="parent.buildPanelContents(modules, 'HomeLeft')"></%call>
+  </div>
+
+  <div class="HomeRight splClearfix">
+    
+    <div class="HomeRightUp splClearfix">
+        <%call expr="parent.buildPanelContents(modules, 'HomeRightUp')"></%call>
+    </div>
+    
+    <div class="HomeRightMain splClearfix">
+        <%call expr="parent.buildPanelContents(modules, 'HomeRightMain')"></%call>
+    </div>
+    
+    <div class="HomeRightSide splClearfix">
+        <%call expr="parent.buildPanelContents(modules, 'HomeRightSide')"></%call>
+    </div>
+    
+    <%call expr="parent.buildPanelContents(modules, 'HomeRight')"></%call>
+    
+  </div>
+
+</div>

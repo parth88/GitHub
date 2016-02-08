@@ -1,0 +1,802 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2009-08-08 11:55+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Owen Lee <dmlee@systex.com.tw>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/footer.html:1
+msgid "Learn more...."
+msgstr "想了解更多...."
+
+#: /opt/splunk/etc/apps/unix/appserver/static/footer.html:4
+#, python-format
+msgid "Go to <a href=\"%(url)s\">Splunk Search</a> for more search tools"
+msgstr "連結 <a href=\"%(url)s\">Splunk 搜尋</a> 了解更多搜尋工具"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/footer.html:5
+#, python-format
+msgid "Go to <a href=%(url)s\">Splunk Manager</a> to add more data sources"
+msgstr "連結 <a href=%(url)s\">Splunk 管理畫面</a> 新增更多資料源"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/footer.html:6
+#, python-format
+msgid "Take a <a href=\"%(url)s\">short tutorial</a> to learn what else Splunk can do"
+msgstr "參與 <a href=\"%(url)s\">簡易課程</a> 了解更多其他 Splunk 功能"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/logs_dashboard.html:2
+msgid "This is the Unix Logs Dashboard"
+msgstr "Unix 系統記錄檔組合視頁(Dashboard)"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:21
+msgid "The Splunk for *nix app comes built with some useful out of the box inputs, dashboards, custom views, and saved searches. <br/>This app can be used on a Splunk indexer or in a Splunk forwarding configuration where the app will capture metrics, logs, and configuration changes across your infrastructure."
+msgstr "Splunk *nix 應用是由輸入框, 組合視頁, 客製視頁, 以及搜尋指示所組成, <br/>用於 Splunk 索引器, 或是 Splunk 傳收資料的設定, 能夠橫跨您的整體系統架構來收集系統量測記記錄, 系統記錄, 以及設定檔修改記錄等資料."
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:24
+msgid "Important - all data in the unix app is by default in its own index named \"os\"."
+msgstr "重要 - 所有 unix 應用使用的資料皆存於其專屬索引檔, 名為 \"os\"."
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:26
+msgid "To search for *nix data be sure to include \"index=os\" in your search. "
+msgstr "在查詢 *nix 資料時, 請確認您的索引指令有加上 \"index=os\"."
+
+#. TRANS: Link to an example
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:26
+msgid "example..."
+msgstr "範例..."
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:29
+msgid "Configure Splunk 4 Unix"
+msgstr "Splunk 4 for Unix 設定"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:34
+msgid "This *nix app indexes several types of files:"
+msgstr "*nix 應用可以處理的檔案類型:"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:36
+#, python-format
+msgid "<a href=\"%s\">Common Log files</a> (ex: /var/log)"
+msgstr "<a href=\"%s\">一般記錄檔</a> (ex: /var/log)"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:37
+#, python-format
+msgid "<a href=\"%s\">Common Configuration Files</a> (ex: /etc)"
+msgstr "<a href=\"%s\">一般設定檔</a> (ex: /etc)"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:38
+#, python-format
+msgid "<a href=\"%s\">File Change Detection</a> (by default /etc)"
+msgstr "<a href=\"%s\">檔案異動偵測</a> (by default /etc)"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:39
+#, python-format
+msgid "You can add more sources <a href=\"%s\">>> Here</a>"
+msgstr "若您想增加資料源,<a href=\"%s\">>> 請點我 </a>"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:46
+msgid "*nix app also indexes output from common system tools:"
+msgstr "*nix 應用也能夠處理一般系統指令所產出的結果:"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:50
+#, python-format
+msgid "<a href=\"%s\">top</a>: top processes on host"
+msgstr "<a href=\"%s\">top</a>: 主機資源使用排名"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:51
+#, python-format
+msgid "<a href=\"%s\">vmstat</a>: memory usage info"
+msgstr "<a href=\"%s\">vmstat</a>: 記憶體使用狀況"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:52
+#, python-format
+msgid "<a href=\"%s\">iostat</a>: io throughput"
+msgstr "<a href=\"%s\">iostat</a>: 輸出入處理容量"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:53
+#, python-format
+msgid "<a href=\"%s\">ps</a>: all process info"
+msgstr "<a href=\"%s\">ps</a>: 所有處理程序資訊"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:54
+#, python-format
+msgid "<a href=\"%s\">netstat</a>: network status and throughput"
+msgstr "<a href=\"%s\">netstat</a>: 網路狀態及網路傳輸量"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:55
+#, python-format
+msgid "<a href=\"%s\">protocol</a>: detailed network throughput"
+msgstr "<a href=\"%s\">protocol</a>: 網路傳輸量詳細資訊"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:56
+#, python-format
+msgid "<a href=\"%s\">interfaces</a>: stats per link-level Ethernet interface"
+msgstr "<a href=\"%s\">interfaces</a>: 乙太網路介面連接層狀態"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:57
+#, python-format
+msgid "<a href=\"%s\">open ports</a>: snapshot of open ports"
+msgstr "<a href=\"%s\">open ports</a>: 通訊埠開啟狀況"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:58
+#, python-format
+msgid "<a href=\"%s\">time</a>: clock details"
+msgstr "<a href=\"%s\">time</a>: 系統時間"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:59
+#, python-format
+msgid "<a href=\"%s\">lsof</a>: open files per user, process"
+msgstr "<a href=\"%s\">lsof</a>: 檔案開啟清單"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:67
+#, python-format
+msgid "<a href=\"%s\">df</a>: disk and volume usage"
+msgstr "<a href=\"%s\">df</a>: 磁碟機及磁碟區使用狀況"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:68
+#, python-format
+msgid "<a href=\"%s\">who</a>: currently active user sessions"
+msgstr "<a href=\"%s\">who</a>: 上線使用者清單"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:69
+#, python-format
+msgid "<a href=\"%s\">users with privileges</a>: users with login accounts"
+msgstr "<a href=\"%s\">users with privileges</a>: 登入帳號清單"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:70
+#, python-format
+msgid "<a href=\"%s\">lastlog</a>: last login time for all users who have ever logged in"
+msgstr "<a href=\"%s\">lastlog</a>: 使用者最後登入時間清單"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:71
+#, python-format
+msgid "<a href=\"%s\">cpu</a>: shows stats per CPU"
+msgstr "<a href=\"%s\">cpu</a>: 顯示各 CPU 狀態"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:72
+#, python-format
+msgid "<a href=\"%s\">rlog</a>: auditd logs translated with ausearch"
+msgstr "<a href=\"%s\">rlog</a>: 以 ausearch 格式顯示系統記錄"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:73
+#, python-format
+msgid "<a href=\"%s\">packages</a>: currently installed packages"
+msgstr "<a href=\"%s\">packages</a>: 已安裝的套裝軟體清單"
+
+#: /opt/splunk/etc/apps/unix/appserver/static/welcome.html:74
+#, python-format
+msgid "<a href=\"%s\">hardware</a>: details of host hardware"
+msgstr "<a href=\"%s\">hardware</a>: 主機硬體資訊"
+
+#: /opt/splunk/etc/apps/unix/default/app.conf:10
+msgid "*NIX"
+msgstr "*NIX"
+
+#: /opt/splunk/etc/apps/unix/default/app.conf:14
+msgid "This is a useful app for helping monitor, manage, and troubleshoot *nix platforms. This app comes with a set of scripted inputs for collecting cpu, disk, io, memory, log, configuration, and user info. It also provides convenient dashboards, form searches, and alerts to make getting started with Splunk a breeze."
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Overview"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "User Created Views"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Manage Views"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "All Saved Searches & Reports"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Manage Searches & Reports"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Configuration..."
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "CPU"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "CPU Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "CPU Saved Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Memory"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Memory Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Saved Memory Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Disk"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Disk Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Saved Disk Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Network"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Network Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Saved Net Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Users"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "User Management Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "User Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Saved User Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Log Files"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Saved Log Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Configs"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "OS Packages"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "FS Change Detection"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/nav/default.xml:0
+msgid "Saved Config Searches"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_configs.xml:0
+msgid "Config Files Overview"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_configs.xml:0
+msgid "Configuration Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_configs.xml:0
+msgid "Most Changing Configurations"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_configs.xml:0
+msgid "Timeline of Configuration Changes"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_configs.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_logs.xml:0
+msgid "Time"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_configs.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_logs.xml:0
+msgid "Source @ Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_configs.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_logs.xml:0
+msgid "View full results"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_dashboard.xml:0
+msgid "About Splunk for Unix"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_dashboard.xml:0
+msgid "Welcome to Splunk for UNIX"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_dashboard.xml:0
+msgid "Here is a list of all Sources, Sourcetypes, and Hosts where the unix app has collected data. ."
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_dashboard.xml:0
+msgid "Available data sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_dashboard.xml:0
+msgid "Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_dashboard.xml:0
+msgid "Sourcetypes"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_dashboard.xml:0
+msgid "Hosts"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_fschange.xml:0
+msgid "FS Change Overview"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_fschange.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_process.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_state.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_user.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_command.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_type.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_user.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_used_by_host.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_errors_multiple_hosts.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_thruput_multiple_hosts.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_host.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_process.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_user.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_connections.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_listening.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_throughput.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/users_successful_logins.xml:0
+msgid "Search"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_fschange.xml:0
+msgid "<center><h1>FS Change Overview</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_fschange.xml:0
+msgid "File Changes by Time"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_fschange.xml:0
+msgid "Most Recent Changes"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_logs.xml:0
+msgid "Log Files Overview"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_logs.xml:0
+msgid "Log Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_logs.xml:0
+msgid "Logs Recently Changed"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/about_logs.xml:0
+msgid "Timeline of Errors or Critical"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/configs_diff.xml:0
+msgid "File Diff"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/configs_diff.xml:0
+msgid "1. Pick a timerange to find config files that have changed. <br/> 2. Then select a result to see the diff. <br/> 3. The diff will open a search window with a diff search populated. You can change the pos1 and pos2 to change arbitrary change sets."
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/configs_diff.xml:0
+#, python-format
+msgid "Files Changed (%(count)s)"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+msgid "CPU by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+msgid "<center><h1>CPU by Host</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+#, python-format
+msgid "Percent % Load by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+msgid "Load Factor by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+msgid "Number of Threads by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+msgid "Number of Processes by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_host.xml:0
+msgid "Top 5 CPU Hogs per Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_process.xml:0
+msgid "CPU by Process"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_process.xml:0
+msgid "<center><h1>CPU by Process</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_process.xml:0
+msgid "Avg CPU by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_process.xml:0
+msgid "Top CPU Using Processes"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_state.xml:0
+msgid "CPU by State"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_state.xml:0
+msgid "<center><h1>CPU by State</h1></center><p></p>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_state.xml:0
+msgid "Timeline CPU by State"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_state.xml:0
+msgid "Avg CPU by State"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_user.xml:0
+msgid "CPU by User"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_user.xml:0
+msgid "<center><h1>CPU by User</h1></center><p></p>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_by_user.xml:0
+msgid "Top CPU Using Users"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_dashboard.xml:0
+msgid "CPU Overview"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_dashboard.xml:0
+msgid "<center><h1>CPU Overview</h1></center>This is the CPU Dashboard is has a few common reports on the dashboard as well as a set of common searches you can run. <br>Choose edit from the actions menu to add or change the dashboard. Click Graphs to run searches and change search parameters such as timeframes."
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_dashboard.xml:0
+msgid "CPU consumption by command"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_dashboard.xml:0
+msgid "CPU consumption by user, instantaneous (in %)"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_dashboard.xml:0
+msgid "Top users by CPU consumption, cumulative of running programs (in seconds)"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/cpu_dashboard.xml:0
+msgid "10 most popular executables"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_command.xml:0
+msgid "Files Opened by Command"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_command.xml:0
+msgid "<center><h1>Files Opened by Command</h1><br>(This search can be expensive. For faster results keep timeframe short)</center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_command.xml:0
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_type.xml:0
+msgid "lsof Results"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_type.xml:0
+msgid "Files Opened by Type"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_type.xml:0
+msgid "<center><h1>Files Opened by Type</h1><br>(This search can be expensive. For faster results keep timeframe short)</center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_user.xml:0
+msgid "Files Opened by User"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_user.xml:0
+msgid "<center><h1>Files Opened by User</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_files_opened_by_user.xml:0
+msgid "losf Results"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_used_by_host.xml:0
+msgid "Diskspace Used by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_used_by_host.xml:0
+msgid "<center><h1>Disk Used by Host</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_used_by_host.xml:0
+msgid "Disk Used by Host and Volume"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/disk_used_by_host.xml:0
+msgid "Latest Disk Used by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "events"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "splIcon-events-list"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "Events List"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "All"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "inner"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "outer"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "full"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "raw"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "splIcon-events-table"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "Events Table"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "results"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "splIcon-results-table"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "Results Table"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/flashtimeline.xml:0
+msgid "show"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_errors_multiple_hosts.xml:0
+msgid "Errors and Warnings"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_errors_multiple_hosts.xml:0
+msgid "Error Level:"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_errors_multiple_hosts.xml:0
+msgid "<center><h1>Logging Errors and Warnings</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_errors_multiple_hosts.xml:0
+msgid "Timechart of Errors by Source"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_errors_multiple_hosts.xml:0
+msgid "Recent Errors"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_thruput_multiple_hosts.xml:0
+msgid "Log Throughput"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_thruput_multiple_hosts.xml:0
+msgid "<center><h1>Logging Throughput</h1></center><p></p>By default this dashboard will show metrics for localhost. You can enter a host name, wild card host name or ip address, ex: 10.1.1.*, web*. <a href=\"/manager/unix/apps/local/unix/setup?action=edit\"> : configure this input</a>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_thruput_multiple_hosts.xml:0
+msgid "Timechart of Throughput by Source"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/log_thruput_multiple_hosts.xml:0
+msgid "Last Changed Sources"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_host.xml:0
+msgid "Memory by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_host.xml:0
+msgid "<center><h1>Memory by Host</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_host.xml:0
+msgid "Percent Memory Used by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_host.xml:0
+msgid "Physical Memory by Host"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_process.xml:0
+msgid "Memory by Process"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_process.xml:0
+msgid "<center><h1>Memory Usage by Process</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_process.xml:0
+msgid "Memory Usage by Process"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_process.xml:0
+msgid "Top Memory Using Processes"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_user.xml:0
+msgid "Memory Usage by User"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_user.xml:0
+msgid "<center><h1>Memory by User</h1></center><p></p>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_user.xml:0
+msgid "Avg Mem by User"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_by_user.xml:0
+msgid "Top Mem Using Users"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_dashboard.xml:0
+msgid "Memory Overview"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_dashboard.xml:0
+msgid "<center><h1>Memory Overview</h1></center>This is the Memory Dashboard is has a few common reports on the dashboard as well as a set of common searches you can run. <br>Click Graphs to run searches and change search parameters such as timeframes."
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_dashboard.xml:0
+msgid "Memory Usage Last 3 Hours"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_dashboard.xml:0
+msgid "Resident Memory by Process Last 3 Hours"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_dashboard.xml:0
+msgid "Virtual Memory by Process Last 3 Hours"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_dashboard.xml:0
+msgid "Top 10 Users"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/mem_dashboard.xml:0
+msgid "\"Top 10 users by virtual memory consumption, instantaneous (in KB)"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_connections.xml:0
+msgid "Connection Stats"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_connections.xml:0
+msgid "Frequency:"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_connections.xml:0
+msgid "<center><h1>Connection Stats</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_connections.xml:0
+msgid "Connection Frequency Chart"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_connections.xml:0
+msgid "Connection Frequency Detail"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_listening.xml:0
+msgid "Open Ports"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_listening.xml:0
+msgid "<center><h1>Open Ports</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_listening.xml:0
+msgid "Top Ports Listening"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_listening.xml:0
+msgid "Open Ports by State"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_throughput.xml:0
+msgid "Connection Throughput"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_throughput.xml:0
+msgid "<center><h1>Connection Throughput</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_throughput.xml:0
+msgid "Connection Throughput Chart"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/net_throughput.xml:0
+msgid "Top Interfaces"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/users_successful_logins.xml:0
+msgid "Successful User Logins"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/users_successful_logins.xml:0
+msgid "<center><h1>Successful User Logins</h1></center>"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/users_successful_logins.xml:0
+msgid "Most recent sessions"
+msgstr ""
+
+#: /opt/splunk/etc/apps/unix/default/data/ui/views/users_successful_logins.xml:0
+msgid "Users with Login Privs"
+msgstr ""
+

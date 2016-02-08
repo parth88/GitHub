@@ -1,0 +1,53 @@
+.UnixSimpleValuePicker {
+    font-family: Helvetica;
+    /*margin-left: 20px;*/
+    float:left;
+}
+.UnixSimpleValuePickerContainer {
+    margin-left: 2%;
+    padding: 0;
+    width: 100%;
+}
+.UnixSimpleValuePickerContainer span {
+    color: #3F3F3F;
+    font-size: 14px;
+    position: relative;
+}
+.UnixSimpleValuePickerContainer input {
+    background-color: #FFFFFF;
+    border-color: #CCCCCC;
+    border-radius: 5px;
+    border-width: 0.1em;
+    color: #CCCCCC;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100px;
+}
+.UnixSimpleValuePickerContainer input.selected {
+    background-color: #B4B4B4;
+    color: #FFFFFF;
+}
+
+.UnixSimpleValuePickerContainer .option {
+    cursor: pointer;
+    font-size:14px;
+    margin:5px 0px;
+}
+
+.UnixSimpleValuePickerContainer .dropdown-menu {
+    padding: 5px !important;
+}
+
+.UnixSimpleValuePickerContainer .dropdown-menu li {
+    cursor: pointer;
+}
+
+.UnixSimpleValuePickerContainer .btn-group .title, .UnixSimpleValuePickerContainer .btn-group .caret {
+    float:left;
+}
+
+.UnixSimpleValuePickerContainer .btn-group .caret {
+    margin-left:10px !important;
+}
+

@@ -1,0 +1,22 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/css/jquery-ui/jquery.ui.progressbar.css"
+  ]
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/js/contrib/jquery.ui.progressbar.js",
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+
+<div>
+    <div class="UnixMeterBarLabel UnixMeterBarLabelLeft"></div>
+    <div class="UnixMeterBarLabel UnixMeterBarLabelRight"></div>
+</div>
+<div class="splClearfix"></div>
+<div class="UnixMeterBarContent"></div>

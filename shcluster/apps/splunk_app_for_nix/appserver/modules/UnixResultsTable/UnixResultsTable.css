@@ -1,0 +1,342 @@
+/*
+ * UnixResultsTable.css
+ * Styling for Table
+ * Inherits some of Bootstrap CSS for tables scoped to UnixResultsTable class
+ */
+
+/* general layout */
+
+.UnixResultsTableWrapper {
+    margin: 0 26px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.UnixResultsTableWrapper.double-scrollbar > div {
+    height: 1px;
+    display: none
+}
+
+.UnixResultsTable table {
+    /*table-layout: fixed;*/
+    white-space: nowrap;
+    margin-bottom: -1px;
+}
+
+.UnixResultsTable table th,td {
+    overflow: hidden;
+    width: auto;
+}
+
+.UnixResultsTable table th a {
+    position: relative;
+    margin-right: 15px;
+    color: #575757;
+    cursor: pointer;
+}
+
+.UnixResultsTable table td {
+    color: #1a7996;
+    cursor: pointer;
+}
+
+/* row number display */
+.UnixResultsTable table td.pos,
+.UnixResultsTable table th.pos {
+   width: 7px;
+}
+
+.UnixResultsTable table td.pos,
+.UnixResultsTable table th.pos {
+   color: #bbb;
+}
+
+/* status messages & loader */
+.UnixResultsTable .statusMessage {
+  background: #edede7;
+  border: 0px;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #666;
+}
+
+.UnixResultsTable table td.val div.loading {
+  height: 16px;
+  width: 16px;
+  background: url(/static/app/splunk_app_for_nix/loader.gif);
+}
+
+/* used for highlight upon hover */
+.UnixResultsTable .table.table-hover-row tbody > tr:hover > td {
+  background-color: #ededed;
+}
+
+.UnixResultsTable .table.table-hover-cell tbody > tr > td.val:hover {
+  background-color: #ededed;
+}
+
+.UnixResultsTable .table.table-hover-cell tbody > tr > td.val > div.mv:hover {
+  background-color: #f5e998;
+}
+
+/*
+ * used for dynamic highlight upon mouseover/mouseout
+ * highlight over cell (x,y)
+ * highlight over header for col x
+ */
+.UnixResultsTable table.table tbody > tr > td.val.highlight,
+.UnixResultsTable table.table thead > tr > th.highlight {
+  background-color: #ededed;
+}
+
+/*
+ * used for dynamic selection upon click
+ * selection over cell (x,y)
+ * selection over entire row y 
+ */
+.UnixResultsTable table.table tbody > tr > td.val.selected,
+.UnixResultsTable table.table tbody > tr > td.val > div.mv.selected,
+.UnixResultsTable table.table tbody > tr.selected > td {
+  background-color: #f5e998 !important;
+}
+
+/* sorting */
+.UnixResultsTable th span.colSort {
+  width: 5px;
+  height: 10px;
+  position: absolute;
+  right: -15px;
+  bottom: 0;
+  background-image: url(/static/app/splunk_app_for_nix/splIcons.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  padding-left: 7px;
+  line-height: 8px;
+  font-size: 9px;
+}
+.UnixResultsTable th a:hover > span.colSortNone {
+  background-position: -67px -446px;
+}
+/*.UnixResultsTable th span.colSort:hover {
+  background-color: #f5e998;
+}*/
+.UnixResultsTable th span.colSortNone {
+  background-position: -7px -446px;
+}
+.UnixResultsTable th span.colSortDesc {
+  background-position: -67px -365px;
+}
+/*.UnixResultsTable th span.colSortDesc:hover {
+  background-position: -67px -385px;  
+}*/
+.UnixResultsTable th span.colSortAsc{
+  background-position: -67px -385px;
+}
+/*.UnixResultsTable th span.colSortAsc:hover {
+  background-position: -67px -366px;
+}*/
+
+/*!
+ * Bootstrap v2.3.1
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+.UnixResultsTable table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.UnixResultsTable .table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.UnixResultsTable .table th,
+.UnixResultsTable .table td {
+  padding: 8px;
+  line-height: 16px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #cccccc;
+}
+
+.UnixResultsTable .table th {
+  font-weight: bold;
+}
+
+.UnixResultsTable .table thead th {
+  vertical-align: bottom;
+}
+
+.UnixResultsTable .table caption + thead tr:first-child th,
+.UnixResultsTable .table caption + thead tr:first-child td,
+.UnixResultsTable .table colgroup + thead tr:first-child th,
+.UnixResultsTable .table colgroup + thead tr:first-child td,
+.UnixResultsTable .table thead:first-child tr:first-child th,
+.UnixResultsTable .table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+.UnixResultsTable .table tbody tr:last-child {
+  border-bottom: 1px solid #cccccc;
+}
+
+.UnixResultsTable .table tbody + tbody {
+  border-top: 2px solid #cccccc;
+}
+
+.UnixResultsTable .table .table {
+  background-color: #ffffff;
+}
+
+.UnixResultsTable .table-condensed th,
+.UnixResultsTable .table-condensed td {
+  padding: 4px 5px;
+}
+
+.UnixResultsTable .table-striped tbody > tr:nth-child(odd) > td,
+.UnixResultsTable .table-striped tbody > tr:nth-child(odd) > th {
+  background-color: #f5f5f5;
+}
+/*
+.UnixResultsTable .table-hover tbody tr:hover > td,
+.UnixResultsTable .table-hover tbody tr:hover > th {
+  background-color: #f5f5f5;
+}
+*/
+.UnixResultsTable table td[class*="span"],
+.UnixResultsTable table th[class*="span"],
+.UnixResultsTable .row-fluid table td[class*="span"],
+.UnixResultsTable .row-fluid table th[class*="span"] {
+  display: table-cell;
+  float: none;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span1,
+.UnixResultsTable .table th.span1 {
+  float: none;
+  width: 44px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span2,
+.UnixResultsTable .table th.span2 {
+  float: none;
+  width: 124px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span3,
+.UnixResultsTable .table th.span3 {
+  float: none;
+  width: 204px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span4,
+.UnixResultsTable .table th.span4 {
+  float: none;
+  width: 284px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span5,
+.UnixResultsTable .table th.span5 {
+  float: none;
+  width: 364px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span6,
+.UnixResultsTable .table th.span6 {
+  float: none;
+  width: 444px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span7,
+.UnixResultsTable .table th.span7 {
+  float: none;
+  width: 524px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span8,
+.UnixResultsTable .table th.span8 {
+  float: none;
+  width: 604px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span9,
+.UnixResultsTable .table th.span9 {
+  float: none;
+  width: 684px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span10,
+.UnixResultsTable .table th.span10 {
+  float: none;
+  width: 764px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span11,
+.UnixResultsTable .table th.span11 {
+  float: none;
+  width: 844px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table td.span12,
+.UnixResultsTable .table th.span12 {
+  float: none;
+  width: 924px;
+  margin-left: 0;
+}
+
+.UnixResultsTable .table tbody tr.success > td {
+  background-color: #dff0d8;
+}
+
+.UnixResultsTable .table tbody tr.error > td {
+  background-color: #f2dede;
+}
+
+.UnixResultsTable .table tbody tr.warning > td {
+  background-color: #fcf8e3;
+}
+
+.UnixResultsTable .table tbody tr.info > td {
+  background-color: #d9edf7;
+}
+
+.UnixResultsTable .table-hover tbody tr.success:hover > td {
+  background-color: #d0e9c6;
+}
+
+.UnixResultsTable .table-hover tbody tr.error:hover > td {
+  background-color: #ebcccc;
+}
+
+.UnixResultsTable .table-hover tbody tr.warning:hover > td {
+  background-color: #faf2cc;
+}
+
+.UnixResultsTable .table-hover tbody tr.info:hover > td {
+  background-color: #c4e3f3;
+}

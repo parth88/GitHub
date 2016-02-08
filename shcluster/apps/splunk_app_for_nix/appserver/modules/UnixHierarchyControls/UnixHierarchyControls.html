@@ -1,0 +1,23 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%
+import splunk.util
+this_group = module.get('this_group')
+next_group = module.get('next_group')
+prev_group = module.get('prev_group')
+id = module.get('id')
+%>
+
+<div style="display:none" class="showThis" groupId="${this_group}"></div>
+
+<div class="hierarchy_group" style="display: none">
+    % if next_group is not None:
+        <span class="showNext showButton"></span>
+    % endif
+
+    % if prev_group is not None:
+        <span class="hideButton"></span>
+    %endif
+</div>
+
+

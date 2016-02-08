@@ -1,0 +1,5 @@
+ksu_action,action
+authenticated,success
+authentication failed,failure
+successful,success
+failed,failure

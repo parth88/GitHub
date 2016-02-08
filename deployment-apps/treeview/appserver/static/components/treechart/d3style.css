@@ -1,0 +1,55 @@
+	.node {
+    cursor: pointer;
+  }
+
+  .overlay{
+      background-color:#EEE;
+  }
+   
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+   
+  .node text {
+    font-size:10px; 
+    font-family:sans-serif;
+	
+  }
+  .node image {
+    height:20px; 
+    width:20px;
+	margin-top:20%;
+	
+  }
+   
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
+
+  .ghostCircle.show{
+      display:block;
+  }
+
+  .ghostCircle, .activeDrag .ghostCircle{
+       display: none;
+  }
+.tree-chart-tooltip {
+	position: absolute;
+    background-color: #424242;
+    border-radius: 3px 3px 3px 3px;
+    padding: 7px;
+    font-size: 1.0em;
+    color: white;
+    opacity:0;
+	z-index : 1;
+}

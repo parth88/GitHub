@@ -1,0 +1,34 @@
+.SplunkModule.CFToggler {
+    float: left;
+    margin-left: 10px;
+}
+
+.SplunkModule.CFToggler p {
+    font-size: 14px;
+}
+.CFToggler.chart {
+    display: inline-block;
+}
+
+.CFToggler .reset {
+    padding-left: 1em;
+    font-size: smaller;
+    color: #ccc;
+}
+
+.CFToggler ul.toggler {
+    list-style-type: none;
+    margin: 10px 0 10px 0;
+}
+
+.CFToggler ul.toggler li {
+    display: inline;
+    margin: 0 15px 5px 0;
+    cursor: pointer;
+    float: left;
+    clear: left;
+}
+
+.CFToggler ul.toggler li.active {
+    border-bottom: 4px solid;
+}

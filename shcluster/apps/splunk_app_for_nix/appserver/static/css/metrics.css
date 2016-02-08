@@ -1,0 +1,99 @@
+body, 
+.layout {
+    background-color: #F5F5F5;
+    width: auto !important;
+    float:none !important;
+}
+.MetricsContainer {
+    height: auto;
+    /*min-height: 1000px;*/
+    background-color: transparent;
+    padding: 20px;
+    padding-right:265px;
+    overflow:hidden;
+    margin-right:20px;
+}
+.MetricsContainer h1 {
+    color: #3F3F3F;
+    font-family: "Helvetica neue",Helvetica,Arial,sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 20px;
+    margin: 27px 10px 20px 27px;
+    width: 170px;
+}
+.selectablePanel,
+.controlPanel,
+.gridPanel {
+    background-color: #FFFFFF;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+.gridPanel .UnixPrefsReset {
+    float: right;
+    position: relative;
+    right: 2px;
+    top: -40px;
+}
+.hiddenPanel {
+    display: none;
+}
+.selectablePanel {
+    clear: left;
+    float: left;
+    min-height: 900px;
+    width: 265px;
+}
+.selectablePanel span {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.controlPanel {
+    width: auto;
+    min-width: 900px;
+    max-width: 1600px;
+    float: left;
+    height: 50px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+.gridPanel {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    height: auto;
+    min-height: 920px;
+    margin: 0 -265px 0 auto; 
+    width: 98.5%;
+    float:right;
+}
+.gridPanel h1.toph1 {
+    margin-left: 27px;
+    margin-right: 2%;
+    margin-top: 27px;
+    margin-bottom:0px;
+    width: 95%;
+}
+.gridPanel .SplunkModule.UnixBubbleGrid {
+    margin-left: 13px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.controlPanel .UnixSubmitButton {
+    position: relative;
+    bottom: 54px;
+    height: 25px;
+    width: 115px;
+    float: right;
+}
+.UnixSimpleTimeRangePicker {
+    float:left;
+}
+
+.UnixSimpleTimeRangePickerContainer {
+    width: auto;
+    padding: 0;
+}

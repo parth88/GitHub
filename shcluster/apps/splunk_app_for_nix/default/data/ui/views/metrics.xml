@@ -1,0 +1,290 @@
+<view template="splunk_app_for_nix:/templates/layout/unix_metrics.html">
+  <label>Metrics</label>
+  <module name="UnixIncludeD3" layoutPanel="appHeader"/>
+  <module name="UnixIncludejQuery" layoutPanel="appHeader"/>
+  <module name="UnixIncludeUnderscore" layoutPanel="appHeader"/>
+  <module name="UnixIncludeBackbone" layoutPanel="appHeader"/>
+  <module name="UnixAccountBar" layoutPanel="appHeader"/>
+  <module name="UnixAppBar" layoutPanel="navigationHeader"/>
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">*</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="maxSize">1</param>
+  </module>
+  
+  <module name="UnixPrefsReset" layoutPanel="gridPanel"/>
+  <module name="HiddenSavedSearch" autoRun="True" layoutPanel="hiddenPanel">
+    <!-- <param name="search">| metadata type=hosts `metadata_index` | sort + host | fields host</param> -->
+    <param name="savedSearch">Metrics Selectable Lookup</param>
+    <module name="UnixSelectable" layoutPanel="selectablePanel">
+      <param name="token">host</param>
+      <param name="height">840</param>
+      <param name="width">230</param>
+      <param name="show_label">False</param>
+      <param name="drilldownToken">hosts_selected</param>
+      <module name="UnixSubmitButton" layoutPanel="hiddenPanel">
+        <param name="allowSoftSubmit">True</param>
+        <param name="label">Search</param>
+        <param name="visible">False</param>
+        <param name="updatePermalink">False</param>
+        <module name="HiddenSearch">
+          <param name="search">`os_index` $source$ $host$</param> 
+          <param name="earliest">-1h</param>
+          <module name="UnixHierarchyControls" layoutPanel="gridPanel">
+            <param name="this_group">metrics_group_1</param>
+            <param name="next_group">metrics_group_2</param>
+            <param name="default_visibility">True</param>
+            <module name="UnixSimpleTimeRangePicker" layoutPanel="gridPanel" autoRun="True">
+              <param name="useDropdown">True</param>
+              <param name="rangeMap">
+                <param name="Last 15 Minutes">
+                  <param name="range">-15m</param>
+                  <param name="order">1</param>
+                  <param name="span">1m</param>
+                </param>
+                <param name="Last Hour">
+                  <param name="range">-1h</param>
+                  <param name="order">2</param>
+                  <param name="selected">true</param>
+                  <param name="span">2m</param>
+                </param>
+                <param name="Last 24 Hours">
+                  <param name="range">-24h</param>
+                  <param name="order">3</param>
+                  <param name="span">1h</param>
+                </param>
+              </param>
+              <module name="UnixSimpleValuePicker">
+                <param name="token">source</param>
+                <param name="label">Source</param>
+                <param name="valueList">
+                  <list>
+                    <param name="name">CPU</param>
+                    <param name="metrics">
+                      <list>pctIdle</list>
+                      <list>pctIowait</list>
+                      <list>pctNice</list>
+                      <list>pctSystem</list>
+                      <list>pctUser</list>
+                      <list>pctWait</list>
+                    </param>
+                    <param name="value">cpu</param>
+                    <param name="selected">true</param>
+                  </list> 
+                  <list>
+                    <param name="name">Memory</param>
+                    <param name="metrics">
+                      <list>memFreeMB</list>
+                      <list>memUsedMB</list>
+                      <list>memTotalMB</list>
+                      <list>memFreePct</list>
+                      <list>memUsedPct</list>
+                      <list>pgPageOut</list>
+                      <list>swapUsedPct</list>
+                      <list>pgSwapOut</list>
+                      <list>cSwitches</list>
+                      <list>interrupts</list>
+                      <list>forks</list>
+                      <list>processes</list>
+                      <list>threads</list>
+                      <list>loadAvg1mi</list>
+                    </param>
+                    <param name="value">vmstat</param>
+                  </list> 
+                  <list>
+                    <param name="name">Disk</param>
+                    <param name="metrics">
+                      <list>UsePct</list>
+                      <list>Size</list>
+                      <list>Used</list>
+                      <list>Avail</list>
+                    </param>
+                    <param name="value">df</param>
+                  </list> 
+                  <list>
+                    <param name="name">I/0</param>
+                    <param name="metrics">
+                      <list>rReq_PS</list> 
+                      <list>wReq_PS</list> 
+                      <list>rKB_PS</list>
+                      <list>wKB_PS</list>
+                      <list>avgWaitMillis</list>
+                      <list>avgSvcMillis</list>
+                      <list>bandwUtilPct</list>
+                    </param>
+                    <param name="value">iostat</param>
+                  </list> 
+                  <list>
+                    <param name="name">PS</param>
+                    <param name="metrics">
+                      <list>pctCPU</list>
+                      <list>pctMEM</list>
+                    </param>
+                    <param name="value">ps</param>
+                  </list> 
+                  <list>
+                    <param name="name">Protocol</param>
+                    <param name="metrics">
+                      <list>IPdropped</list>
+                      <list>TCPrexmits</list>
+                      <list>TCPreorder</list>
+                      <list>TCPpktRec</list>
+                      <list>TCPpktSent</list>
+                      <list>UDPpktLost</list>
+                      <list>UDPunkPort</list>
+                      <list>UDPpktRecv</list>
+                      <list>UDPpktSent</list>
+                    </param>
+                    <param name="value">protocol</param>
+                  </list> 
+                </param>
+                <module name="UnixReportBuilder" layoutPanel="gridPanel">
+                  <module name="UnixTokenReplacer">
+                    <module name="UnixMetricsThreshold">
+                      <param name="width">180</param>
+                      <param name="height">35</param>
+                      <param name="token">threshold</param>
+                      <param name="label">Pick Colors</param>
+                      <module name="UnixBubbleGrid" layoutPanel="gridPanel">
+                        <param name="upperColorRange">#AFAFAF</param>
+                        <param name="availableKey">hasSelection</param>
+                      </module>
+                    </module>
+                  </module>
+                </module>
+              </module>
+            </module>
+          </module>
+          <module name="UnixHierarchyControls" layoutPanel="gridPanel">
+            <param name="prev_group">metrics_group_1</param>
+            <param name="this_group">metrics_group_2</param>
+            <param name="default_visibility">False</param>
+            <module name="UnixSimpleTimeRangePicker" layoutPanel="gridPanel" autoRun="True">
+              <param name="useDropdown">True</param>
+              <param name="rangeMap">
+                <param name="Last 15 Minutes">
+                  <param name="range">-15m</param>
+                  <param name="order">1</param>
+                  <param name="span">1m</param>
+                </param>
+                <param name="Last Hour">
+                  <param name="range">-1h</param>
+                  <param name="order">2</param>
+                  <param name="selected">true</param>
+                  <param name="span">2m</param>
+                </param>
+                <param name="Last 24 Hours">
+                  <param name="range">-24h</param>
+                  <param name="order">3</param>
+                  <param name="span">1h</param>
+                </param>
+              </param>
+              <module name="UnixSimpleValuePicker">
+                <param name="token">source</param>
+                <param name="label">Source</param>
+                <param name="valueList">
+                  <list>
+                    <param name="name">CPU</param>
+                    <param name="metrics">
+                      <list>pctIdle</list>
+                      <list>pctIowait</list>
+                      <list>pctNice</list>
+                      <list>pctSystem</list>
+                      <list>pctUser</list>
+                      <list>pctWait</list>
+                    </param>
+                    <param name="value">cpu</param>
+                    <param name="selected">true</param>
+                  </list> 
+                  <list>
+                    <param name="name">Memory</param>
+                    <param name="metrics">
+                      <list>memFreeMB</list>
+                      <list>memUsedMB</list>
+                      <list>memTotalMB</list>
+                      <list>memFreePct</list>
+                      <list>memUsedPct</list>
+                      <list>pgPageOut</list>
+                      <list>swapUsedPct</list>
+                      <list>pgSwapOut</list>
+                      <list>cSwitches</list>
+                      <list>interrupts</list>
+                      <list>forks</list>
+                      <list>processes</list>
+                      <list>threads</list>
+                      <list>loadAvg1mi</list>
+                    </param>
+                    <param name="value">vmstat</param>
+                  </list> 
+                  <list>
+                    <param name="name">Disk</param>
+                    <param name="metrics">
+                      <list>UsePct</list>
+                      <list>Size</list>
+                      <list>Used</list>
+                      <list>Avail</list>
+                    </param>
+                    <param name="value">df</param>
+                  </list> 
+                  <list>
+                    <param name="name">I/0</param>
+                    <param name="metrics">
+                      <list>rReq_PS</list> 
+                      <list>wReq_PS</list> 
+                      <list>rKB_PS</list>
+                      <list>wKB_PS</list>
+                      <list>avgWaitMillis</list>
+                      <list>avgSvcMillis</list>
+                      <list>bandwUtilPct</list>
+                    </param>
+                    <param name="value">iostat</param>
+                  </list> 
+                  <list>
+                    <param name="name">PS</param>
+                    <param name="metrics">
+                      <list>pctCPU</list>
+                      <list>pctMEM</list>
+                    </param>
+                    <param name="value">ps</param>
+                  </list> 
+                  <list>
+                    <param name="name">Protocol</param>
+                    <param name="metrics">
+                      <list>IPdropped</list>
+                      <list>TCPrexmits</list>
+                      <list>TCPreorder</list>
+                      <list>TCPpktRec</list>
+                      <list>TCPpktSent</list>
+                      <list>UDPpktLost</list>
+                      <list>UDPunkPort</list>
+                      <list>UDPpktRecv</list>
+                      <list>UDPpktSent</list>
+                    </param>
+                    <param name="value">protocol</param>
+                  </list> 
+                </param>
+                <module name="UnixReportBuilder" layoutPanel="gridPanel">
+                  <module name="UnixTokenReplacer">
+                    <module name="UnixMetricsThreshold">
+                      <param name="width">180</param>
+                      <param name="height">35</param>
+                      <param name="token">threshold</param>
+                      <param name="label">Pick Colors</param>
+                      <module name="UnixBubbleGrid" layoutPanel="gridPanel">
+                        <param name="upperColorRange">#AFAFAF</param>
+                        <param name="availableKey">hasSelection</param>
+                        <param name="width">1000</param>
+                      </module>
+                    </module>
+                  </module>
+                </module>
+              </module>
+            </module>
+          </module>
+
+
+        </module>
+      </module>
+    </module>
+  </module>
+</view>

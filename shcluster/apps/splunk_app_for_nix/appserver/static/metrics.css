@@ -1,0 +1,11 @@
+.StaticContentSample {
+    background-image: url(/static/app/splunk_app_for_nix/images/metrics.png);
+    background-size: 99.5%;
+    height: 1000px;
+    width: 100%
+}
+.firstCell .layoutCellInner {
+    border: none;
+    border-radius: none;
+    background-color: transparent;
+}

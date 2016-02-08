@@ -1,0 +1,352 @@
+@font-face {
+    font-family: 'fontello';
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125');
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125#iefix') format('embedded-opentype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.woff?82669125') format('woff'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.ttf?82669125') format('truetype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.svg?82669125#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.UnixSelectable {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.UnixSelectable .selectable_container {
+    font-family: Helvetica;
+    margin-left:10px;
+}
+.UnixSelectable .selector_border {
+    margin-top:36px;
+}
+.UnixSelectable .selectable_container h1 {
+    color: #A0A0A0;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 9px;
+}
+.UnixSelectable .selector_filter {
+    /*margin: 10px 10px 5px 0;*/
+    margin-bottom:5px;
+    /*padding-bottom: 10px;*/
+    position: relative;
+}
+.UnixSelectable .selector_filter input {
+    border-radius: 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+}
+.UnixSelectable .selector_filter #selector_filter_reset {
+    padding: 2px 1px;
+    width: 1em;
+    border:none;
+    position: absolute;
+    top:1px;
+    right:7px;
+    font-size:2em;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#selector_filter_reset:before {
+    content: '\e809';
+    font-family:'fontello';
+}
+.UnixSelectable .selector_filter span {
+    margin-right: 5px;
+}
+.UnixSelectable #selector .ui-selecting { 
+    background: #CDCDCD; 
+}
+.UnixSelectable #selector .ui-selected { 
+    background: #999999;
+    color: white;
+}
+.UnixSelectable #selector .contain {
+    background: #CDCDCD;
+    color: white;
+}
+.UnixSelectable #selector { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.UnixSelectable #selector li, .UnixSelectable .folder div {
+    /*border-color: #CACACA;*/
+    /*border-radius: 4px 4px;
+    -moz-box-shadow: -2px -5px 14px -12px #CDCDCD inset;
+    -webkit-box-shadow: -2px -5px 14px -12px #CDCDCD inset;
+    box-shadow: -2px -5px 14px -12px #CDCDCD inset;*/
+    color: #333333;
+    font-size: 12px;
+    /*height: 18px; */
+}
+.UnixSelectable #selector .ui-selectee span:after {      
+    content: "+";
+    float: right;
+}
+.UnixSelectable #selector .foldee {      
+    margin-left: 34px;
+    /*display: none;*/
+}
+.UnixSelectable #selector .ui-selected span:after {
+    content: "-";
+    float: right;
+}
+.UnixSelectable #selector .foldee span:after {      
+    content: "";
+}
+.UnixSelectable #selector .show{      
+    margin-left: 34px;
+    display: block;  
+}
+.UnixSelectable .ui-widget-content {
+    border: none;
+}
+
+/*
+ * jScrollPane
+ *
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+        padding: 2px;
+	width: 6px;
+	height: 100%;
+	background: transparent;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: red;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	background: transparent;
+	position: relative;
+}
+
+.jspDrag
+{
+	background: #CFCFCF;
+        border: 1px solid #CFCFCF;
+        border-radius: 4px 4px;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspDragBottom {
+        background-color: transparent;
+}
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+} 
+
+
+
+/********
+Selection Stuff
+********/
+
+/* 
+this has no .UnixSelectable prefix because it is added dynamically at the head of the DOM 
+*/
+.selectionBoundingBox {
+    position: absolute;
+    border: 1px solid #7A7A7A;;
+    background: rgba(204, 204, 204, 0.29);
+
+}
+
+.UnixSelectable .drop {
+    float: left;
+    border: 1px dashed #888;
+    /*background: #EEE;*/
+    text-align: center;
+    padding: 20px;
+    margin: 0 10px 10px 0;
+}
+
+.UnixSelectable .selectedHighlight {
+    /*background-color: #EBC;*/
+    /*border: 1px solid #B89 !important;*/
+    background: #747474;
+    color: white !important;
+}
+
+.UnixSelectable .active {  
+    /*background-color: #CEB;*/
+    /*border: 1px solid #B89 !important;*/
+    background: #747474;
+    color: white !important;
+}
+
+.UnixSelectable #selector, .canSelect {
+    font-weight:normal;
+}
+
+.UnixSelectable .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: top;
+    border-style: solid;
+    content: "";
+    padding:0px !important;
+    margin-top: 0.35em !important;
+    margin-right:8px;
+}
+
+.UnixSelectable .caret, .UnixSelectable .folder, .UnixSelectable .item {
+    cursor: pointer;
+}
+
+.UnixSelectable .selectedHighlight .caret.caretRight, .UnixSelectable .active .caret.caretRight {
+    border-color: transparent transparent transparent white !important;
+}
+
+.UnixSelectable .selectedHighlight .caret.caretDown, .UnixSelectable .active .caret.caretDown {
+    border-color: white transparent transparent transparent !important;
+}
+
+.UnixSelectable .caretRight {
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent #8B8888;
+}
+
+.UnixSelectable .caretDown {
+    border-width: 8px 5px 0 5px;
+    border-color: #8B8888 transparent transparent transparent;
+}
+
+.UnixSelectable .folder .folder {
+    margin-left:15px;
+    /*border: 1px solid #ccc;
+    border-radius: 2px;*/
+    padding:5px;
+}
+
+.UnixSelectable .folder .folderHeader {
+    font-size:18px;
+    font-weight:100;
+}
+
+.UnixSelectable .folder .folder .folderHeader {
+    font-size:15px;
+}
+
+.UnixSelectable .folder .folder .item {
+    margin-left:40px;
+    margin-top:5px;
+}
+
+.UnixSelectable .folder .folder .item {
+    margin-left:40px;
+    margin-top:7px !important;
+}
+
+.UnixSelectable .folder {
+    margin-top:10px;
+    overflow:hidden;
+}
+
+.UnixSelectable .item {
+    margin-top:5px;
+}

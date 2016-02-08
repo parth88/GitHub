@@ -1,0 +1,243 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    import logging
+    from sets import Set
+    import splunk.appserver.mrsparkle.lib.startup as startup
+
+    logger = logging.getLogger('splunk.module.setup')
+
+    def parse_dynamic(tokenized_string, removeKey=True):
+        try:
+            # if already a list, we don't need to do any string parsing
+            if isinstance(tokenized_string, list):
+                seq = tokenized_string
+            else:
+                if removeKey:
+                    seq = [token.split('=')[1] for token in tokenized_string.split(' OR ')]
+                else:
+                    seq = tokenized_string.split(' OR ')
+            # convert to set to deduplicate
+            set = Set(seq)
+            # convert back to list to sort
+            tokenList = list(set)
+            tokenList.sort()
+        except IndexError, ex:
+            tokenList = []
+
+        return tokenList
+
+%>
+<%def name="js()">
+    <%  
+    coreJsFiles = startup.generateJSManifest()
+    %>
+
+    ## start: core js
+    <%lib:script_tags files="${coreJsFiles}" />
+
+    ## buffered inline js
+    <%lib:get_script_blocks />
+</%def>
+
+<%def name="js_initialization()">
+    <%lib:script_tags files="${['/static/js/init.js']}" />
+</%def>
+
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/%s/css/setup.css' % host_app,
+				'/static/app/%s/css/help_tooltip.css' % host_app ]}" />
+    <%lib:script_tags files="${['/static/app/%s/js/setup.js' % host_app,
+                                '/static/app/%s/js/help_tooltip.js' % host_app ]}" />
+</%def>
+
+<%def name="gen_form(method='POST', action=None)">
+    <form method="${method}" action="${action if action else ''}">
+</%def>
+
+<%def name="gen_unixlogs(name, form_content, dynamic=False, preview=False, addNew=True)">
+
+    % if form_content.errors:
+        <p class="errorText">${form_content.errors[0]}</p>
+    % endif 
+<%
+    if form_content.definition:
+        sourcetypes = form_content.definition
+        try:
+            tokenList = parse_dynamic(sourcetypes, removeKey=False)
+        except:
+            tokenList = []
+    else:
+        tokenList = []
+    tokenLen = len(tokenList)
+%> 
+    <dl>
+      <dd>
+    % for st in tokenList:
+        <div class="dynamic-input">
+          <input class="dynamic-text" type="text" name="macro.${name}.definition" value="${st}">
+        % if tokenLen > 1:
+          <span class="remove-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        % else:
+          <span class="remove-text singleRow">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        % endif
+        </div>
+    % endfor
+        <div class="belowInput">
+        % if preview:
+          <a class="preview"><span>Preview</span></a>
+        % endif
+        % if addNew:
+          <a class="add-text"><span>&nbsp;Add New</span></a>
+        % endif
+        </div>
+      </dd>
+    </dl> 
+</%def>
+
+<div id="setup">
+  ${gen_form(method="POST", action=make_url(['custom', host_app , 'unixsetup', app, 'save']))}
+  <div class="splUnixButtons topButtons">
+    <input class="splButton-primary" type="submit" value="Save"></input>
+  </div>
+  ${csrf_hidden_input()}
+  <div class="splUnixConfSpacer firstSpacer"></div>
+  <h3 id="tip_os_index" class="help" >Unix Index(es)</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['os_index'] else ''}">
+      ${gen_unixlogs('os_index', form_content.get('os_index'), dynamic=True, preview=True)}
+    </div>
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_syslog_sourcetype" class="help">Syslog Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['syslog_sourcetype'] else ''}">
+      ${gen_unixlogs('syslog_sourcetype', form_content.get('syslog_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_cpu_sourcetype" class="help">CPU Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['cpu_sourcetype'] else ''}">
+      ${gen_unixlogs('cpu_sourcetype', form_content.get('cpu_sourcetype'), dynamic=True, preview=True)}
+    </div>
+  </div>
+  <div class="splUnixConfSpacer"></div>
+ <h3 id="tip_df_sourcetype" class="help" >DF Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['df_sourcetype'] else ''}">
+      ${gen_unixlogs('df_sourcetype', form_content.get('df_sourcetype'), dynamic=True, preview=True)}
+    </div>
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_hardware_sourcetype" class="help">Hardware Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['hardware_sourcetype'] else ''}">
+      ${gen_unixlogs('hardware_sourcetype', form_content.get('hardware_sourcetype'), dynamic=True, preview=True)}
+    </div>
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_interfaces_sourcetype" class="help">Interfaces Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['interfaces_sourcetype'] else ''}">
+      ${gen_unixlogs('interfaces_sourcetype', form_content.get('interfaces_sourcetype'), dynamic=True, preview=True)}
+    </div>
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_iostat_sourcetype" class="help">Iostat Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['iostat_sourcetype'] else ''}">
+      ${gen_unixlogs('iostat_sourcetype', form_content.get('iostat_sourcetype'), dynamic=True, preview=True)}
+    </div>
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_lastlog_sourcetype" class="help">Lastlog Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['lastlog_sourcetype'] else ''}">
+      ${gen_unixlogs('lastlog_sourcetype', form_content.get('lastlog_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_lsof_sourcetype" class="help">LSOF Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['lsof_sourcetype'] else ''}">
+      ${gen_unixlogs('lsof_sourcetype', form_content.get('lsof_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_memory_sourcetype" class="help">Memory Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['memory_sourcetype'] else ''}">
+      ${gen_unixlogs('memory_sourcetype', form_content.get('memory_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_netstat_sourcetype" class="help">Netstat Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['netstat_sourcetype'] else ''}">
+      ${gen_unixlogs('netstat_sourcetype', form_content.get('netstat_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_open_ports_sourcetype" class="help">Open Ports Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['open_ports_sourcetype'] else ''}">
+      ${gen_unixlogs('open_ports_sourcetype', form_content.get('open_ports_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_package_sourcetype" class="help">Package Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['package_sourcetype'] else ''}">
+      ${gen_unixlogs('package_sourcetype', form_content.get('package_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_ps_sourcetype" class="help">Process Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['ps_sourcetype'] else ''}">
+      ${gen_unixlogs('ps_sourcetype', form_content.get('ps_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_rlog_sourcetype" class="help">Rlog Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['rlog_sourcetype'] else ''}">
+      ${gen_unixlogs('rlog_sourcetype', form_content.get('rlog_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_time_sourcetype" class="help">Time Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['time_sourcetype'] else ''}">
+      ${gen_unixlogs('time_sourcetype', form_content.get('time_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_top_sourcetype" class="help">Top Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['top_sourcetype'] else ''}">
+      ${gen_unixlogs('top_sourcetype', form_content.get('top_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_users_with_login_privs_sourcetype" class="help">Users With Login Privs Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['users_with_login_privs_sourcetype'] else ''}">
+      ${gen_unixlogs('users_with_login_privs_sourcetype', form_content.get('users_with_login_privs_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <h3 id="tip_who_sourcetype" class="help">Who Data</h3>
+  <div class="splUnixConfItem">
+    <div class="searchBox ${'formError' if name and name in ['who_sourcetype'] else ''}">
+      ${gen_unixlogs('who_sourcetype', form_content.get('who_sourcetype'), dynamic=True, preview=True)}
+    </div> 
+  </div>
+  <div class="splUnixConfSpacer"></div>
+  <div class="splUnixButtons lastSave">
+    <input class="splButton-primary" type="submit" value="Save"></input>
+  </div>
+  </form>
+</div>

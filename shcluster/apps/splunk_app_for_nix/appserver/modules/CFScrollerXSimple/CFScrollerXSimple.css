@@ -1,0 +1,67 @@
+.CFScrollerXSimple.chart {
+}
+
+.CFScrollerXSimple.chart .axis path,
+.CFScrollerXSimple.chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.CFScrollerXSimple.chart .x.axis path {
+  display: none;
+}
+
+.CFScrollerXSimple.chart .line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.CFScrollerXSimple ul {
+    list-style: none;
+}
+
+.CFScrollerXSimple ul li {
+    margin: 0 5px 0 0;
+}
+
+.CFScrollerXSimple.excerpt-header {
+    display: block;
+    color: #fff;
+    /*width: 70px;*/
+    height: 45px;
+    padding: 5px;
+    font-size: 14px;
+    /*line-height: 18px;
+    text-align: right;
+    float: left;*/
+    margin: 0 0 10px 0;
+}
+
+.CFScrollerXSimple.severity {
+    background:url(/static/img/skins/default/icon_alerts.png) no-repeat 0 -32px;
+    padding-left: 20px;
+}
+
+.CFScrollerXSimple.severitylow {
+    background-position:0 -16px;
+}
+.CFScrollerXSimple.severityhigh {
+    background-position:0 -48px;
+}
+.CFScrollerXSimple.severitycritical {
+    background-position:0 -64px;
+}
+.CFScrollerXSimple.severityinfo {
+    background-position:0 0;
+}
+.CFScrollerXSimple.severitymedium {
+    background-position:0 -32px;
+}
+
+.CFScrollerXSimple.alertinfo {
+    font-size: 12px;
+    text-align: right;
+    float: right;
+}

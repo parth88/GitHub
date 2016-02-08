@@ -1,0 +1,28 @@
+/*
+ * UnixMeterBar.css
+ * Generatl styling & layout for MeterBar
+ */
+
+.UnixMeterBar .UnixMeterBarLabel {
+  color: #333;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.UnixMeterBarLabel.UnixMeterBarLabelLeft {
+  float:left;
+}
+
+.UnixMeterBarLabel.UnixMeterBarLabelRight {
+  float: right;
+}
+
+.UnixMeterBar .UnixMeterBarContent.ui-progressbar,
+.UnixMeterBar .UnixMeterBarContent .ui-progressbar-overlay {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+.UnixMeterBar .UnixMeterBarContent .ui-progressbar-value {
+  background-image: none;
+}

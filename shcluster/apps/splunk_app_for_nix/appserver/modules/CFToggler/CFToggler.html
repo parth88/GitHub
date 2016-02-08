@@ -1,0 +1,9 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%lib:script_tags files="${['/modules/CFToggler/toggler.js']}" />
+<%
+title = module['params'].get('title', None)
+%>
+% if title is not None:
+<p>${title}</p>
+% endif

@@ -1,0 +1,72 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    import logging
+    logger = logging.getLogger('splunk')
+%>
+
+<%def name="css()">
+    <%coreCSSFiles = [
+        "/static/css/view.css", 
+        "/static/css/skins/default/default.css", 
+        '/static/css/jquery.iphone-style-checkboxes.css'
+    ] %>
+    <%lib:stylesheet_tags files="${coreCSSFiles}" />
+</%def>
+
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/unixHeadlines/manage_headlines.css']}" />
+    <%lib:script_tags files="${['/static/app/splunk_app_for_nix/unixHeadlines/manage_headlines.js']}" />
+</%def>
+
+<div class="ManageHeadlinesContainer">
+  <h2>Create Headline:</h2>
+  <hr />
+  <form method="POST" action="${make_url('/custom/splunk_app_for_nix/unixheadlines/%s/save' % app)}"> 
+  ${csrf_hidden_input()}
+% if headline and headline.errors is not None and len(headline.errors) > 0:
+  <p class="errorText">${headline.errors[0]}</p>
+% endif
+  <table class="splTable" id="headlines_new">
+    <tbody>
+      <tr>
+        <td><h3>Label: <span class="required_field">*</span></h3></td>
+        <td><input type="text" name="label" id="label" value="" /></td>
+      </tr>
+      <tr>
+        <td><h3>Link To Alert: <span class="required_field">*</span></h3></td>
+        <td>
+% if len(alerts) > 0:
+  <select id="alert_name" name="alert_name">
+    % for alert in alerts:
+    <option value="${alert.name}">${alert.name}</option>
+    % endfor
+  </select>
+% else:
+  <p class="statusMessage">No alerts configured...</p>
+% endif
+        </td>
+      </tr>
+      <tr>
+        <td><h3>Description:</h3></td>
+        <td><textarea name="description" id="description"></textarea></td>
+      </tr>
+      <tr>
+        <td class="noBot"><h3>Displayed Message:  <span class="required_field">*</span></h3></td>
+        <td class="noBot"><input type="text" name="message" id="message" value="" /></td>
+      </tr>
+      <tr class="hidden" style="display: none;">
+        <td><h3>Preview:</h3></td>
+        <td><textarea name="preview" id="preview" readonly="readonly"></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="hidden" name="name" id="name" value="${headline.name}" />
+
+  <div class="ManageHeadlinesButtons">
+    <a href="#" class="cancel splButton-secondary">Cancel</a>
+    <input type="submit" style="float: right;" class="splButton-primary" value="Create New Headline"/>
+  </div>
+  </form>
+</div>

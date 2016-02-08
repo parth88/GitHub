@@ -1,0 +1,19 @@
+<view autoCancelInterval="100" template="dashboard.html">
+  <label>Browser Incompatibility</label> 
+  <module name="UnixAccountBar" layoutPanel="appHeader"/>
+  <module name="UnixAppBar" layoutPanel="navigationHeader"/>
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">*</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="maxSize">1</param>
+  </module>
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">splunk.search.job</param>
+    <param name="clearOnJobDispatch">True</param>
+    <param name="maxSize">1</param>
+  </module>
+  <module name="ServerSideInclude" layoutPanel="viewHeader">
+    <param name="src">browser_incompatibility.html</param>
+  </module>
+</view>
+
