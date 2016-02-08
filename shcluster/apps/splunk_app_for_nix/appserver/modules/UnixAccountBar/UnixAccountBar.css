@@ -1,0 +1,103 @@
+/* CSS for the UnixAccountBar */
+
+div.UnixAccountBar {
+    zoom:1;
+    padding: 0 0 0 10px;
+}
+
+div.UnixAccountBar:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+.UnixAccountBar .popupAppLogoContainer {
+    height: 37px;
+    line-height: 37px;
+    padding-top:0px;  
+}
+.UnixAccountBar #applicationsMenuActivator .splIcon-triangle-3-s {
+    float: right;
+    margin:10px 0 0 5px;
+    *margin-top:-9px;
+    *float:none;
+    *display:inline-block;
+    _margin-top:10px;
+}
+.UnixAccountBar .appLogo {
+    clear: left;
+    display: block;
+}
+.UnixAccountBar .popupAppLogoContainer .appLogo img {
+    margin-top: 10px;
+}
+.UnixAccountBar a.splIcon-close {
+    display: block;
+    float: right;
+    margin: 14px 10px;
+}
+.UnixAccountBar a.notLinked {
+    cursor:default;
+}
+.UnixAccountBar ul.accountBarItems {
+   float: right;
+   margin: 3px 5px 0 0;
+}
+.UnixAccountBar ul.lite {
+    margin-top:0px;   
+}
+.UnixAccountBar ul.accountBarItems, .UnixAccountBar ul.accountBarItems li {
+    padding: 0;
+    list-style: none none;
+}
+.UnixAccountBar ul.accountBarItems li {
+    margin: 0;
+    float: left;
+    padding-right: 5px;
+    line-height: 22px;
+}
+.UnixAccountBar ul.accountBarItems li.accountDivider {
+    margin:0px 6px 0px 1px;
+    padding: 0;
+}
+.UnixAccountBar ul.accountBarItems li.onState {
+    background: transparent url(/static/img/skins/default/header_onstate.gif) no-repeat 0px -26px;
+    padding-left: 7px;
+}
+.UnixAccountBar ul.accountBarItems li.onState a {
+    background: transparent url(/static/img/skins/default/header_onstate.gif) no-repeat right 4px;
+    color: #FFF;
+    padding-right: 7px;
+    display: block;
+    _display: inline-block;
+    height:22px;
+    line-height: 22px;
+}
+.UnixAccountBar a.returnLink {
+    float: left;
+    margin-top: 5px;
+}
+.UnixAccountBar span.jobsRunningCount {
+    /*display:none;*/
+}
+
+.UnixAccountBar .appList {
+    display:none;
+}
+
+.UnixAccountBar .userFullName {
+    font-weight: bold;
+}
+
+/*-- Applications Menu Styling --*/
+
+/* remove styling from list above */
+.UnixAccountBar .splMenu {
+    margin-top: 5px;
+    text-align: left;
+}
+
+.UnixAccountBar #applicationsMenuActivator {
+    display:inline-block;
+}

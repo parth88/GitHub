@@ -1,0 +1,129 @@
+/* Unix setup CSS */
+body, td {
+	background-color: #F7F7F7;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+}
+
+td {
+	background-color: #F7F7F7;
+}
+
+input, textarea, select {
+    border: none;
+}
+.InputTable a {
+    font-size: 10px;
+    position: relative;
+    top: -1px;
+}
+.UnixContainer ,
+.UnixMessageContainer {
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    box-shadow: none;
+    padding: 10px;
+    height: auto;
+    width: auto;
+    background-color: #F7F7F7;
+    margin-top: 10px;
+}
+.UnixMessageContainer {
+    max-width: 600px;
+    height: auto;
+}
+.UnixOKButton {
+    height: 30px;
+}
+.UnixOKButton a {
+    float: right;
+}
+.UnixContainer {
+    max-width: 450px;
+}
+.UnixContainer h2 {
+    background-color: transparent;
+    color: #8FBC5A;
+    font-size: 16px;
+    font-weight: bold;
+}
+.UnixContainer h3 {
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: normal;
+    color: #8FBC5A;
+}
+.UnixOverview p {
+    margin-left: 10px;
+    max-width: 420px;
+    text-align: justify;
+    width: auto;
+}
+.UnixMonitor, .UnixScripted {
+    margin-left: 10px;
+}
+.UnixScripted ,
+.UnixMonitor {
+    width: 450px;
+}
+.UnixButtons {
+    max-width: 100%;
+    padding: 20px;
+    width: auto;
+}
+.ScriptedInterval {
+    border: 1px solid #CCCCCC;
+    width: 30px;
+    padding: 2px;
+    font-size: 9px;
+    text-align: right;
+    position: relative;
+    left: -18px;
+}
+.InputTable td,
+.InputTable th {
+    padding: 1px 10px 1px 10px;
+}
+.InputTable th {
+    text-align: left;
+}
+.errorText {
+    background: #fae7e7 url(images/icon_error.png) 10px 10px no-repeat;
+    padding: 10px 10px 10px 44px;
+    color: #000;
+}
+.HasError {
+    background-color: #fae7e7; 
+    border: 1px solid #ccc;
+}
+.NameHeader {
+    width: 140px;
+}
+.IntervalHeader {
+    width: 100px;
+}
+.IntervalColumn {
+    text-align: center;
+}
+.splButton-primary span, .splButton-secondary span {
+    display: block;
+    min-width: 70px;
+    position: relative;
+}
+#unix_submit,
+#unix_reset {
+    width: 100px;
+}
+#unix_submit {
+    margin-left: 170px;
+}
+#scripted_header {
+    padding-bottom: 2px;
+    width: 350px;
+}
+#monitor_header {
+    padding-bottom: 2px;
+    width: 350px;
+}

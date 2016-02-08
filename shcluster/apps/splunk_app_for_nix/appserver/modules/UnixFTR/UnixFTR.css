@@ -1,0 +1,47 @@
+.FtrPopup {
+    width: 600px;
+    height: 520px;
+    padding: 0 20px 10px;
+    margin: 0 auto;
+    display: none;
+}
+.FtrPopup h1 {
+    border-bottom: 1px solid #e0e0dc;
+}
+.FtrPopup > .ButtonRow {
+    border-top: 1px solid #e0e0dc;
+    padding: 20px 0;
+}
+.FtrPopup > .ButtonRow .floatRight {
+    float: right;
+}
+.FtrPopup > .ButtonRow p.callToAction {
+    font-size: 13px;
+    padding: 3px 20px 0 5px;
+    margin: 0;
+}
+.FtrPopup > .ButtonRow img.callToAction {
+    padding-top: 2px;
+}
+.FtrPopup > ul.ImageGrid {
+    width: 500px;
+    height: 400px;
+    list-style: none;
+    margin: 10px auto;
+}
+.FtrPopup > ul.ImageGrid li {
+    float: left;
+    margin: 0 20px 20px;
+    /*padding: 1px;
+    border: 1px solid #cbcad0;*/
+}
+.FtrPopup > ul.ImageGrid img {
+    display: block;
+}
+.FtrPopup > ul.ImageGrid p {
+    font-size: 15px;
+    line-height: 26px;
+}
+.FtrPopup > ul.ImageGrid span {
+    color: #808080;
+}

@@ -1,0 +1,193 @@
+body {
+    background: #F7F7F7;
+    color: #333333;
+    font-family: "Helvetica neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 150%;
+    margin: 0;
+    padding: 20px 0 0;
+}
+h2 {
+    font-size: 16px;
+}
+p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+a {
+    color: #2F76A7;
+}
+.topButtons {
+    margin-top: 20px;
+}
+.singleRow {
+    display: none;
+}
+.tooltip {
+    background: url("../images/question_mark_icon.png") no-repeat center;
+    cursor: pointer;
+    margin-left: 9px;
+}
+.lastSave {
+    margin-bottom: 20px;
+}
+.belowInput {
+    margin-left: 135px;
+}
+.preview,
+.add-text {
+    background: url("/static/img/skins/default/overlay_gloss_28.png") repeat-x scroll left -2px #F7F7F7;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    line-height: 21px;
+    padding: 2px 18px 0 10px;
+}
+.preview span, 
+.add-text span {
+    font-size: 11px;
+}
+.preview span {
+    padding-left: 10px; 
+}
+.add-text span {
+    background: url("../images/plus_icon.png") no-repeat left center transparent;
+    padding-left: 15px;
+}
+.splClearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+#setup {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    /*margin: auto;*/
+    padding: 15px 30px 30px;
+    width: 800px;
+}
+#setup h1 {
+    color: #3F3F3F;
+    font-size: 24px;
+    font-weight: 200;
+    margin-bottom: 40px;
+}
+#setup h3 {
+    color: #3F3F3F;
+    font-weight: normal;
+    padding-top: 12px;
+}
+.errorText {
+    background: #fae7e7 url("../images/icon_error.png") 10px 10px no-repeat;
+    padding: 10px 10px 10px 44px;
+}
+.SuccessMessage, 
+.FailureMessage {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px 10px 10px 10px;
+    height: 125px;
+    margin: auto;
+    padding: 10px 10px 10px 20px;
+    width: 800px;
+}
+.SuccessMessage h2 {
+    font-size: 20px;
+}
+input.dynamic-text {
+    border: 1px solid #CCCCCC;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: inset 0 0 1px 1px #CCCCCC;
+    -webkit-box-shadow: inset 0 0 1px 1px #CCCCCC;
+    box-shadow: inset 0 0 1px 1px #CCCCCC;
+    margin: 5px;
+    padding: 4px;
+    width: 300px;
+}
+div.formError textarea {
+    border:1px solid #d11212;
+}
+div.searchBox button {
+    font-size: 12px;
+}
+div.searchBox dd, div.searchBox dd input {
+    margin-left:0;
+}
+a.remove-link {
+    height: 13px;
+    width: 13px;
+}
+.remove-text {
+    background: url("../images/close_icon.png") no-repeat;
+    cursor: pointer;
+    font-size: 11px;
+    height: 13px;
+    width: 13px;
+}
+input.splButton-primary,
+a.splButton-primary {
+    background: url("/static/img/skins/default/overlay_gloss_28.png") repeat-x scroll left -2px #F7F7F7;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    color: #111111;
+    float: right;
+    font-size: 12px;
+    padding: 3px 0;
+    width: 100px;
+}
+.lastSave input.splButton-primary {
+    margin-top: 15px;
+}
+a.splButton-primary {
+    float: left;
+    text-align: center;
+    text-decoration: none;
+}
+.splUnixConfSpacer {
+    border-bottom: 1px solid #CCCCCC;
+}
+.splUnixConfItem {
+    margin-left: 120px;
+}
+.splUnixAssumptions {
+    margin-left: 100px;
+}
+#tooltip {
+    background-color: #A7A7A7;
+    background-image: linear-gradient(top, rgb(167,167,167) 0%, rgb(128,128,128) 100%);
+    background-image: -o-linear-gradient(top, rgb(167,167,167) 0%, rgb(128,128,128) 100%);
+    background-image: -moz-linear-gradient(top, rgb(167,167,167) 0%, rgb(128,128,128) 100%);
+    background-image: -webkit-linear-gradient(top, rgb(167,167,167) 0%, rgb(128,128,128) 100%);
+    background-image: -ms-linear-gradient(top, rgb(167,167,167) 0%, rgb(128,128,128) 100%);
+    background-image: -webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0, rgb(167,167,167)),
+	    color-stop(1, rgb(128,128,128))
+    );
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    cursor: pointer;
+    max-width: 250px;
+    opacity: 0.95;
+    padding: 5px;
+    position: absolute;
+    width: auto;
+    z-index: 3000;
+}
+#tooltip h3, #tooltip div { 
+    margin: 0; 
+}
+#tooltip .body {
+    color: #FFFFFF;
+}

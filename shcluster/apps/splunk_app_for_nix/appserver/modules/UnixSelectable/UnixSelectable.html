@@ -1,0 +1,56 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%lib:script_tags files="${['/static/app/splunk_app_for_nix/js/contrib/jquery/jquery.mousewheel.js',
+                            '/static/app/splunk_app_for_nix/js/contrib/jquery/jquery.scrollpane.js',
+                            '/static/app/splunk_app_for_nix/js/contrib/jquery/jquery.event.drag-2.2.js',
+                            '/static/app/splunk_app_for_nix/js/contrib/jquery/jquery.event.drop-2.2.js',
+                            '/static/app/splunk_app_for_nix/js/contrib/fuse.js',
+                            '/static/app/splunk_app_for_nix/js/modules/UnixSelectable/selectableTree.js']}"/>
+<%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/css/jquery-ui/jquery-ui-1.9.2.css']}"/>
+<%!
+import splunk.util
+%>
+<%
+
+show_label = splunk.util.normalizeBoolean(module.get('show_label', False))
+
+if show_label is True:
+    offset = [25, 120]
+else:
+    offset = [10, 60]
+
+text_align = module.get('text_align', 'left')
+
+if text_align not in ['left', 'center', 'right']:
+    text_align = 'left'
+
+height = int(module.get('height'))
+width = int(module.get('width'))
+
+%>
+<div class="selectable_container" style="width: ${str(width)}px; height: ${str(height)}px">
+% if show_label is True:
+   <h1 style="text-align: ${text_align};">${module.get('token')}</h1>
+% endif
+   <div class="selector_filter">
+    <input type="text" size="24" placeholder="Filter" id="selector_filter"/>
+    <span id="selector_filter_reset"></span>
+  </div>
+
+  <div class="btn-group selectable_reset">
+    <a class="btn dropdown-toggle unixButton" href="#">
+      <div class="title">Reset</div>
+    </a>
+  </div>
+
+  <div class="btn-group selectable_select_all">
+    <a class="btn dropdown-toggle unixButton" href="#">
+      <div class="title">Select All</div>
+    </a>
+  </div>
+
+  <div class="selector_border" style="width: ${str(width-offset[0])}px; height: ${str(height-offset[1])}px" >
+    <ol id="selector">
+    </ol>
+  </div>
+</div>

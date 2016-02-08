@@ -1,0 +1,105 @@
+.ManageHeadlinesContainer {
+    height: 500px;
+    padding: 20px;
+    overflow: auto;
+    width: 800px;
+}
+.ManageHeadlinesContainer h2,
+.SuccessMessage h2 {
+    font-family: "Helvetica nenu",Helvetica,Arial,sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+	padding-left: 15px;
+}
+.ManageHeadlinesContainer table#headlines_table {
+    margin-bottom: 35px;
+    margin-left: 2%;
+    width: 88%;
+}
+.ManageHeadlinesContainer table#headlines_new,
+.ManageHeadlinesContainer table#headlines_edit {
+    margin-left: 6%;
+    text-align: right;
+    width: 72%;
+}
+.ManageHeadlinesContainer hr,
+.SuccessMessage hr {
+    margin-bottom: 20px;
+    margin-top: 35px;
+	margin-right: 0;
+	margin-left: 16px;
+	color: #dddddd;
+	background-color: #dddddd;
+	height:1px;
+	border-width:0;
+	width: 88%;
+}
+.ManageHeadlinesButtons {
+	margin-left: 13px;
+	width: 88%;
+}
+.splButton-primary, 
+input.splButton-primary {
+    float: right;
+}
+input.OK {
+    width: 100px;
+}
+.splButton-secondary {
+    float: right;
+}
+.statusMessage {
+    font-family: "Helvetica nenu",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+}
+.errorText {
+    background: #fae7e7 url(images/icon_error.png) 10px 10px no-repeat;
+    height: 25px;
+    margin-left: 2%;
+    padding: 10px 10px 10px 44px;
+    width: 85%;
+}
+table.splTable td.noBot {
+    border-bottom: none;
+}
+input, textarea { 
+    border-radius: 5px;
+    width: 400px;
+}
+select {
+    border-radius: 5px;
+    width: 415px;
+}
+textarea {
+    resize: none;
+}
+textarea#preview {
+    background-color: #F9F9F9;
+    background: -webkit-gradient(linear, 0% 0%, 50% 100%, from(#F9F9F9), to(#F9F9F9), color-stop(.5,#FFFFFF));
+    background: -moz-linear-gradient(top, #F9F9F9 0%, #FFFFFF 50%, #F9F9F9 100%);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #F9F9F9 0%, #FFFFFF 50%, #F9F9F9 100%);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #F9F9F9 0%, #FFFFFF 50%, #F9F9F9 100%);
+    border: none;
+    box-shadow: none;
+    height: 120px;
+    resize: none;
+}
+.SuccessMessage {
+    height: 500px;
+    padding: 10px;
+    margin-left: 15px;
+}
+.SuccessMessage p {
+    font-size: 16px;
+    text-align: center;
+}
+.required_field {
+	color:red;
+}
+table.splTable td {
+	border: none;
+}

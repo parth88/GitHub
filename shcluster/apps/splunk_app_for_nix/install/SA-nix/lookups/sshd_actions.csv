@@ -1,0 +1,7 @@
+sshd_action,action
+Accepted,success
+Failed,failure
+"Authorized to",success
+"Authentication refused",failure
+"Authentication tried",failure
+"Login restricted",failure

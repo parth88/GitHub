@@ -1,0 +1,37 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    # "/static/app/splunk_app_for_nix/css/colorpicker.css",
+    # "/static/app/splunk_app_for_nix/css/UnixSpiderGraph/UnixSpiderGraphDark.css"
+    "/static/app/splunk_app_for_nix/css/bootstrap.css"
+  ]
+  
+  moduleJSFiles = [
+    # "/static/app/splunk_app_for_nix/js/contrib/colorpicker.js",
+    "/static/app/splunk_app_for_nix/js/contrib/bootstrap/bootstrap-unixjquery.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSearchSelector/flyout.js"
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+<div class="UnixSearchSelector" id="${module.get('id')}_searchSelector">
+    <div class="header">
+    </div>
+
+    <div class="searchFlyout unixSelector">
+        <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <div class='title'></div>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+          </ul>
+        </div>
+    </div>
+
+</div>
+

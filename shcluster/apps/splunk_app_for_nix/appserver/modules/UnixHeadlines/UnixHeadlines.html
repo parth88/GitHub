@@ -1,0 +1,21 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<div class="UnixHeadlinesFilter">
+ <i class="icon-info icon-info-circled icon-selected"></i>
+ <i class="icon-warning icon-attention-1 icon-selected"></i>
+ <i class="icon-critical icon-attention icon-selected"></i>
+</div>
+<div class="UnixHeadlinesInner">
+
+  <p class="message">Waiting for results...</p>
+  <table class="splUnixHeadlinesTable" style="display: none;">
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<div class="UnixHeadlinesButtonContainer">
+  <input type="button" id="manage_headlines" value="Manage Headlines" />
+</div>
+<div class="UnixHeadlinesManager">
+</div>

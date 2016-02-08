@@ -1,0 +1,90 @@
+/* CSS for the AppBar */
+.UnixAppBar div.UnixAppBar {
+    padding: 0px;
+    padding: 1px 10px;
+}
+.UnixAppBar ul.appBarNav {
+    list-style: none none;
+    margin: 0px;
+}
+.UnixAppBar ul.appBarNav li {
+    list-style: none none;
+    float: left;
+}
+.UnixAppBar ul.appBarNav li a {
+    display: block;
+    _display: inline-block;
+    padding: 0px 10px;
+}
+.UnixAppBar ul.appBarNav li a:hover {
+    text-decoration: none;
+}
+.UnixAppBar ul.appBarNav li.hasMenu a {
+   padding-right: 23px;
+   position: relative;
+   *zoom:1;
+   outline: none;
+}
+.UnixAppBar ul.appBarNav li.hasMenu a span.splIcon {
+    position: absolute;
+    right:10px;
+    top:13px;
+}
+
+
+/* white menu overrides */
+.UnixAppBar .splMenu-primary a {
+    width: 180px;
+    padding: 5px 15px;
+    *width:auto;
+}
+
+.UnixAppBar .splMenu-primary ul div.innerMenuWrapper {
+    width: 210px;
+}
+.UnixAppBar .splMenu-primary ul li {
+    width:210px;
+    _width:auto;
+}
+
+/* auxiliary links (help, prefs, about) */
+
+.UnixAppBar .auxLinks {
+    float: right;
+    margin-right: 10px;
+    font-size: 11px;
+}
+.UnixAppBar .auxLinks span {
+    padding: 0px 6px;
+}
+
+.UnixAppBar .unitTestListing {
+    display:none;
+}
+
+/* styling for about dialog */
+.UnixAppBar .aboutPopupContainer {
+    display:none;
+    padding: 10px;
+}
+.UnixAppBar .aboutPopupContainer .aboutPopupSplunkLogo {
+    background: transparent url(/static/img/skins/default/logo_splunkServer_white_low.png) no-repeat scroll 0 0;
+    height: 45px;
+    width: 120px;
+}
+
+.UnixAppBar ul.appBarNav li a.currentView {
+    background: url(/static/img/skins/default/overlay_white_28.png) repeat-x scroll 0 0 transparent;
+}
+
+.UnixAppBar ul.appBarNav li a {
+    padding: 1px 23px;
+}
+
+.UnixAppBar .appBarNav a{
+    color: #E9E9E9;
+}
+
+.UnixAppBar {
+    padding: 1px 10px;
+}

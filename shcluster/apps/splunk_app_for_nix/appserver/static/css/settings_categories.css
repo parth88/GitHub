@@ -1,0 +1,214 @@
+@font-face {
+    font-family: 'fontello';
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125');
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125#iefix') format('embedded-opentype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.woff?82669125') format('woff'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.ttf?82669125') format('truetype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.svg?82669125#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wrapper {
+    min-height:500px;
+}
+
+.basicPanel {
+    width:250px;
+    height:575px;
+    float: left;
+    border-right:1px solid #e8e8e8;
+}
+
+.header{
+    overflow:hidden;
+    border-bottom:1px solid #e8e8e8;
+    /*margin-top:10px;*/
+    padding-top: 16px;
+    height:32px;
+}
+
+.contents {
+    clear:both;
+    height: 500px;
+    overflow-y: auto;
+    padding-top:20px;
+}
+
+.title {
+    font-weight:bold;
+}
+
+.title {
+    float: left;
+    margin-left:18px;
+    padding-bottom:8px;
+}
+
+.title .lightTitle,
+.title .currentLevel {
+    font-weight: lighter;
+}
+.buttons {
+    float: right;
+    font-weight:bold;
+    font-size:2em;
+    margin-right:15px;
+}
+
+.delete, .add {
+    float: left;
+    cursor: pointer;
+    padding-left:8px;
+}
+
+.delete:before {
+    content: '\e809';
+    font-family:'fontello';
+}
+
+.add:before {
+    content: '\e80b';
+    font-family:'fontello';
+}
+
+.clearfix {
+    clear:both;
+}
+
+.contents .itemName {
+    cursor: pointer;
+    float: left;
+    margin-left:18px;
+}
+
+/* the second part makes sure the 
+hover doesnt apply for selected items*/
+.contents .item.selected, 
+.contents .item.selectedHighlight,
+.contents .item.selected:hover,
+.contents .item.selectedHighlight:hover 
+{
+    background-color: #747474;
+    color:white;
+}
+
+.contents .item:hover {
+    background-color: #eeeeee;
+}
+
+.contents .itemName, 
+.contents .childrenCount,
+.dragItem
+{
+    padding-top:13px;
+    padding-bottom:13px;
+}
+#hostLeftPanel .contents .item .itemName,
+#hostRightPanel .contents .item .itemName,
+.owner {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.contents .childrenCount {
+    float:right;
+    margin-right:15px;
+}
+
+.contents .item {
+    clear:both;
+    overflow: hidden;
+}
+
+#setup {
+    padding: 0 !important;
+    width:1065px;
+}
+
+#hostPanel {
+    width:560px;
+    min-height:500px;
+    float: left;
+}
+
+#hostRightPanel .contents {
+    width: 309px;
+}
+
+#hostRightPanel {
+    min-height:500px;
+    float:left;
+    width:309px;
+}
+
+#hostLeftPanel {
+    min-height:500px;
+    float:left;
+    width:250px;
+    border-right: 1px dashed #e8e8e8;
+}
+
+#hostPanel .item {
+    float:none;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#hostRightPanel .owner {
+    float:right;
+    margin-right:18px;
+}
+
+.selectionBoundingBox {
+    position: absolute;
+    border: 1px solid #7A7A7A;;
+    background: rgba(204, 204, 204, 0.29);
+}
+
+.dragItem {
+    position: absolute;
+    background-color: #888;
+    color: #FFF;
+    width:250px;
+}
+
+.dragItem .owner {
+    padding: 0px;
+    float:right;
+    margin-right:18px;
+}
+
+.dragItem .itemName {
+    margin-left: 18px;
+    float: left;
+}
+input.rename {
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+}
+
+.rename {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+    margin-left: 18px;
+    padding: 2px;
+}
+
+.settingsCol {
+    clear: left;
+    float: left;
+    position: relative;  
+}
+
+.parentSettingsCol {
+    overflow: hidden;
+    width: 1065px;
+}
+

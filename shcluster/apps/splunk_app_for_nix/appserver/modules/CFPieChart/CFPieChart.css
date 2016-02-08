@@ -1,0 +1,53 @@
+.CFPieChart {
+    clear:both;
+}
+
+.CFPieChart.chart {
+    display: inline-block;
+}
+
+.CFPieChart.chart .reset {
+    padding-left: 1em;
+    font-size: smaller;
+    color: #ccc;
+}
+
+.CFPieChart.chart pieLabel {
+    font: 18px sans-serif;
+    font-weight: bold;
+    fill: #d62728;
+}
+
+.CFPieChart.chart arcLabel {
+    fill: #fff;
+    text-decoration: underline;
+}
+
+.CFPieChart.chart text.arcLabel {
+    cursor: pointer;
+}
+
+.CFPieChart.chart .pieLabel.reset {
+    cursor: pointer;
+    fill: #ccc;
+}
+
+.CFPieChart.chart text.legendLabel {
+    vertical-align: middle;
+}
+
+.CFPieChart.chart .title {
+    margin-bottom:10px;
+}
+
+.CFPieChart.chart svg {
+    float:left;
+}
+
+.CFPieChart.chart text {
+    font-size:10px;
+}
+
+.CFPieChart.chart .lblGroup, .CFPieChart.chart .ctrGroup {
+    display: block;
+}

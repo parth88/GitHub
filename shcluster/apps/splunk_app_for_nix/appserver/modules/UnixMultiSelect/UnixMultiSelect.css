@@ -1,0 +1,77 @@
+/* jquery.multiselect customization */
+.UnixMultiSelect .ui-multiselect {
+    background-image: -moz-linear-gradient(top, #F3f3f3, #F3f3f3);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F3f3f3), to(#F3f3f3));
+    background-image: -webkit-linear-gradient(top, #F3f3f3, #F3f3f3);
+    background-image: -o-linear-gradient(top, #F3f3f3, #F3f3f3);
+    background-image: linear-gradient(to bottom, #F3f3f3, #F3f3f3);
+    border: 1px solid #C7C7C7;
+    border-radius: 4px;
+    color: #333;
+    height: 22px;
+    text-align:left;
+    text-shadow: 0 1px 0 #FFF;
+    font-size: 12px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 0px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.UnixMultiSelect .ui-multiselect:hover,
+.UnixMultiSelect .ui-multiselect-hover {
+    background-color: #EEE !important;
+    background-color: #F5F5F5 !important;
+    background-image: -moz-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#FAFAFA)) !important;
+    background-image: -webkit-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: -o-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: linear-gradient(to bottom, #FFF, #FAFAFA) !important;
+    background-repeat: repeat-x !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe5e5e5', GradientType=0) !important;
+    border-color: #AEAEAE !important;
+    border-top-color: #B7B7B7 !important;
+    border-bottom-color: #989898 !important;
+    background-position: 0 0 !important;
+    background-position: 0 !important;
+}
+
+.UnixMultiSelect .ui-multiselect span.ui-icon {
+    float: right;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: top;
+    border-top: 4px solid #464545;
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    content: "";
+    margin-top: 8px;
+}
+
+.ui-multiselect-header .ui-multiselect-filter input {
+  margin-bottom: 0;
+  padding-bottom: 2px;
+  padding-top: 5px;
+
+}
+.ui-multiselect-header .ui-helper-reset {
+  float: right;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.UnixMultiSelect .loadingContainer {
+    padding: 0 13px;
+}
+
+.UnixMultiSelect p {
+    margin: 0;
+    text-align: center;
+    font-size: 12px;
+    padding: 0 12px;
+}

@@ -1,0 +1,100 @@
+.UnixSpiderGraph-dark .bg {
+    fill: #3f3f3f;
+}
+
+.UnixSpiderGraph-dark .UnixSpiderGraph {
+    /*background: #626262;*/
+
+}
+
+.UnixSpiderGraph-dark .UnixSpiderGraph {
+/*    background: #626262;
+    
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyYWRpYWxHcmFkaWVudCBpZD0iZyI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNzg3OTc3Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjI2MjYyIi8+PC9yYWRpYWxHcmFkaWVudD48cmVjdCB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiM2MjYyNjIiIC8+PHJlY3QgeD0iMCUiIHk9Ii0yNS45MjU5JSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTUxLjg1MTklIiBmaWxsPSJ1cmwoI2cpIiAvPjwvc3ZnPg==);
+    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 185, color-stop(0%, #787977), color-stop(100%, #626262));
+    background-image: -webkit-radial-gradient(center center, farthest-side circle, #787977 0%, #626262 100%);
+    background-image: -moz-radial-gradient(center center, farthest-side circle, #787977 0%, #626262 100%);
+    background-image: -ms-radial-gradient(center center, farthest-side circle, #787977 0%, #626262 100%);
+    background-image: -o-radial-gradient(center center, farthest-side circle, #787977 0%, #626262 100%);
+    background-image: radial-gradient(farthest-side circle at center center, #787977 0%, #626262 100%);
+*/
+
+    height: inherit;
+    width: inherit;
+}
+
+.UnixSpiderGraph-dark text, .UnixSpiderGraph-dark .UnixSpiderGraph {
+    fill: white;
+}
+
+.UnixSpiderGraph-dark text.groupLabel {
+    fill: white;
+}
+
+.UnixSpiderGraph-dark .axis text {
+    fill: white;
+}
+
+.UnixSpiderGraph-dark line {
+    stroke: hsl(0, 0%, 81%);
+}
+
+.UnixSpiderGraph-dark .header {
+    color: white;
+}
+
+/*********************
+Color Picker
+*********************/
+
+
+.UnixSpiderGraph-dark path.thresholdCircle {
+    stroke: #404040;
+}
+
+.UnixSpiderGraph-dark .confirm {
+    color: #333;
+}
+
+/*********
+Graphing
+*********/
+
+.UnixSpiderGraph-dark circle {
+    /*stroke: hsl(0, 0%, 50%);*/
+    stroke: #555;
+}
+
+.UnixSpiderGraph-dark .gridMarker {
+    stroke: #555;
+}
+
+.UnixSpiderGraph-dark .groupMarker {
+    stroke: gray;
+}
+
+.UnixSpiderGraph-dark .hostMarker {
+    stroke: #3A3A3A;
+}
+
+.UnixSpiderGraph-dark .hostGroup {
+    cursor: pointer;
+    fill: #FAFAFA;
+}
+
+.UnixSpiderGraph-dark .hostGroup text {
+    fill: white;
+}
+
+.UnixSpiderGraph-dark .groupMarker {
+    /*stroke: #404040;*/
+    stroke: hsl(0, 0%, 100%);
+}
+
+.UnixSpiderGraph-dark .peak {
+    stroke: #ffffff;
+}
+
+.UnixSpiderGraph-dark .hostBg {
+    stroke: white;
+}

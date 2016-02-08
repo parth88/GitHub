@@ -1,0 +1,8 @@
+<nav color="#7DB3B9">
+  <view name="home" default="true" />
+  <view name="metrics" />
+  <view name="hosts" />
+  <view name="alerts" />
+  <view name="unix_flashtimeline" />
+  <view name="settings" />
+</nav>

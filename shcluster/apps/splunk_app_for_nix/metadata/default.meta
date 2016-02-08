@@ -1,0 +1,77 @@
+[lookups]
+export=system
+
+[tags]
+export = system
+
+[props]
+export = system
+
+[transforms]
+export = system
+
+### EVENT TYPES
+
+[eventtypes]
+access = read : [ * ], write : [ admin, power ]
+export = system
+
+### VIEWS
+
+[views/setup]
+access = read : [ admin ], write : [ admin ]
+export = none
+
+### SAVED SEARCHES
+
+[savedsearches]
+access = read : [ * ], write : [ admin, power ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20ps%20mem%20by%20cmd]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20cpu%20by%20cmd]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20iostat%20blk%20rw%20sec]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20iostat%20blk%20wr%20sec%20by%20host]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20System%20-%20lsof%20open%20files%20by%20user]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20System%20-%20netstat%20count%20by%20proto]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20System%20-%20netstat%20count%20by%20type]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20ps%20cpu%20by%20command]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20ps%20rss%20mem%20by%20user]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20ps%20rss%20mem%20by%20command]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20top%20cpu%20by%20host]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20Perf%20-%20top%20rss%20mem%20vs%20command]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20System%20-%20vmstat%20free%20mem%20by%20host]
+access = read : [ * ], write : [ admin ]
+
+[savedsearches/UNIX%20-%20System%20-%20vmstat%20total%20mem%20by%20host]
+access = read : [ * ], write : [ admin ]
+
+
+### VIEWSTATES: even normal users should be able to create shared viewstates
+
+[viewstates]
+access = read : [ * ], write : [ * ]
+export = system

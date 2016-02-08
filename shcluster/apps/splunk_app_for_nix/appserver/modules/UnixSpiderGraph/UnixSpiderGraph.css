@@ -1,0 +1,274 @@
+/***********
+Base
+***********/
+
+.bg {
+    stroke: 0;
+}
+
+.UnixSpiderGraph {
+    padding: 0;
+}
+
+.UnixSpiderGraph svg{
+}
+
+text, .UnixSpiderGraph {
+    font-family: arial, helvetica neue;
+    font-size: 10px;
+}
+
+.gridMarker {
+    fill: none;
+    pointer-events:none;
+}
+
+.axisGroup text {
+    font-size: 14px;
+}
+
+text.groupLabel {
+    font-size: 14px;
+    /*fill:black;*/
+}
+
+line {
+    stroke-width: 1px;
+}
+
+.UnixSpiderGraph {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    margin: 0 auto;
+    /*width:50%;*/
+}
+
+.UnixSpiderGraph .header {
+    /*color: white;*/
+    font-family: "Helvetica Neue",sans-serif;
+    font-size: 25px;
+    font-weight: 100;
+    padding-left: 28%;
+    padding-top: 10px;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+/*********************
+Color Picker
+*********************/
+
+.gripperMark {
+    stroke: white;
+    stroke-width: 1px;
+    stroke-opacity:.5;
+}
+
+path.thresholdCircle {
+    stroke-width: 2px;
+    stroke-dasharray: 0.5%;
+    stroke-opacity:0.5;
+    fill: none;
+}
+
+.picker.cp-default, .palette {
+    position: absolute;
+    display: none;
+    width: 200px;  
+    z-index: 10000;
+}
+
+.colorUI {
+    fill: #5C5C5C;
+    stroke-width:1px;
+}
+
+.confirmWrapper {
+    text-align:right;
+}
+
+.confirm {
+    margin-top:9px;
+    height: 22px !important;
+}
+
+.pickerWrapper, .paletteWrapper {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.swatch {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 10px;
+}
+
+.topButtons {
+
+}
+
+.topButtons .exit {
+    right: 0px;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -2px;
+}
+
+.swatches {
+    margin-top:10px;
+}
+
+
+/*********
+Graphing
+*********/
+
+.gridMarker, .groupMarker, .hostMarker {
+    fill-opacity: 0;
+    stroke-width: 1px;
+    stroke-opacity: 0.6;
+}
+
+/*
+This allows for clicks to pass down to the actual host slices
+Otherwise, they are intercepted
+*/
+.gridMarker {
+    fill: none;
+    pointer-events:none;
+}
+
+.groupMarker {
+    stroke-width: 2px;
+}
+
+.peak {
+    stroke-width: 2px;
+    stroke-dasharray: 0.5%;
+}
+
+/**********
+Icons
+***********/
+
+.icon-button {
+    cursor: pointer;
+}
+
+
+/**********
+Debug
+***********/
+
+.testControls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.testControls .btn {
+    margin-bottom:10px;
+}
+
+/***********
+Bootstrap Button
+************/
+button {
+    margin: 0;
+    -webkit-appearance: button;
+    font-weight: normal;
+}
+
+.btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: whiteSmoke;
+    background-image: -moz-linear-gradient(top, white, #E6E6E6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#E6E6E6));
+    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+    background-image: -o-linear-gradient(top, white, #E6E6E6);
+    background-image: linear-gradient(to bottom, white, #E6E6E6);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+    border-color: #E6E6E6 #E6E6E6 #BFBFBF;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    border: 1px solid #CCC;
+    border-bottom-color: #B3B3B3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+/*    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);*/
+}
+
+.btn-inverse {
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #363636;
+    background-image: -moz-linear-gradient(top, #444, #222);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#222));
+    background-image: -webkit-linear-gradient(top, #444, #222);
+    background-image: -o-linear-gradient(top, #444, #222);
+    background-image: linear-gradient(to bottom, #444, #222);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+    border-color: #222 #222 black;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.btn:hover, .btn:focus{
+/*    color: #333;
+    text-decoration: none;
+    background-position: 0 -15px;
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;*/
+}
+
+.btn-inverse:hover, .btn-inverse:focus, .btn-inverse:active, .btn-inverse.active, .btn-inverse.disabled, .btn-inverse[disabled] {
+    color: white;
+    background-color: #222;
+}
+
+.noResultsArea {
+    height: 100px;
+    position: absolute;
+    left:33%;
+    top:100px;
+    font-size:16px;
+    display:none;
+}
+
+/*
+TEMP
+*/
+/*.tempCircle {
+    fill-opacity: 1;
+}
+
+.hostGroup {
+    fill-opacity: 0 !important;
+}*/

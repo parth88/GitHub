@@ -1,0 +1,192 @@
+body {
+    background-color: #f7f7f7;
+    color: #3f3f3f;
+}
+.appHeader .accountBarItems a {
+    color: #FFFFFF;
+}
+#loading {
+    background-color: transparent;
+}
+.UnixAccountBar {
+    background: #7db3b9; 
+    background: -moz-linear-gradient(top,  #7db3b9 54%, #76a9af 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(54%,#7db3b9), color-stop(100%,#76a9af)); 
+    background: -webkit-linear-gradient(top, #7db3b9 54%,#76a9af 100%); 
+    background: -o-linear-gradient(top, #7db3b9  54%,#76a9af 100%); 
+    background: -ms-linear-gradient(top, #7db3b9 54%,#76a9af 100%); 
+    background: linear-gradient(to bottom, #7db3b9 54%,#76a9af 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db3b9', endColorstr='#76a9af',GradientType=0 ); 
+}
+
+.appHeaderWrapper h1 {
+    color: #FFFFFF;
+    line-height: 45px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.UnixAccountBar .appLogo {
+    background: url("images/Splunk_logo_white.png") no-repeat scroll 0 0 transparent;
+    margin-top: 14px;
+    margin-left: 15px;
+    height: 39px;
+    padding-right: 10px;
+}
+.UnixAppBar {
+    padding: 1px 10px;
+}
+.UnixAppBar a.help {
+    background: url("../../../img/skins/default/icon-help-12.png") no-repeat scroll left center transparent;
+    color: #7DB3B9;
+    display: block;
+    float: left;
+    padding-left: 16px;
+}
+.UnixAppBar h2.app-name {
+    display: none;
+}
+.navigationHeader {
+    background-color: #2c2c2c;
+}
+.splHeader-dashboard h2 {
+    color: #3F3F3F;
+    font-size: 24px;
+    font-weight: 200;
+    margin-bottom: 20px;
+	font-family:"Helvetica nenu", Helvetica, Arial, sans-serif;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.UnixAccountBar #applicationsMenuActivator .splIcon-triangle-3-s {
+    float: right;
+    margin: 10px 0 0 5px;
+    background-image: url("images/nav_black_down_arrow.png");
+    background-position: 0 0;
+}
+ul.appBarNav li a {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 17px;
+    color: #eeeeee;
+}
+.dashboardCell .meta{
+    margin-top: 5px;
+    padding-right: 10px;
+}
+.TitleBar .splHeader, 
+.FieldPickerPopup .splHeader-primary {
+    background-color: #F7F7F7;
+    background-image: none;
+}
+.viewHeader, .mainSearchControls,
+.splSearchControls-inline,
+.SearchBar .saHelpWrapper {
+    background-color: #F7F7F7;
+}
+.splView-browser_incompatibility .compatibility-error {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    color: #3F3F3F;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 14px;
+    padding: 27px;
+    width: auto;
+}
+.splView-browser_incompatibility i {
+    float: left;
+}
+.splView-browser_incompatibility h2 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.splView-browser_incompatibility .compatibility-help {
+    font-size: 12px;
+    margin-left: 54px;
+}
+.splView-browser_incompatibility .compatibility-help a {
+    color: #5379AF;
+}
+.splView-browser_incompatibility .compatibility-help a:hover {
+    color: #32496A;
+    text-decoration: underline;
+}
+@font-face {
+  font-family: 'warning';
+  src: url('/static/app/splunk_app_for_nix/fonts/warning.eot?71295197');
+  src: url('/static/app/splunk_app_for_nix/fonts/warning.eot?71295197#iefix') format('embedded-opentype'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.woff?71295197') format('woff'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.ttf?71295197') format('truetype'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.svg?71295197#warning') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.splView-browser_incompatibility .icon-warning:before {
+  font-family: "warning";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 2em;
+  color: #707070;
+  font-size: 200%;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 2em;
+  margin-left: .2em;
+}
+.splView-browser_incompatibility .icon-attention-1:before { content: '\e800'; } /* '' */
+.splView-home .splHeader-popup {
+    background-color: #FFFFFF;
+    background-image: none;
+    border-radius: 8px 8px 0 0;
+}
+.splView-setup .splHeader h2 {
+    display: none;
+}
+.splHeader-popup, .splHeader-popup h2 {
+    cursor: default;
+}
+.popupContainer {
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    z-index: 2000000001; /* ensure popup is not covered by any potential spinner */
+}
+.popupContent {
+    -moz-border-radius: 0 0 8px 8px;
+    border-radius: 0 0 8px 8px;
+    padding: 0;
+}
+.popupContent iframe {
+    width: 800px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 0;
+}
+
+/* Make all different versions of select button of same font */
+.UnixMultiSelect button,
+.UnixSearchSelector div.title,
+.UnixNodesMetricsSelect button
+{
+    font-family: Arial,Helvetica,sans-serif;
+}
+/* override cursor: pointer for nix results table */
+.UnixResultsTable table th a {
+    cursor: default;
+}
+
+.UnixResultsTable table td {
+    cursor: default;
+}
+/* prevent process status from overflowing */
+.splView-hosts .NodeDetailProcesses .UnixResultsTable .UnixResultsTableWrapper.actual-container {
+    height: 100px;
+    overflow-y: auto; 
+}

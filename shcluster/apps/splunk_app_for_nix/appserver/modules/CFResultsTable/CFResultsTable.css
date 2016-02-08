@@ -1,0 +1,427 @@
+/*
+ * CFResultsTable.css
+ * Styling for Table
+ * Inherits some of Bootstrap CSS for tables scoped to CFResultsTable class
+ */
+
+/* general layout */
+
+.CFResultsTableWrapper {
+    margin: 0 26px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.CFResultsTableWrapper.double-scrollbar > div {
+    height: 1px;
+    display: none
+}
+
+.CFResultsTable table {
+    /*table-layout: fixed;*/
+    white-space: nowrap;
+    margin-bottom: -1px;
+}
+
+.CFResultsTable table th,td {
+    overflow: hidden;
+    width: auto;
+}
+
+.CFResultsTable table th a {
+    position: relative;
+    margin-right: 15px;
+    color: #575757;
+    cursor: pointer;
+}
+
+.CFResultsTable table td {
+    color: #333333;
+}
+
+/* row number display */
+.CFResultsTable table td.pos,
+.CFResultsTable table th.pos {
+   width: 7px;
+}
+
+.CFResultsTable table td.pos,
+.CFResultsTable table th.pos {
+   color: #bbb;
+}
+
+/* status messages & loader */
+.CFResultsTable .statusMessage {
+  background: #edede7;
+  border: 0px;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+  padding: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #666;
+}
+
+.CFResultsTable table td.val div.loading {
+  height: 16px;
+  width: 16px;
+  background: url(/static/app/splunk_app_for_nix/loader.gif);
+}
+
+.CFResultsTable .table.table-hover-row tbody > tr:nth-child(even) > td {
+  background: #F5F5F5;
+}
+
+.CFResultsTable .table.table-hover-row tbody > tr:nth-child(odd) > td {
+  background: #FFFFFF;
+}
+
+/* used for highlight upon hover */
+/*.CFResultsTable .table.table-hover-cell tbody > tr > td.val:hover {
+  background-color: #ededed;
+}*/
+
+.CFResultsTable .table.table-hover-cell tbody > tr > td.val > div.mv:hover {
+  background-color: #f5e998;
+}
+
+/*
+ * used for dynamic highlight upon mouseover/mouseout
+ * highlight over cell (x,y)
+ * highlight over header for col x
+ */
+.CFResultsTable table.table tbody > tr > td.val.highlight,
+.CFResultsTable table.table thead > tr > th.highlight {
+  background-color: #ededed;
+}
+
+/*
+ * used for dynamic selection upon click
+ * selection over cell (x,y)
+ * selection over entire row y 
+ */
+.CFResultsTable table.table tbody > tr > td.val.selected,
+.CFResultsTable table.table tbody > tr > td.val > div.mv.selected,
+.CFResultsTable table.table tbody > tr.selected > td {
+  background-color: #f5e998 !important;
+}
+
+/* sorting */
+.CFResultsTable th span.colSort {
+  width: 5px;
+  height: 10px;
+  position: absolute;
+  right: -15px;
+  bottom: 0;
+  background-image: url(/static/app/splunk_app_for_nix/splIcons.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  padding-left: 7px;
+  line-height: 8px;
+  font-size: 9px;
+}
+.CFResultsTable th a:hover > span.colSortNone {
+  background-position: -67px -446px;
+}
+/*.CFResultsTable th span.colSort:hover {
+  background-color: #f5e998;
+}*/
+.CFResultsTable th span.colSortNone {
+  background-position: -7px -446px;
+}
+.CFResultsTable th span.colSortDesc {
+  background-position: -67px -365px;
+}
+/*.CFResultsTable th span.colSortDesc:hover {
+  background-position: -67px -385px;  
+}*/
+.CFResultsTable th span.colSortAsc{
+  background-position: -67px -385px;
+}
+/*.CFResultsTable th span.colSortAsc:hover {
+  background-position: -67px -366px;
+}*/
+
+/*!
+ * Bootstrap v2.3.1
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+.CFResultsTable table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.CFResultsTable .table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.CFResultsTable .table th,
+.CFResultsTable .table td {
+  padding: 8px;
+  line-height: 16px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #cccccc;
+}
+
+.CFResultsTable .table th {
+  font-weight: bold;
+}
+
+.CFResultsTable .table thead th {
+  vertical-align: bottom;
+}
+
+.CFResultsTable .table tbody tr:last-child {
+  border-bottom: 1px solid #cccccc;
+}
+
+.CFResultsTable .table tbody + tbody {
+  border-top: 2px solid #cccccc;
+}
+
+.CFResultsTable .table .table {
+  background-color: #ffffff;
+}
+
+.CFResultsTable .table-condensed th,
+.CFResultsTable .table-condensed td {
+  padding: 4px 5px;
+}
+
+.CFResultsTable .table-striped tbody > tr:nth-child(odd) > td,
+.CFResultsTable .table-striped tbody > tr:nth-child(odd) > th {
+  background-color: #f5f5f5;
+}
+/*
+.CFResultsTable .table-hover tbody tr:hover > td,
+.CFResultsTable .table-hover tbody tr:hover > th {
+  background-color: #f5f5f5;
+}
+*/
+.CFResultsTable table td[class*="span"],
+.CFResultsTable table th[class*="span"],
+.CFResultsTable .row-fluid table td[class*="span"],
+.CFResultsTable .row-fluid table th[class*="span"] {
+  display: table-cell;
+  float: none;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span1,
+.CFResultsTable .table th.span1 {
+  float: none;
+  width: 44px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span2,
+.CFResultsTable .table th.span2 {
+  float: none;
+  width: 124px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span3,
+.CFResultsTable .table th.span3 {
+  float: none;
+  width: 204px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span4,
+.CFResultsTable .table th.span4 {
+  float: none;
+  width: 284px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span5,
+.CFResultsTable .table th.span5 {
+  float: none;
+  width: 364px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span6,
+.CFResultsTable .table th.span6 {
+  float: none;
+  width: 444px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span7,
+.CFResultsTable .table th.span7 {
+  float: none;
+  width: 524px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span8,
+.CFResultsTable .table th.span8 {
+  float: none;
+  width: 604px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span9,
+.CFResultsTable .table th.span9 {
+  float: none;
+  width: 684px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span10,
+.CFResultsTable .table th.span10 {
+  float: none;
+  width: 764px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span11,
+.CFResultsTable .table th.span11 {
+  float: none;
+  width: 844px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table td.span12,
+.CFResultsTable .table th.span12 {
+  float: none;
+  width: 924px;
+  margin-left: 0;
+}
+
+.CFResultsTable .table tbody tr.success > td {
+  background-color: #dff0d8;
+}
+
+.CFResultsTable .table tbody tr.error > td {
+  background-color: #f2dede;
+}
+
+.CFResultsTable .table tbody tr.warning > td {
+  background-color: #fcf8e3;
+}
+
+.CFResultsTable .table tbody tr.info > td {
+  background-color: #d9edf7;
+}
+
+.CFResultsTable .table-hover tbody tr.success:hover > td {
+  background-color: #d0e9c6;
+}
+
+.CFResultsTable .table-hover tbody tr.error:hover > td {
+  background-color: #ebcccc;
+}
+
+.CFResultsTable .table-hover tbody tr.warning:hover > td {
+  background-color: #faf2cc;
+}
+
+.CFResultsTable .table-hover tbody tr.info:hover > td {
+  background-color: #c4e3f3;
+}
+
+.CFResultsTable .table {
+  width: auto;
+  *width: 100%;
+  min-width: 100%;
+}
+
+.CFResultsTable .table th,
+.CFResultsTable .table td {
+  padding: 8px;
+  line-height: 16px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #cccccc;
+}
+
+.CFResultsTable .table thead th {
+  vertical-align: bottom;
+}
+
+.CFResultsTable thead > tr > th {
+  font-weight: normal;
+  background-color: #e9e9e9;
+  background-color: #ebebeb;
+  background-image: -moz-linear-gradient(top, #f5f5f5, #dcdcdc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#dcdcdc));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #dcdcdc);
+  background-image: -o-linear-gradient(top, #f5f5f5, #dcdcdc);
+  background-image: linear-gradient(to bottom, #f5f5f5, #dcdcdc);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffdcdcdc', GradientType=0);
+  border: 1px solid #aeaeae;
+  border-top-color: #b7b7b7;
+  border-bottom-color: #989898;
+  color: #333333;
+  text-shadow: 0 1px 0 #ffffff;
+  -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #cccccc;
+}
+
+.CFResultsTable .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 500;
+    display: none;
+}
+
+iframe.CFResultsTable {
+  position: absolute;
+  background-color: transparent;
+  z-index: 505;
+  -webkit-box-shadow: rgb(34, 34, 34) 0px 0px 8px 0px;
+  border-bottom-color: rgb(102, 102, 102);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(102, 102, 102);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(102, 102, 102);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(102, 102, 102);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  box-shadow: rgb(34, 34, 34) 0px 0px 8px 0px;
+}
+
+.button-collapse {
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 21px;
+  height: 21px;
+  background: url(/static/app/splunk_app_for_nix/images/button_collapse.gif) 0 0 no-repeat;
+  text-indent: -9000px;
+  z-index: 99999;
+}

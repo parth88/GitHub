@@ -1,0 +1,55 @@
+.settings-page {
+  height: 0;
+  margin: 0;
+  width: auto;
+}
+.settings-page h2 {
+    color: #3F3F3F;
+    font-size: 24px;
+    font-weight: 100;
+    margin: 0;
+}
+.settings-page ul {
+    margin-left: 0;
+    margin-top: 20px;
+}
+.settings-page ul li {
+  font-size: 14px;
+  list-style: none outside none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.settings-page ul li a {
+  color: #ABABAB;
+}
+.settings-menu {
+  float: left;
+  height: auto;
+  margin-left: 27px;
+  margin-top: 22px;
+  width: 150px;
+}
+.settings-menu h1 {
+  color: #3F3F3F;
+  font-size: 28px;
+  margin-bottom: 50px;
+  margin-left: 14px;
+  margin-top: 20px;
+}
+.settings-menu a.selected {
+  color: #3F3F3F;
+  text-decoration: none;
+}
+.settings-content {
+  float: left;
+  height: 100%;
+  margin-top: 7px;
+  overflow: hidden;
+  width: 78%;
+}
+.settings-content iframe {
+  border: none;
+  height: 1000px;
+  overflow: hidden;
+  width: 100%;
+}

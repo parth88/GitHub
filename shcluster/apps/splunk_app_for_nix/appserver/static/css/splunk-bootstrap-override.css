@@ -1,0 +1,85 @@
+/*!
+ * CSS file create for Unix app
+ * mainly for the dropdown button
+ *
+ */
+
+.unixSelector .btn-group .btn.dropdown-toggle, .unixButton {
+    border: 1px solid #C7C7C7 !important;
+    border-top-color: #C7C7C7 !important;
+    border-bottom-color: #C7C7C7 !important;
+    text-shadow: 0 1px 0 #FFF !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    height: 13px;
+    margin-top: -3px !important; /* Changed this to make the text inside look aligned */
+    padding-top: 3px !important;
+    font-size:12px !important;
+}
+
+.unixSelector .btn, .unixButton {
+    background-image: -moz-linear-gradient(top, #F3f3f3, #F3f3f3) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F3f3f3), to(#F3f3f3)) !important;
+    background-image: -webkit-linear-gradient(top, #F3f3f3, #F3f3f3) !important;
+    background-image: -o-linear-gradient(top, #F3f3f3, #F3f3f3) !important;
+    background-image: linear-gradient(to bottom, #F3f3f3, #F3f3f3) !important;
+}
+
+.unixSelector .caret {
+    border-top: 0px solid #464545 !important;
+}
+
+.unixSelector .btn-group .btn.dropdown-toggle:hover, .unixButton:hover {
+    background-color: #EEE !important;
+    background-color: #F5F5F5 !important;
+    background-image: -moz-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#FAFAFA)) !important;
+    background-image: -webkit-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: -o-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: linear-gradient(to bottom, #FFF, #FAFAFA) !important;
+    background-repeat: repeat-x !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe5e5e5', GradientType=0) !important;
+    border-color: #AEAEAE !important;
+    border-top-color: #B7B7B7 !important;
+    border-bottom-color: #989898 !important;
+    background-position: 0 0 !important;
+    background-position: 0 !important;
+}
+
+.unixSelector .btn-group.open .dropdown-toggle {
+    background-image: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow:none;  
+    background-color: #EEE !important;
+    background-color: #F5F5F5 !important;
+    background-image: -moz-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#FAFAFA)) !important;
+    background-image: -webkit-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: -o-linear-gradient(top, #FFF, #FAFAFA) !important;
+    background-image: linear-gradient(to bottom, #FFF, #FAFAFA) !important;
+    background-repeat: repeat-x !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe5e5e5', GradientType=0) !important;
+    border-color: #AEAEAE !important;
+    border-top-color: #B7B7B7 !important;
+    border-bottom-color: #989898 !important;
+    background-position: 0 0 !important;
+    background-position: 0 !important;  
+}
+
+li {
+    /*line-height: 28px !important;*/
+}
+
+h1 {
+    font-weight: normal;
+}
+
+.dropdown-menu {
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09) !important;
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09) !important;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09) !important;
+    -webkit-background-clip: padding-box !important;
+    -moz-background-clip: padding !important;
+    position: absolute;
+}

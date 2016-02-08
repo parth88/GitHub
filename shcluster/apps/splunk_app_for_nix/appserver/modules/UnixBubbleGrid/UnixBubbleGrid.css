@@ -1,0 +1,68 @@
+.axis path, .axis line {
+    fill: none;
+    stroke: gray;
+    stroke-width: 1px;
+}
+
+.axis.y text {
+    cursor: pointer;
+}
+
+.selection {
+    fill: none;
+    stroke: #E8E8E8;
+    stroke-width: 1px;
+}
+
+.threshold {
+    fill: none;
+    stroke: black;
+    stroke-width: 2px;
+    stroke-dasharray: 9, 5;
+}
+.selected {
+    font-weight: bold;
+}
+
+rect.selected {
+    stroke: gray;
+    stroke-width: 2px;
+}
+
+.loadingContainer {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left:50%;
+    top:-20px;
+}
+
+.UnixBubbleGrid {
+    position: relative;
+    clear:both;
+}
+
+.UnixBubbleGrid .tooltip {
+  position: absolute;
+  text-align: center;
+  width: 210px;
+  height: auto;
+  min-height: 30px;
+  padding: 8px;
+  font: 10px sans-serif;
+  background: #ddd;
+  border: solid 1px #aaa;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.noResults, 
+.noHosts {
+    /*width: 100px;*/
+    height: 100px;
+    position: absolute;
+    left:50%;
+    top:40px;
+    font-size:16px;
+    display:none;
+}

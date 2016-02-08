@@ -1,0 +1,23 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    import logging
+    logger = logging.getLogger('splunk')
+%>
+<%def name="css()">
+    <%coreCSSFiles = [
+        "/static/css/view.css", 
+        "/static/css/skins/default/default.css", 
+        '/static/css/jquery.iphone-style-checkboxes.css'
+    ] %>
+    <%lib:stylesheet_tags files="${coreCSSFiles}" />
+</%def>
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/unixAlertEvents/alertevent_not_found.css']}" />
+</%def>
+<div class="SuccessMessage">
+  <h2>Alert</h2>
+  <hr>
+  <p>The requested alert ${", sid %s, " % sid if sid is not None else ""}cannot be found.</p>
+</div>

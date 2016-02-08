@@ -1,0 +1,60 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    from splunk.appserver.mrsparkle.lib import util
+    import logging
+    logger = logging.getLogger('splunk')
+%>
+<%def name="css()">
+    <%coreCSSFiles = [
+        "/static/css/view.css", 
+        "/static/css/skins/default/default.css", 
+        '/static/css/jquery.iphone-style-checkboxes.css'
+    ] %>
+    <%lib:stylesheet_tags files="${coreCSSFiles}" />
+</%def>
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/unixHeadlines/manage_headlines.css']}" />
+    <%lib:script_tags files="${['/static/app/splunk_app_for_nix/js/contrib/jquery-ui/jquery.ui.tablesorter.js',
+                                '/static/app/splunk_app_for_nix/unixHeadlines/manage_headlines.js']}" />
+</%def>
+<div class="ManageHeadlinesContainer">
+  <h2>Manage Headlines:</h2>
+  <hr />
+% if len(headlines) > 0:
+  <table class="splTable" id="headlines_table">
+    <thead>
+      <tr>
+        <th>
+          <span class="sortLabel">Headline</span>
+        </th>
+        <th>
+          <span class="sortLabel">Alert</span>
+        </th>
+        <th>
+          <span class="sortLabel">&nbsp;</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    % for headline in headlines:
+      <tr>
+        <td><a href="${make_url('/custom/splunk_app_for_nix/unixheadlines/%s/id/%s' % (app, headline.name))}">${headline.label}</a></td>
+        <td>${headline.alert_name}</td>
+        <td>
+          <a class="delete" name="${util.getFormKey()}" id="${headline.label}" href="${make_url('/custom/splunk_app_for_nix/unixheadlines/%s/delete/%s' % (app, headline.name))}">Delete</a>
+        </td>
+      </tr>
+    % endfor
+% else:
+  <p class="statusMessage">No Headlines Configured...</p>
+% endif
+    </tbody>
+  </table>
+
+  <div class="ManageHeadlinesButtons">
+    <a href="#" class="cancel splButton-secondary">Cancel</a>
+    <a style="float: right;" href="${make_url('/custom/splunk_app_for_nix/unixheadlines/%s/new' % app)}" class="splButton-primary">Create New Headline</a>
+  </div>
+</div>

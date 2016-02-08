@@ -1,0 +1,28 @@
+.UnixNodesPaginatorWrapper span {
+    font-weight: 200;
+    font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+}
+.UnixNodesPaginatorWrapper .text-large {
+    font-size: 28px;
+}
+.UnixNodesPaginatorWrapper .text-medium {
+    color: #808080;
+    font-size: 16px;
+}
+.UnixNodesPaginatorWrapper .controls {
+    color: #808080;
+    padding-left: 20px;
+}
+.UnixNodesPaginator a {
+    color: #5379AF;
+    padding: 1px;
+    padding-left: 10px;
+    min-width: 9px;
+    text-align: center;
+    display: inline-block;
+}
+.UnixNodesPaginator a.disabled {
+    color: #bbb;
+    cursor: text;
+    text-decoration: none;
+}

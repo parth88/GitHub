@@ -1,0 +1,52 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%lib:stylesheet_tags files="${[
+                                '/static/app/splunk_app_for_nix/css/colorpicker.css'
+                            ]}" />
+<%lib:script_tags files="${[
+                            '/static/app/splunk_app_for_nix/js/contrib/colorpicker.js',
+                            '/static/app/splunk_app_for_nix/js/modules/UnixMetricsThreshold/util.js',
+                            '/static/app/splunk_app_for_nix/js/modules/UnixMetricsThreshold/color.js',
+                            '/static/app/splunk_app_for_nix/js/modules/UnixMetricsThreshold/colorModel.js',
+                            '/static/app/splunk_app_for_nix/js/modules/UnixMetricsThreshold/grad.js',
+                            '/static/app/splunk_app_for_nix/js/modules/UnixMetricsThreshold/colorPalette.js'
+                          ]}"/>
+<%!
+import splunk.util
+%>
+<%
+
+height = int(module.get('height'))
+width = int(module.get('width'))
+label = module.get('label')
+
+innerWidth = width - 40
+innerHeight = height - 15
+%>
+<div class="UnixMetricsThresholdContainer" style="height: ${str(height)}px">
+  
+  <div class="pickerWrapper">
+      <div id="${module.get('id')}-picker" class="picker cp-default"></div>
+  </div>
+
+  <div class="paletteWrapper">
+      <div id="${module.get('id')}-palette" class="palette cp-default"></div>
+  </div>
+
+  % if label is not None:
+    <div class="thresholdLabel">${label}</div>
+  % endif
+
+  <svg width="${str(width)}" height="${str(height)}">
+    
+    <rect width="${str(innerWidth)}" x="20" height="${str(innerHeight)}" class="thresholdBg" fill="url(#${module.get('id')}-bg)"></rect>
+    
+    <g width="${str(innerWidth)}" height="${str(innerHeight)}" class="thresholdGroup"></g>
+
+    <g class="numbersGroup" transform="translate(0,${str(height)})">
+      <text x="16">0</text>
+      <text x="${str(innerWidth+10)}">100</text>
+    </g>
+
+  </svg>
+</div>

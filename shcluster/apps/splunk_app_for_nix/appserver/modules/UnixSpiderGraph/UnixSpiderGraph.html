@@ -1,0 +1,95 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/css/colorpicker.css",
+    "/static/app/splunk_app_for_nix/css/glyphicons.css",
+    "/static/app/splunk_app_for_nix/css/UnixSpiderGraph/UnixSpiderGraphDark.css",
+    "/static/app/splunk_app_for_nix/css/UnixSpiderGraph/UnixSpiderGraphLight.css"
+  ]
+  
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/js/contrib/colorpicker.js",
+    # "/static/app/splunk_app_for_nix/js/contrib/bootstrap/bootstrap-unixjquery.js",
+    "/static/app/splunk_app_for_nix/js/contrib/backbone-unix.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSpiderGraph/util.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSpiderGraph/colorPalette.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSpiderGraph/colorModel.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSpiderGraph/color.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSpiderGraph/circleGrad.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSpiderGraph/spiderModel.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSpiderGraph/spider.js" 
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+<div class="UnixSpiderGraph UnixSpiderGraph-${module.get('colors')}">
+    
+    <div class="header">
+    </div>
+
+    <div class="pickerWrapper">
+        <div id="${module.get('id')}-picker" class="picker cp-default"></div>
+    </div>
+
+    <div class="paletteWrapper">
+        <div id="${module.get('id')}-palette" class="palette cp-default"></div>
+    </div>
+
+    <div class="noResultsArea" style="display: none;">
+    No Results Found
+    </div>
+
+    <svg class="UnixSpiderGraphSvg">
+
+        <defs>
+            <filter id="${module.get('id')}-inset-shadow" width="405%">
+                <!-- Shadow Offset -->
+                <feOffset
+                    dx='0'
+                    dy='0'
+                />
+
+                <!-- Shadow Blur -->
+                <feGaussianBlur
+                    stdDeviation='2'
+                    result='offset-blur'
+                />
+
+                <!-- Invert the drop shadow to create an inner shadow -->
+                <feComposite
+                    operator='out'
+                    in='SourceGraphic'
+                    in2='offset-blur'
+                    result='inverse'
+                />
+
+                <!-- Color & Opacity -->
+                <feFlood
+                    flood-color='black'
+                    flood-opacity='1'
+                    result='color'
+                />
+
+                <!-- Clip color inside shadow -->
+                <feComposite
+                    operator='in'
+                    in='color'
+                    in2='inverse'
+                    result='shadow'
+                />
+
+                <!-- Put shadow over original object -->
+                <feComposite
+                    operator='over'
+                    in='shadow'
+                    in2='SourceGraphic'
+                />
+            </filter>
+        </defs>
+
+    </svg>
+</div>

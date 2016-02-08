@@ -1,0 +1,23 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/css/jquery.floatHead.css"
+  ]
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/js/contrib/handlebars/handlebars-1.0.rc.1.js",
+    "/static/js/jquery.sparkline.js",
+    "/static/app/splunk_app_for_nix/js/jquery.floatHead.js"
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+
+<div class="CFResultsTableWrapper double-scrollbar"><div></div></div>
+<div class="CFResultsTableWrapper actual-container" style="min-height: 128px"></div>
+<div class="overlay"></div>
+<a href="javascript:void(0)" style="display: none" class="button-collapse"></a>
+<iframe style="display: none;" allowtransparency="true" frameborder="0" class='CFResultsTable'></iframe>

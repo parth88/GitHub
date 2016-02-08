@@ -1,0 +1,180 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    import logging
+    import json
+    from sets import Set
+    import splunk.appserver.mrsparkle.lib.startup as startup
+    import pprint
+    pp = pprint.PrettyPrinter(indent=4)
+
+    logger = logging.getLogger('splunk.module.setup')
+
+%>
+<%def name="js()">
+    <%  
+    coreJsFiles = startup.generateJSManifest()
+    %>
+
+    ## start: core js
+    <%lib:script_tags files="${coreJsFiles}" />
+
+    ## buffered inline js
+    <%lib:get_script_blocks />
+</%def>
+
+<%def name="js_initialization()">
+    <%lib:script_tags files="${['/static/js/init.js']}" />
+</%def>
+
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/%s/css/setup.css' % host_app,
+                                    '/static/app/%s/css/help_tooltip.css' % host_app,
+                                    '/static/app/%s/css/settings_categories.css' % host_app,
+                                 ]}" />
+
+    <%lib:script_tags files="${['/static/app/%s/js/setup.js' % host_app,
+                                '/static/app/%s/js/help_tooltip.js' % host_app,
+                                '/static/app/%s/js/contrib/jquery/unix_jquery/jquery-1.9.1.js' % host_app,
+                                '/static/app/%s/js/contrib/jquery-ui/unix_jquery-ui/jquery-ui.interactions.min.js' % host_app,
+                                '/static/app/%s/js/contrib/UnixUnderscore.js' % host_app,
+                                '/static/app/%s/js/modules/UnixSelectable/selectableTree.js' % host_app,
+                                '/static/app/%s/js/categories/CategoryChildModel.js' % host_app,
+                                '/static/app/%s/js/categories/CategoryRootModel.js' % host_app,
+                                '/static/app/%s/js/categories/LinkedBasePanel.js' % host_app,
+                                '/static/app/%s/js/categories/LinkedBasicPanel.js' % host_app,
+                                '/static/app/%s/js/categories/LinkedHostsPanel.js' % host_app,
+                                '/static/app/%s/js/categories/init.js' % host_app
+                             ]}" />
+</%def>
+
+<%def name="gen_form(method='POST', action=None)">
+    <form method="${method}" action="${action if action else ''}">
+</%def>
+
+<%def name="render_json(jsonData)">
+    % for item in jsonData:
+        <div>${item}</div>
+    % endfor
+</%def>
+
+<div id="setup">
+    ${gen_form(method="POST", action=make_url(['custom', host_app , 'unixsetup', app, 'save']))}    
+
+<!--         <div class="splUnixButtons topButtons">
+          <input class="splButton-primary" type="submit" value="Save"></input>
+        </div>
+        <h1>Setup Categories</h1> -->
+        ${csrf_hidden_input()}
+
+    </form>
+
+
+    <!--     
+    ${render_json(csvKey)}
+    ${tree} 
+    -->
+
+<!--     <div class="wrapper">
+        <div class="hostsPanelWrapper settingsCol parentSettingsCol">
+            <div class="groupsPanelWrapper settingsCol">
+                <div class="catPanelWrapper settingsCol">
+
+                    <div id="catPanel" class="basicPanel">
+                        <div class="header">
+                            <div class="title">Categories</div>
+                            <div class="buttons">
+                                <div class="delete">x</div>
+                                <div class="add">+</div>
+                            </div>
+                        </div>
+                        <div class="contents"></div>
+                    </div>
+
+                    <div id="groupPanel" class="basicPanel">
+                        <div class="header">
+                            <div class="title">Groups</div>
+                            <div class="buttons">
+                                <div class="delete">x</div>
+                                <div class="add">+</div>
+                            </div>
+                        </div>
+                        <div class="contents"></div>
+                    </div>
+
+                    <div id="hostPanel">
+                        <div id="hostLeftPanel">
+                            <div class="header">
+                                <div class="title">Hosts <span class="lightTitle">in group:</span> <span class='currentLevel'></span></div>
+                            </div>
+                            <div class="contents"></div>
+                        </div>
+
+                        <div id="hostRightPanel">
+                            <div class="header">
+                                <div class="title">Hosts <span class="lightTitle">not in group:</span><span class='currentLevel'></span></div>
+                            </div>
+                            <div class="contents"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+    <div class="wrapper">
+        <div id="catPanel" class="basicPanel">
+            <div class="header">
+                <div class="title">Categories</div>
+                <div class="buttons">
+                    <div class="delete"></div>
+                    <div class="add"></div>
+                </div>
+            </div>
+            <div class="contents"></div>
+        </div>
+
+        <div id="groupPanel" class="basicPanel">
+            <div class="header">
+                <div class="title">Groups</div>
+                <div class="buttons">
+                    <div class="delete"></div>
+                    <div class="add"></div>
+                </div>
+            </div>
+            <div class="contents"></div>
+        </div>
+
+        <div id="hostPanel">
+            <div id="hostLeftPanel">
+                <div class="header">
+                  <div class="title">Hosts <span class="lightTitle">in</span> <span class='currentLevel'></span></div>
+                </div>
+                <div class="contents"></div>
+            </div>
+
+            <div id="hostRightPanel">
+                <div class="header">
+                    <div class="title">Hosts <span class="lightTitle">not in</span> <span class='currentLevel'></span></div>
+                </div>
+                <div class="contents"></div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+
+</div>

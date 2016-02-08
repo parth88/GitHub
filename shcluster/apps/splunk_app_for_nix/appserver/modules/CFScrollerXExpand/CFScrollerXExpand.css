@@ -1,0 +1,73 @@
+.CFScrollerXExpand.chart {
+    overflow: auto;
+    margin: 0 0 20px 0;
+    display: inline-block;
+}
+
+.CFScrollerXExpand.button-collapse {
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 21px;
+  height: 21px;
+  background: url(/modules/CFScrollerXExpand/images/button_collapse.gif) 0 0 no-repeat;
+  text-indent: -9000px;
+  z-index: 99999;
+}
+
+.CFScrollerXExpand.chart .node rect {
+  cursor: pointer;
+  fill: #fff;
+  fill-opacity: .5;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+.CFScrollerXExpand.switcher {
+  border-bottom: 1px solid #CCC;
+  width: 135px;
+  height: 25px;
+}
+
+.CFScrollerXExpand.switcher-link {
+  color: grey;
+  cursor: pointer;
+  font-size: 12px;
+  margin: 2px 10px;
+  padding-top: 5px;
+}
+
+.CFScrollerXExpand.switcher-link.selected {
+  color: #3F3F3F;
+  text-decoration: underline;
+}
+
+.CFScrollerXExpand.chart .node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+.CFScrollerXExpand.chart path.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+.CFScrollerXExpand.chart .controls {
+    font: 12px sans-serif;
+}
+
+.CFScrollerXExpand.chart .controls rect {
+    fill: #ccc;
+    fill-opacity: .3;
+    stroke: #666;
+    stroke-width: "1.5px";
+    border-radius: 10px;
+    border: 2px solid;
+    box-shadow: 1px;
+}
+
+.CFScrollerXExpand.chart .sorts text.active {
+    fill: red;
+}

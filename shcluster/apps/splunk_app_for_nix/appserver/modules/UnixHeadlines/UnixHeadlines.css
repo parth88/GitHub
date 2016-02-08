@@ -1,0 +1,172 @@
+.UnixHeadlinesFilter {
+    float: right;
+}
+table.splUnixHeadlinesTable {
+    float: left;
+    margin: 15px 0 20px;
+    padding: 1px;
+    table-layout: auto;
+    width: 100%;
+}
+table.splUnixHeadlinesTable tbody {
+    height: 180px;
+}
+table.splUnixHeadlinesTable tbody tr {
+    /*background-color: #F7F7F7;*/
+}
+table.splUnixHeadlinesTable tbody td.severity1:before,
+table.splUnixHeadlinesTable tbody td.severity2:before {
+  content: '\e705';
+  color: #65a637;
+}
+table.splUnixHeadlinesTable tbody td.severity3:before {
+  content: '\e800';
+  color: #ff9c00;
+}
+table.splUnixHeadlinesTable tbody td.severity4:before,
+table.splUnixHeadlinesTable tbody td.severity5:before {
+  content: '\26a0';
+  color: #ea3838;
+}
+table.splUnixHeadlinesTable tbody td.date{
+    color: #777777;
+    padding-right: 5px;
+    text-align: right;
+}
+table.splUnixHeadlinesTable tbody tr.even {
+    background-color: #EEE9E9;
+}
+table.splUnixHeadlinesTable tbody tr td {
+    font-size: 14px;
+    border-bottom: 1px solid #CCC;
+    padding: 5px 0 5px 0;
+}
+.UnixHeadlinesInner {
+    /*border-bottom: 1px solid #CCCCCC;*/
+    border-top: 1px solid #CCCCCC;
+    height: 80%;
+    margin-left: 1%;
+    overflow-y: auto;
+    width: 98%;
+}
+.UnixHeadlinesInner .message {
+    font-size: 16px;
+    font-weight: lighter;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    text-align: center;
+}
+.UnixHeadlinesButtonContainer {
+    margin-top: 10px;
+    width: 100%;
+}
+input#manage_headlines {
+    background-color: #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    border-width: 0;
+    color: #626262;
+    float: right;
+    font-size: 10px;
+    margin-right: 5px;
+    padding: 5px;
+    width: auto;
+
+    background-color: #ADADAD;
+    background-image: -moz-linear-gradient(top, #F3F3F3, #F3F3F3);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F3F3F3), to(#F3F3F3));
+    background-image: -webkit-linear-gradient(top, #F3F3F3, #F3F3F3);
+    background-image: -o-linear-gradient(top, #F3F3F3, #F3F3F3);
+    background-image: linear-gradient(to bottom, #F3F3F3, #F3F3F3);
+    border: 1px solid #C7C7C7;
+    border-radius: 4px;
+    color: #333;
+    height: 22px;
+    text-align: left;
+    text-shadow: 0 1px 0 #FFF;
+    font-size: 12px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 0px;
+    line-height: 20px;
+    text-align: center;
+}
+.UnixHeadlinesManager {
+    display: none;
+}
+/* icons */
+@font-face {
+  font-family: 'warning';
+  src: url('/static/app/splunk_app_for_nix/fonts/warning.eot?71295197');
+  src: url('/static/app/splunk_app_for_nix/fonts/warning.eot?71295197#iefix') format('embedded-opentype'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.woff?71295197') format('woff'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.ttf?71295197') format('truetype'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.svg?71295197#warning') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+ * @media screen and (-webkit-min-device-pixel-ratio:0) {
+ *   @font-face {
+ *       font-family: 'warning';
+ *           src: url('../font/warning.svg?71295197#warning') format('svg');
+ *             }
+ *             }
+ *             */
+ 
+td[class^="severity"]:before, td[class*=" severity"]:before {
+  font-family: "warning";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  color: #707070;
+  font-size: 130%;
+  font-variant: normal;
+  text-transform: none;
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "warning";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 2em;
+  color: #707070;
+  font-size: 150%;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 2em;
+ 
+  /* Animation center compensation - magrins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-attention-1:before { content: '\e800'; } /* '' */
+.icon-attention:before { content: '\26a0'; } /* '⚠' */
+.icon-info-circled:before { content: '\e705'; } /* '' */
+.icon-selected.icon-info:before { color: #65a637; }
+.icon-selected.icon-warning:before { color: #ff9c00; }
+.icon-selected.icon-critical:before { color: #ea3838; }

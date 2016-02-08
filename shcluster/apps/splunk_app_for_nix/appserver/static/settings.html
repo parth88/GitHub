@@ -1,0 +1,18 @@
+<%page expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/css/settings.css']}" />
+<%lib:script_tags files="${['/static/app/splunk_app_for_nix/js/settings.js']}" />
+<div class="settings-page">
+  <div class="settings-menu">
+    <h2>Settings</h2>
+    <ul>
+      <li><a disabled="disabled" class="navlink selected" href="${make_url('/custom/splunk_app_for_nix/unixsetup/SA-nix/show')}">Your Data</a></li>
+      <li><a class="navlink" href="${make_url('/custom/splunk_app_for_nix/unixsetup/SA-nix/categories')}">Categories</a></li>
+      <li><a class="navlink" href="${make_url('/custom/splunk_app_for_nix/unixalertsconfig/SA-nix/show')}">Alerts</a></li>
+    </ul>
+  </div>
+  <div class="settings-content">
+    <iframe id="settings-content" src="${make_url('/custom/splunk_app_for_nix/unixsetup/SA-nix/show')}">
+    </iframe>
+  </div>
+</div>

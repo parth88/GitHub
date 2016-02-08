@@ -1,0 +1,5 @@
+.UnixBaseAbstractFactoryFactory-spin {
+    background: url(/static/app/splunk_app_for_nix/images/loading-256.gif) no-repeat center !important;
+    background-size: contain !important;
+    max-height: 256px !important;
+}

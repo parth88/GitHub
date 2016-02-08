@@ -1,0 +1,104 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    # "/static/app/splunk_app_for_nix/css/colorpicker.css",
+    # "/static/app/splunk_app_for_nix/css/UnixSpiderGraph/UnixSpiderGraphDark.css"
+    "/static/app/splunk_app_for_nix/css/bootstrap.css",
+    "/static/app/splunk_app_for_nix/css/bootstrap-overrides.css"
+  ]
+  
+  moduleJSFiles = [
+    # "/static/app/splunk_app_for_nix/js/contrib/colorpicker.js",
+    "/static/app/splunk_app_for_nix/js/contrib/bootstrap/bootstrap-unixjquery.js",
+    "/static/app/splunk_app_for_nix/js/modules/UnixSearchSelector/flyout.js"
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+
+<div class="UnixReportBuilderContainer">
+  <div class="basicPanel">
+    <div class="searchFlyout unixSelector stat">
+      <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+          <div class='title'>avg</div>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class='item selected' _val="avg">avg</li>
+          <li class='item' _val="count">count</li>
+          <li class='item' _val="dc">distinct count</li>
+          <li class='item' _val="earliest">earliest</li>
+          <li class='item' _val="first">first</li>
+          <li class='item' _val="last">last</li>
+          <li class='item' _val="latest">latest</li>
+          <li class='item' _val="max">max</li>
+          <li class='item' _val="mean">mean</li>
+          <li class='item' _val="median">median</li>
+          <li class='item' _val="min">min</li>
+          <li class='item' _val="mode">mode</li>
+          <li class='item' _val="perc90">perc90</li>
+          <li class='item' _val="perc95">perc95</li>
+          <li class='item' _val="stdev">stdev</li>
+          <li class='item' _val="sum">sum</li>
+        </ul>
+      </div>
+    </div>
+
+    
+
+    <div class="searchFlyout unixSelector field">
+      <span class='betweenText'>Of</span>
+      <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+          <div class='title'>waiting...</div>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+        </ul>
+      </div>
+    </div>
+
+    
+
+    <div class="searchFlyout unixSelector split">
+      <span class='betweenText'>By</span>
+      <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+          <div class='title'>host</div>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class='item selected' _val="host">host</li>
+          <li class='item' _val="unix_group">group</li>
+          <li class='item' _val="none">none</li>
+        </ul>
+      </div>
+    </div>
+    <div class="toggleAdvancedPanel">
+    </div>
+    <div class="clearFix"></div>
+  </div>
+
+
+
+  <div class="advancedPanel" style="display:none">
+    <div class='checkboxContainer'>
+      <span>Use Other</span>
+      <input type="checkbox" class="other"/>
+    </div>
+
+    <div class='checkboxContainer'>
+      <span>Use Null</span>
+      <input type="checkbox" class="null"/>
+    </div>
+
+    <input size="1" name="limit" class="limit" type="text" _val="30" placeholder="Limit"/>
+    <div class="clearFix"></div>
+  </div>
+
+</div>

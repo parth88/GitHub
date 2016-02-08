@@ -1,0 +1,23 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    # "/static/app/splunk_app_for_nix/css/colorpicker.css",
+    # "/static/app/splunk_app_for_nix/css/UnixSpiderGraph/UnixSpiderGraphDark.css"
+    "/static/app/splunk_app_for_nix/css/bootstrap.css",
+    "/static/app/splunk_app_for_nix/css/bootstrap-overrides.css"
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+
+<div id="${module.get('id')}" class="UnixHomeTitle">
+   <div class="header">
+       <span class='searchName'></span>
+       <span class='metricName'></span>
+       By
+       <span class='groupName'></span>
+   </div>
+</div>
+

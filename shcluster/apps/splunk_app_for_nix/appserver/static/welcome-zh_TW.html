@@ -1,0 +1,82 @@
+<style>
+.welcomediv {
+float: left; 
+padding-right: 15px;
+padding-left: 15px; 
+border-right-style: dotted;
+border-right-width: 1px;
+width: 30%;
+}
+
+.intro {
+    font-size: 12px;
+}
+
+</style>
+
+<div>
+
+
+<p class="intro">
+Splunk *nix 應用是由輸入框, 組合視頁, 客製視頁, 以及搜尋指示所組成, <br/>用於 Splunk 索引器, 或是 Splunk 傳收資料的設定, 能夠橫跨您的整體系統架構來收集系統量測記記錄, 系統記錄, 以及設定檔修改記錄等資料.</p>
+<p>
+<strong>重要 - 所有 unix 應用使用的資料皆存於其專屬索引檔, 名為 "os".</strong>
+
+在查詢 *nix 資料時, 請確認您的索引指令有加上 "index=os". <a href="/app/unix/flashtimeline?q=search%20index%3Dos%20%7C%20head%2010">範例...</a>
+</p>
+<p>
+<a href="setup">&raquo; Unix Splunk 設定</a>
+</div>
+
+
+<div style="float:left; padding-right: 15px; margin-right: 15px; border-right-style: dotted; border-right-width: 1px; width: 30%;">
+<h3>*nix 應用可以處理的檔案類型:</h3>
+    <ul>
+    <li><a href="/app/unix/about_logs">一般記錄檔</a> (ex: /var/log)</li>
+    <li><a href="/app/unix/about_configs">一般設定檔</a> (ex: /etc)</li>
+    <li><a href="/app/unix/about_fschange">檔案異動偵測</a> (by default /etc)</li>
+    <li>若您想增加資料源, <a href="/manager/search/data/inputs/monitor">>> 請點我 </a></li>
+    </ul>
+</div>
+
+
+<div style="float: left;">
+
+<h3>*nix 應用也能夠處理一般系統指令所產出的結果:</h3>
+
+    <div style="float:left;">
+    <ul style="padding: 0 20px 0 0;">
+        <li><a href="/app/unix/flashtimeline?s=top">top</a>: 主機資源使用排名</li>
+        <li><a href="/app/unix/flashtimeline?s=vmstat">vmstat</a>: 記憶體使用狀況</li>
+        <li><a href="/app/unix/flashtimeline?s=iostat">iostat</a>: 輸出入處理容量</li>
+        <li><a href="app/unix/flashtimeline?s=ps">ps</a>: 處理序清單</li>
+        <li><a href="/app/unix/flashtimeline?s=netstat">netstat</a>: 網路狀態及網路傳輸量</li>
+        <li><a href="/app/unix/flashtimeline?s=protocol">protocol</a>: 網路傳輸量詳細資訊</li>
+        <li><a href="/app/unix/flashtimeline?s=interfaces">interfaces</a>: 乙太網路介面連接層狀態</li>
+        <li><a href="/app/unix/flashtimeline?s=openPorts">open ports</a>: 通訊埠開啟狀況</li>
+        <li><a href="/app/unix/flashtimeline?s=time">time</a>: 系統時間</li>
+        <li><a href="/app/unix/flashtimeline?s=lsof">lsof</a>: 檔案開啟清單</li>
+    </ul>
+    </div>
+    
+    
+    <div style="float:left;">
+    &nbsp;&nbsp;
+	<ul>
+        <li><a href="/app/unix/flashtimeline?s=df">df</a>: 磁碟機及磁碟區使用狀況</li>
+        <li><a href="/app/unix/flashtimeline?s=who">who</a>: 上線使用者清單</li>
+        <li><a href="/app/unix/flashtimeline?s=usersWithLoginPrivs">users with privileges</a>: 登入帳號清單</li>
+        <li><a href="/app/unix/flashtimeline?s=lastlog">lastlog</a>: 使用者最後登入時間表</li>
+        <li><a href="/app/unix/flashtimeline?s=cpu">cpu</a>: 顯示 CPU 狀態</li>
+        <li><a href="/app/unix/flashtimeline?s=rlog">rlog</a>: 以 ausearch 格式顯示系統記錄檔</li>
+        <li><a href="/app/unix/flashtimeline?s=packages">packages</a>: 已安裝的套裝軟體清單</li>
+        <li><a href="/app/unix/flashtimeline?s=hardware">hardware</a>: 主機硬體資訊</li>
+    </ul>
+    
+    </div>
+
+
+</div>
+
+
+

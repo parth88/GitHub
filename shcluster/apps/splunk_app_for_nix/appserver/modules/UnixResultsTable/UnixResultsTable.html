@@ -1,0 +1,20 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/css/jquery.floatHead.css"
+  ]
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/js/contrib/handlebars/handlebars-1.0.rc.1.js",
+    "/static/js/jquery.sparkline.js",
+    "/static/app/splunk_app_for_nix/js/jquery.floatHead.js"
+  ]
+%>
+
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+<%lib:script_tags files="${moduleJSFiles}" />
+
+
+<div class="UnixResultsTableWrapper double-scrollbar"><div></div></div>
+<div class="UnixResultsTableWrapper actual-container"></div>

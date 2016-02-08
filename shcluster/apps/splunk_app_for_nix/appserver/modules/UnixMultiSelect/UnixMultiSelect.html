@@ -1,0 +1,19 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%
+  width = module.get('outer_width')
+
+  moduleCSSFiles = [
+    "/static/app/splunk_app_for_nix/css/jquery.multiselect.css",
+    "/static/app/splunk_app_for_nix/css/jquery.multiselect.filter.css"
+  ]
+%>
+<%lib:stylesheet_tags files="${moduleCSSFiles}" />
+
+<div style="width: ${'auto' if not width or width.lower().startswith('auto') else width + 'px'};" class="loadingContainer" id="${module.get('id')}_loading">
+</div>
+<div style="width: ${'auto' if not width or width.lower().startswith('auto') else width + 'px'};" class="MultiSelectContainer">
+  <select name="${module.get('field')}" class="multiselect_module" style="display: none; width: ${'auto' if not width or width.lower().startswith('auto') else width + 'px'};" id="${module.get('id')}_multiselect" ${'multiple="multiple"' if module.get('multi').lower().startswith('true') else ''}>
+  </select>
+  <p class="MultiSelectFooter"></p>
+</div>

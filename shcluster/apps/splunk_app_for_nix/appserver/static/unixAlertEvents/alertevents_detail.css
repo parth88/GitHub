@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica nenu', Helvetica, Arial, sans-serif;
+  background: transparent;
+}
+hr {
+  background-color: rgb(221, 221, 221);
+  border-bottom-color: rgb(204, 204, 204);
+  border-bottom-style: inset;
+  border-bottom-width: 0px;
+  border-left-color: rgb(204, 204, 204);
+  border-left-style: inset;
+  border-left-width: 0px;
+  border-right-color: rgb(204, 204, 204);
+  border-right-style: inset;
+  border-right-width: 0px;
+  border-top-color: rgb(204, 204, 204);
+  border-top-style: inset;
+  border-top-width: 0px;
+  color: rgb(221, 221, 221);
+  display: block;
+  height: 1px;
+  margin-bottom: 20px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 20px;
+  width: 760px;
+}
+h2 {
+  color: #3F3F3F;
+  font-size: 20px;
+  font-weight: 100;
+  margin: 0;
+  margin-bottom: 27px;
+}
+.AlertEventContainer {
+    width: 826px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 505;
+    padding: 27px;
+}
+.AlertEventTop {
+    padding: 10px;
+}
+.AlertEventBottom {
+  padding: 10px;
+}
+.AlertEventLeft {
+    float: left;
+    width: 40%;
+}
+.AlertEventRight {
+    float: left;
+    width: 60%;
+}
+.btn-group {
+  position: relative;
+}
+ul {
+  list-style: none;
+  border: 1px !important;
+  border-color: #C7C7C7 !important;
+  border-style: solid !important;
+  border-radius: 4px;
+  background-color: #F5F5F5;
+}
+.dropdown-menu {
+  white-space: nowrap;
+}
+.unixSelector .btn-group li.dropdown-toggle {
+  display: block;
+  background: transparent;
+  padding: 2px 12px 2px 12px !important;
+  cursor: default;
+}
+.unixSelector .btn-group li.dropdown-toggle:first-child {
+  padding-top:4px !important;
+}
+.unixSelector .btn-group li.dropdown-toggle:last-child {
+  padding-bottom:4px !important;
+}
+.span3 {
+    float: left;
+    width: 30%;
+}
+.span4 {
+    float: left;
+    width: 40%;
+}
+span.emphasis {
+    font-weight: bold;
+}
+
+.scrollView {
+    overflow-y: auto;
+    height: 350px;
+    margin-top: 10px;
+}
+
+/* icons */
+@font-face {
+  font-family: 'warning';
+  src: url('/static/app/splunk_app_for_nix/fonts/warning.eot?71295197');
+  src: url('/static/app/splunk_app_for_nix/fonts/warning.eot?71295197#iefix') format('embedded-opentype'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.woff?71295197') format('woff'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.ttf?71295197') format('truetype'),
+       url('/static/app/splunk_app_for_nix/fonts/warning.svg?71295197#warning') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+i[class^="severity_"]:before {
+  font-family: "warning";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  color: #707070;
+  font-size: 130%;
+  font-variant: normal;
+  text-transform: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+i.severity_Info:before, i.severity_Low:before {
+  content: '\e705';
+  color: #65a637;
+}
+
+i.severity_Medium:before {
+  content: '\e800';
+  color: #ff9c00;
+}
+
+i.severity_High:before, i.severity_Critical:before {
+  content: '\26a0';
+  color: #ea3838;
+}
+
+/* For svg in Modal */
+.AlertEventBottom .axis path,
+.AlertEventBottom .axis line {
+  fill: none;
+  stroke: #8DB5D1;
+  stroke-width: 1px;
+}
+.AlertEventBottom .line {
+  fill: none;
+  stroke: #8DB5D1;
+  stroke-width: 1px;
+}
+.AlertEventLeft .legend {
+    width: 180px;
+    height: 20px;
+    position: absolute;
+    margin-top: -80px;
+    margin-left: 80px;
+}
+
+.AlertEvent.chart {
+    overflow: auto;
+    margin: 0 0 20px 0;
+    display: inline-block;
+}

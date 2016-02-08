@@ -1,0 +1,14 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+
+<% 
+  moduleName = module['className']
+
+  moduleJSFiles = [
+    "/static/app/splunk_app_for_nix/js/contrib/backbone-unix.js",
+  ]
+%>
+
+<%lib:script_tags files="${moduleJSFiles}" />
+
+

@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'fontello';
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125');
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125#iefix') format('embedded-opentype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.woff?82669125') format('woff'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.ttf?82669125') format('truetype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.svg?82669125#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.UnixHierarchyControls {
+   /*float: right;*/
+   height: 30px;
+   /*width: 27%;*/
+   border-bottom: 1px solid #CCC;
+   margin-left:2%;
+   margin-right:2%;
+   margin-bottom:10px;
+   position: relative;
+   
+}
+.hierarchy_group {
+   float: left;
+}
+.UnixHierarchyControls input {
+    color: #CCCCCC;
+    font-size: 14px;
+    font-weight: 600;
+    border:none;
+    width:1em;
+    cursor: pointer;
+    
+}
+.UnixHierarchyControls input.selected {
+    background-color: #B4B4B4;
+    color: #FFFFFF;
+}
+
+.UnixHierarchyControls .hierarchy_group {
+  cursor: pointer;
+  position: absolute;
+  right:5px;
+}
+
+.UnixHierarchyControls .showButton:before {
+  content:'\e80b';
+  font-family:'fontello';
+  font-size:2em;
+}
+.UnixHierarchyControls .hideButton:before {
+  content:'\e809';
+  font-family:'fontello';
+  font-size:2em;
+}

@@ -1,0 +1,54 @@
+<%page args="module" expression_filter="h" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%
+label = module['params'].get('label', None)
+rangemap = module['params'].get('rangeMap', {})
+keys = sorted(rangemap.items(), key = lambda tup: (int(tup[1]["order"])))
+useDropdown = module['params'].get('useDropdown')
+if useDropdown == 'True':
+  useDropdown = True
+else:
+  useDropdown = False
+
+# useDropdown = False
+moduleJSFiles = [
+  "/static/app/splunk_app_for_nix/js/modules/UnixSearchSelector/flyout.js"
+]
+%>
+<%lib:script_tags files="${moduleJSFiles}" />
+<div class="UnixSimpleTimeRangePickerContainer">
+% if label is not None:
+  <span>${label}</span>
+% endif
+
+% if useDropdown:
+  <div class='dropdownContainer'>
+    <div class="header">
+    </div>
+
+    <div class="searchFlyout unixSelector">
+      <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="visibility: hidden">
+          <div class='title'>${keys[0][0]}</div>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          % for key in keys:
+            <li earliest="${key[1].get('range')}" class="item ${"selected" if key[1].get('selected') else ''}">
+              ${key[0]}
+            </li>
+          % endfor
+        </ul>
+      </div>
+    </div>
+  </div>
+
+%else:
+  % for key in keys:
+    <input type="button" earliest="${key[1].get('range')}" class="SimpleTimeRange ${"selected" if key[1].get('selected') else ''}" value="${key[0]}" />
+  % endfor
+
+% endif
+ 
+  
+</div>

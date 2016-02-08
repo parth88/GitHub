@@ -1,0 +1,42 @@
+.CFPaginator {
+    float:none;
+    height: 22px;
+    padding-right: 22px;
+    padding-left: 22px;
+}
+.CFPaginator span.summary {
+    font-size: 16px;
+}
+.CFPaginator ul {
+    float: right;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.CFPaginator ul li {
+    padding:0;
+    display:inline;
+    line-height: 18px;
+}
+.CFPaginator a {
+    padding: 1px 5px 0 5px;
+    min-width: 9px;
+    text-align:center;
+    display: inline-block;
+    _display: inline;
+}
+.CFPaginator a.disabled {
+    visibility:visible;
+    cursor:text;
+}
+
+.CFPaginator .ResultsContainer {
+    height: 27px;
+}
+
+.CFPaginator .ResultsContainer .left {
+    float: left;
+}
+.CFPaginator .ResultsContainer .right {
+    float: right;
+}

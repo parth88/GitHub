@@ -1,0 +1,29 @@
+.UnixButtonSwitcher {
+    overflow: hidden;
+    _overflow: visible;
+}
+
+.UnixButtonSwitcher label {
+    float: left;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+
+.UnixButtonSwitcher ul {
+    margin: 3px 0 0 0;
+    padding: 0;
+    list-style: none none;
+    float: left;
+}
+
+.UnixButtonSwitcher ul li {
+    float: left;
+    margin-right: 2px;
+    height: 19px;
+    width: 19px;
+}
+
+.UnixButtonSwitcher ul li a {
+    display: block;
+    cursor: pointer;
+}

@@ -1,0 +1,76 @@
+<%page expression_filter="h"/>
+<%inherit file="//layout/base.html" />
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+    import logging
+    logger = logging.getLogger('splunk')
+%>
+
+<%def name="css()">
+    <%coreCSSFiles = [
+        "/static/css/view.css", 
+        "/static/css/skins/default/default.css", 
+        '/static/css/jquery.iphone-style-checkboxes.css'
+    ] %>
+    <%lib:stylesheet_tags files="${coreCSSFiles}" />
+</%def>
+
+<%def name="custom_css()">
+    <%lib:stylesheet_tags files="${['/static/app/splunk_app_for_nix/unixHeadlines/manage_headlines.css']}" />
+    <%lib:script_tags files="${['/static/app/splunk_app_for_nix/unixHeadlines/manage_headlines.js']}" />
+</%def>
+
+<div class="ManageHeadlinesContainer">
+  <h2>Edit Headline:</h2>
+  <hr />
+  <form method="POST" action="${make_url('/custom/splunk_app_for_nix/unixheadlines/%s/save' % app)}"> 
+  ${csrf_hidden_input()}
+% if headline and headline.errors is not None and len(headline.errors) > 0:
+  <p class="errorText">${headline.errors[0]}</p>
+% endif
+  <table class="splTable" id="headlines_new">
+    <tbody>
+      <tr>
+        <td><h3>Label (required):</h3></td>
+        <td><input type="text" name="label" id="label" value="${headline.label}" /></td>
+      </tr>
+      <tr>
+        <td><h3>Description:</h3></td>
+        <td><textarea name="description" id="description">${headline.description if headline.description else ''}</textarea></td>
+      </tr>
+      <tr>
+        <td><h3>Link To Alert:</h3></td>
+        <td>
+% if len(alerts) > 0:
+  <select id="alert_name" name="alert_name">
+    % for alert in alerts:
+        % if alert.name == headline.alert_name:
+    <option value="${alert.name}" selected="selected">${alert.name} ${'(disabled)' if alert.is_disabled==True else ''}</option>
+        % else:
+    <option value="${alert.name}">${alert.name} ${'(disabled)' if alert.is_disabled==True else ''}</option>
+        % endif
+    % endfor
+  </select>
+% else:
+  <p class="statusMessage">No alerts configured...</p>
+% endif
+        </td>
+      </tr>
+      <tr>
+        <td class="noBot"><h3>Message:</h3></td>
+        <td class="noBot"><input type="text" name="message" id="message" value="${headline.message}" /></td>
+      </tr>
+      <tr class="hidden" style="display: none;">
+        <td><h3>Preview:</h3></td>
+        <td><textarea name="preview" id="preview" readonly="readonly"></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="hidden" id="name" name="name" value="${headline.name}" />
+
+  <div class="ManageHeadlinesButtons">
+    <a href="#" class="cancel splButton-secondary">Cancel</a>
+    <input type="submit" style="float: right;" class="splButton-primary" value="Update Headline"/>
+  </div>
+  </form>
+</div>

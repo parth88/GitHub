@@ -1,0 +1,129 @@
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%!
+import logging
+import math
+import os
+import string
+import time
+import cherrypy
+
+import splunk.appserver.mrsparkle.lib.startup as startup
+import splunk.appserver.mrsparkle.lib.i18n as i18n
+from splunk.util import safeURLQuote
+from splunk.appserver.mrsparkle.lib import config
+
+logger = logging.getLogger('splunk')
+use_html5 = True 
+
+%>
+
+<%def name="fillform(form_defaults, form_errors)">
+    <%
+    from formencode import htmlfill
+    context.write(htmlfill.render(capture(caller.body), form_defaults, form_errors, auto_insert_errors=False))
+    %>
+</%def>
+
+<%self:render/>
+
+<%def name="render()" filter="string.strip">
+    % if is_xhr():
+        <%self:xhrdoc/>
+    % else:
+        <%self:pagedoc/>
+    % endif
+</%def>
+
+<%def name="xhrdoc()">
+    <%next:body/>
+</%def>
+
+<%def name="pagedoc()">
+% if self.attr.use_html5:
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="${i18n.current_lang()[0]}"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 lt-ie9 lt-ie8" lang="${i18n.current_lang()[0]}"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 lt-ie9" lang="${i18n.current_lang()[0] }"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="${i18n.current_lang()[0] }"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="${i18n.current_lang()[0] }"> <!--<![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+% else:
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--[if lt IE 7]> <html xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://www.splunk.com/xhtml-extensions/1.0" xml:lang="${i18n.current_lang()[0] }" lang="${i18n.current_lang()[0] }" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://www.splunk.com/xhtml-extensions/1.0" xml:lang="${i18n.current_lang()[0] }" lang="${i18n.current_lang()[0] }" class="no-js ie7 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://www.splunk.com/xhtml-extensions/1.0" xml:lang="${i18n.current_lang()[0] }" lang="${i18n.current_lang()[0] }" class="no-js ie8 lt-ie9"> <![endif]-->
+<!--[if IE 9]>    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://www.splunk.com/xhtml-extensions/1.0" xml:lang="${i18n.current_lang()[0] }" lang="${i18n.current_lang()[0] }" class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://www.splunk.com/xhtml-extensions/1.0" xml:lang="${i18n.current_lang()[0]}" lang="${i18n.current_lang()[0]}" class="no-js"> <!--<![endif]-->
+<!-- live to code, code to live... -->
+
+% endif
+    <head>
+    % if not self.attr.use_html5:
+        <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, chrome=IE8" />
+    % endif
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="${i18n.current_lang(as_string=True)}" />
+        <meta http-equiv="imagetoolbar" content="no" />
+        <meta name="author" content="Splunk Inc." />
+        <link rel="apple-touch-icon" href="${make_url('/static/img/iosicon.png')}" />
+        <link rel="shortcut icon" href="${make_url('/static/img/favicon.ico')}" />
+        <title><%self:title/></title>
+        ## Load modernizr
+        <script src="/static/app/splunk_app_for_nix/js/contrib/modernizr/modernizr-latest-dev.js">
+        </script>
+        ## Every page requires these core js files to be loaded first, and in the correct order -->
+        <script type="text/javascript">
+        % if APP and APP.get('id'):
+            ## views pass APP
+            window.$C = ${json_decode(config.getConfig(cherrypy.session.get('sessionKey'), namespace=APP['id'])) | n}
+        % else:
+            window.$C = ${json_decode(config.getConfig(cherrypy.session.get('sessionKey'))) | n}
+        % endif
+        </script>
+        <%lib:script_tags files="${[
+            '/static/js/contrib/jquery-1.6.2.js',
+            '/static/js/i18n.js', 
+            '/static/js/splunk.js', 
+            '/static/js/util.js'
+        ]}" />
+        <%self:css/>
+        <%self:custom_css/>
+        <%self:head/>
+    </head>
+    <%self:body_element_open/>
+        <%next:body/>
+        <%self:modernizr/>
+        <%self:js/>
+        <%self:js_initialization/>
+    </body>
+</html>
+</%def>
+
+<%def name="modernizr()">
+<script type="text/javascript">
+    if (!Modernizr.svg) {
+        window.location = Splunk.util.make_url('/app/${APP['id']}/browser_incompatibility');
+    }
+</script>
+</%def>
+
+<%def name="title()">
+    ${VIEW['label']} - ${APP['label']} - Splunk ${cherrypy.config.get('version_label')}
+</%def>
+
+<%def name="head(enable_viewport=True)">
+    % if VIEW.get("refresh", -1) and int(VIEW.get('refresh')) > -1:
+        <META http-equiv="refresh" content="${VIEW['refresh']}"/>
+    % endif
+    % if APP['id'] == 'search' and enable_viewport is True:
+        <meta name="viewport" content="width=device-width" />
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+    % endif
+</%def>
+
+<%def name="css()"></%def>
+<%def name="custom_css()"></%def>
+<%def name="js()"></%def>
+<%def name="js_initialization()"></%def>
+<%def name="body_element_open()"><body></%def>
+

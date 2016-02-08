@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'fontello';
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125');
+    src: url('/static/app/splunk_app_for_nix/fonts/settings/fontello.eot?82669125#iefix') format('embedded-opentype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.woff?82669125') format('woff'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.ttf?82669125') format('truetype'),
+       url('/static/app/splunk_app_for_nix/fonts/settings/fontello.svg?82669125#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.UnixReportBuilder {
+   /*bottom: 20px;*/
+   /*margin-left: 4%;*/
+/*   position: relative;
+   right: 4px;*/
+   /*width: 80%;*/
+   float:left;
+}
+.UnixReportBuilder span {
+   font-size: 14px;
+   margin-left: 5px;
+   margin-right: 2px;
+}
+.UnixReportBuilder input,
+.UnixReportBuilder select {
+   border-radius: 4px;
+}
+/*.UnixReportBuilder .stat {
+   width: 100px;
+}
+.UnixReportBuilder .split {
+   width: 70px;
+}
+.UnixReportBuilder .limit {
+   width: 30px;
+}*/
+.UnixReportBuilderContainer span.first {
+   margin-right: 7px;
+}
+
+.UnixReportBuilderContainer .option {
+    cursor: pointer;
+    font-size:14px;
+    margin:5px 0px;
+}
+
+.UnixReportBuilderContainer .dropdown-menu {
+    padding: 5px !important;
+}
+
+.UnixReportBuilderContainer .dropdown-menu li {
+    cursor: pointer;
+}
+
+.UnixReportBuilderContainer .btn-group .title, .UnixReportBuilderContainer .btn-group .caret {
+    float:left;
+}
+
+.UnixReportBuilderContainer .btn-group .caret {
+    margin-left:10px !important;
+}
+
+.UnixReportBuilderContainer .unixSelector{
+   float: left;
+}
+
+/*.UnixReportBuilderContainer #other{
+   float: left;
+   clear:both;
+}*/
+
+.UnixReportBuilderContainer .advancedPanel{
+   margin-top:5px;
+}
+
+.UnixReportBuilderContainer .checkboxContainer {
+    float:left;
+}
+
+.UnixReportBuilderContainer .basicPanel {
+    /*float:left;*/
+    /*overflow:hidden;*/
+    height:30px;
+}
+
+.UnixReportBuilderContainer .advancedPanel {
+    /*overflow: hidden;*/
+}
+
+.UnixReportBuilderContainer .advancedPanel input, .UnixReportBuilderContainer .advancedPanel .checkboxContainer{
+    margin-right:10px;
+}
+
+.UnixReportBuilderContainer .advancedPanel .checkboxContainer {
+    margin-top:6px;
+}
+
+.UnixReportBuilderContainer .advancedPanel input[type="checkbox"] {
+    margin: 0; /* override bootstrap */
+    margin-top:-2px;
+}
+
+.UnixReportBuilderContainer .advancedPanel input[type="text"] {
+    width:100px;
+}
+
+.UnixReportBuilderContainer .toggleAdvancedPanel {
+    cursor: pointer;
+    width:20px;
+    height:20px;
+    float:left;
+    margin-left:10px;
+    font-size: 20px;
+}
+.UnixReportBuilderContainer .toggleAdvancedPanel:before {
+  content: '\e811';
+  font-family:'fontello';
+}
+
+
+.UnixReportBuilderContainer .betweenText {
+    position: relative;
+    top:2px;
+}
+
+.clearFix {
+    clear:both;
+}

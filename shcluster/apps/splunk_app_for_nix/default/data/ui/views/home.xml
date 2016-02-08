@@ -1,0 +1,253 @@
+<view stylesheet="home.css" template="splunk_app_for_nix:/templates/layout/unix_home.html">
+  <label>Home</label>
+  <module name="UnixFTR" layoutPanel="viewHeader">
+    <param name="configLink">/app/splunk_app_for_nix/settings</param>
+  </module>
+  <module name="UnixIncludeD3" layoutPanel="viewHeader"/>
+  <module name="UnixIncludeUnderscore" layoutPanel="viewHeader"/>
+  <module name="UnixIncludejQuery" layoutPanel="viewHeader"/>
+  <module name="UnixIncludejQueryUI" layoutPanel="viewHeader"/>
+  <module name="UnixIncludeBackbone" layoutPanel="viewHeader"/>
+  <module name="UnixAccountBar" layoutPanel="appHeader"/>
+  <module name="UnixAppBar" layoutPanel="navigationHeader"/>
+  <module name="Message" layoutPanel="messaging">
+    <param name="maxSize">1</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="filter">*</param>
+  </module>
+  
+  <module name="UnixShareLink" layoutPanel="HomeCenterTop"/>
+  <module name="UnixFullscreen" layoutPanel="HomeCenterTop">
+    <param name="viewName">home_fullscreen</param>
+  </module>
+
+  <module name="UnixMultiSelect" layoutPanel="HomeLeftControls">
+    <param name="search">|inputlookup dropdowns.csv | stats count by unix_category</param>
+    
+    <param name="fill_on_empty">False</param>
+    <param name="label">Category</param>
+    <param name="multi">False</param>
+    <param name="inner_width">164</param>
+    <param name="outer_width">74</param>
+    <param name="field">unix_category</param>
+    <param name="drilldownToken">unix_category</param>
+
+
+    <module name="HiddenSearch" autoRun="True">
+      <param name="search">|inputlookup dropdowns.csv | search $unix_category$ | stats count by unix_group</param>
+
+      <module name="UnixMultiSelect" layoutPanel="HomeLeftControls">
+        <param name="apply_from_context">True</param>
+        <param name="fill_on_empty">False</param>
+        <param name="label">Group</param>
+        <param name="multi">True</param>
+        <param name="inner_width">164</param>
+        <param name="outer_width">74</param>
+        <param name="field">unix_group</param>
+        <param name="drilldownToken">unix_group</param>
+
+        <module name="UnixTokenReplacer">
+          <module name="UnixContextPopulator">
+            <module name="UnixSearchSelector" layoutPanel="HomeLeftControls" autoRun="true">
+              <param name="interval">8</param>
+              <param name="emulateRealtime">true</param>
+              <param name="searches">
+                <list>
+                  <param name="CPU Idle">
+                    <param name="search">`home_cpu_idle($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="CPU Used">
+                    <param name="search">`home_cpu_used($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Mem. Used">
+                    <param name="search">`home_memory($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Mem. Free">
+                    <param name="search">`home_memory_free($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Disk Used">
+                    <param name="search">`home_disk_used($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Disk Free">
+                    <param name="search">`home_disk_free($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+              </param>
+
+              <module name="UnixTokenReplacer">
+                <module name="UnixHomeTitle" layoutPanel="HomeLeftTitle">
+                </module>
+
+                <module name="UnixSpiderGraph" layoutPanel="HomeLeft">
+                  <param name="height">510</param>
+                  <param name="width">410</param>
+                  <param name="max">100</param>
+                  <module name="UnixDrillDowner">
+                    <param name="viewTarget">hosts</param>
+                  </module>
+                </module>
+              </module>
+            </module>
+          </module>
+        </module>
+      </module>
+    </module>
+  </module>
+
+  <module name="UnixMultiSelect" layoutPanel="HomeCenterControls">
+    <param name="search">|inputlookup dropdowns.csv | stats count by unix_category</param>
+    <param name="fill_on_empty">False</param>
+    <param name="label">Category</param>
+    <param name="multi">False</param>
+    <param name="inner_width">164</param>
+    <param name="outer_width">74</param>
+    <param name="field">unix_category</param>
+    <param name="drilldownToken">unix_category</param>
+
+    <module name="HiddenSearch" autoRun="True">
+      <param name="search">|inputlookup dropdowns.csv | search $unix_category$ | stats count by unix_group</param>
+
+      <module name="UnixMultiSelect" layoutPanel="HomeCenterControls">
+        <param name="apply_from_context">True</param>
+        <param name="fill_on_empty">False</param>
+        <param name="label">Group</param>
+        <param name="multi">true</param>
+        <param name="inner_width">164</param>
+        <param name="outer_width">74</param>
+        <param name="field">unix_group</param>
+        <param name="drilldownToken">unix_group</param>
+
+        <module name="UnixTokenReplacer">
+          <module name="UnixContextPopulator">
+            <module name="UnixSearchSelector" layoutPanel="HomeCenterControls" autoRun="true">
+              <param name="interval">8</param>
+              <param name="emulateRealtime">true</param>
+              <param name="searches">
+                <list>
+                  <param name="CPU Idle">
+                    <param name="search">`home_cpu_idle($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="CPU Used">
+                    <param name="search">`home_cpu_used($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Mem. Used">
+                    <param name="search">`home_memory($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Mem. Free">
+                    <param name="search">`home_memory_free($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Disk Used">
+                    <param name="search">`home_disk_used($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+                <list>
+                  <param name="Disk Free">
+                    <param name="search">`home_disk_free($unix_category$, $unix_group$)`</param>
+
+                    <param name="earliest">-5m</param>
+                    <param name="latest">-2m</param>
+                    <param name="groupName">Group</param>
+                  </param>
+                </list>
+              </param>
+
+              <module name="UnixTokenReplacer">
+                <module name="UnixHomeTitle" layoutPanel="HomeCenterTitle">
+                </module>
+
+                <module name="UnixSpiderGraph" layoutPanel="HomeCenter">
+                  <param name="height">510</param>
+                  <param name="width">410</param>
+                  <param name="max">100</param>
+                  <module name="UnixDrillDowner">
+                    <param name="viewTarget">hosts</param>
+                  </module>
+                </module>
+                <module name="UnixPrefsReset" layoutPanel="HomeCenter" />
+              </module>
+            </module>
+          </module>
+        </module>
+      </module>
+    </module>
+  </module>
+
+
+  <module name="HiddenSearch" layoutPanel="HomeRight" autoRun="true">
+    <param name="earliest">-24h</param>
+    <param name="search">`unix_noop`</param>
+    <module name="UnixHeadlines">
+      <param name="client_app">SA-nix</param>
+      <param name="count">8</param>
+      <param name="drilldown_view">alerts</param>
+    </module>
+  </module>
+
+</view>
+

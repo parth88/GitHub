@@ -1,0 +1,111 @@
+<view template="splunk_app_for_nix:/templates/layout/unix_alerts.html">
+  <label>Alerts</label>
+  <module name="UnixIncludeD3" layoutPanel="appHeader"/>
+  <module name="UnixIncludejQuery" layoutPanel="appHeader"/>
+  <module name="UnixIncludeUnderscore" layoutPanel="appHeader"/>
+  <module name="UnixIncludeBackbone" layoutPanel="appHeader"/>
+  <module name="IncludeCrossfilter" layoutPanel="appHeader"/>
+  <module name="UnixAccountBar" layoutPanel="appHeader"/>
+  <module name="UnixAppBar" layoutPanel="navigationHeader"/>
+  <module name="HiddenSearch" layoutPanel="AlertsHeader" autoRun="True">
+    <param name="search">`alert_events`</param>
+    <param name="earliest">-1h</param>
+    <module name="UnixSimpleTimeRangePicker" layoutPanel="AlertsTop" autoRun="True">
+      <param name="useDropdown">True</param>
+      <param name="drilldownToken">time_range</param>
+      <param name="rangeMap">
+        <param name="Last 15 Minutes">
+          <param name="range">-15m</param>
+          <param name="order">1</param>
+        </param>
+        <param name="Last Hour">
+          <param name="range">-1h</param>
+          <param name="order">2</param>
+          <param name="selected">true</param>
+        </param>
+        <param name="Last 12 Hours">
+          <param name="range">-12h</param>
+          <param name="order">3</param>
+        </param>
+        <param name="Last 24 Hours">
+          <param name="range">-24h</param>
+          <param name="order">4</param>
+        </param>
+        <param name="Last 7 Days">
+          <param name="range">-7d</param>
+          <param name="order">5</param>
+        </param>
+      </param>
+      <module name="Unix_Crossfilter">
+        <module name="Unix_CFInclude">
+          <param name="file">/static/app/splunk_app_for_nix/custom.js</param>
+          <param name="export">*</param>
+          <module name="CFBarChart" layoutPanel="AlertsTop">
+            <param name="config">dyn_datetime</param>
+            <param name="height">100</param>
+            <param name="width">90%</param>
+          </module>
+          <module name="CFPieChart" layoutPanel="AlertsLeft">
+            <param name="width">270</param>
+            <param name="height">150</param>
+            <param name="outer">1</param>
+            <param name="inner">0.62</param>
+            <param name="config">by_host</param>
+            <param name="title">Hosts</param>
+            <param name="label">Total</param>
+            <param name="use_legend">True</param>
+          </module>
+          <module name="CFPieChart" layoutPanel="AlertsLeft">
+            <param name="width">270</param>
+            <param name="height">150</param>
+            <param name="outer">1</param>
+            <param name="inner">0.62</param>
+            <param name="config">by_name</param>
+            <param name="title">Name</param>
+            <param name="label">Total</param>
+            <param name="use_legend">True</param>
+          </module>
+          <module name="CFPieChart" layoutPanel="AlertsLeft">
+            <param name="width">270</param>
+            <param name="height">150</param>
+            <param name="outer">1</param>
+            <param name="inner">0.62</param>
+            <param name="config">by_severity</param>
+            <param name="title">Severity</param>
+            <param name="label">Total</param>
+            <param name="use_legend">True</param>
+          </module>
+          <module name="CFPaginator" layoutPanel="AlertsRight">
+            <module name="CFResultsTable">
+              <param name="drilldownToken">alert_sid</param>
+              <param name="displayRowNumbers">false</param>
+              <param name="fieldList">trigger_time:Time, ss_name:Name, severity:Severity, hosts:Hosts, sid:Action, description:Description</param>
+              <param name="customFields">
+                <param name="Name">
+                  <param name="link">
+                    <param name="url">/custom/splunk_app_for_nix/unixalertevents/splunk_app_for_nix/id/$sid$</param>
+                    <param name="mode">modal</param>
+                  </param>
+                </param>
+                <param name="Severity">
+                  <param name="style"/>
+                </param>
+                <param name="Hosts">
+                  <param name="collapse">1</param>
+                </param>
+                <param name="Action">
+                  <param name="link">
+                    <param name="url">/app/splunk_app_for_nix/unix_flashtimeline?sid=$value$</param>
+                    <param name="mode">new</param>
+                    <param name="text">Open in Search</param>
+                  </param>
+                  <param name="style"/>
+                </param>
+              </param>
+            </module>
+          </module>
+        </module>
+      </module>
+    </module>
+  </module>
+</view>
