@@ -46,7 +46,7 @@ The Splunk App for Unix and Linux provides general health monitoring reports and
 	* Information of all users currently logged in via 'who' command (who.sh scripted input).
 
 
-##### Documentation ##########
+##### Documentation ###############
 
 To get the most up-to-date information on how to install, configure, and use the Splunk App for Unix and Linux, visit the on-line documentation on a computer with access to the Internet:
 
