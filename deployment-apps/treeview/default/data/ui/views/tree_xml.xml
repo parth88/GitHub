@@ -14,7 +14,7 @@
 <div id="dendrogram" class="splunk-view" data-require="app/treeview/components/treechart/treechart" data-options='{
     "managerid": "tree_search",
     "root_label": "clientip",
-    "right": 780,
+    "right": 7810,
     "height": 170,
     "initial_open_level": 1
     
